@@ -1,7 +1,4 @@
 # 1 Application environment
 
-This documentation section contains this and that.
+This documentation section contains documentation of some of the concepts of Oskari.
 
-## 1.1 Framework and concepts
-## 1.2 Frontend
-## 1.3 Backend
