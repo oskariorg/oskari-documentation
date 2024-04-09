@@ -1,3 +1,7 @@
+---
+ordinal: 1
+---
+
 # 4 Application troubleshooting
 
 What to do, if application is not working properly?
