@@ -2,7 +2,7 @@
 ordinal: 1
 ---
 
-# 4 Application troubleshooting
+# Application troubleshooting
 
 What to do, if application is not working properly?
 - Test yourself
