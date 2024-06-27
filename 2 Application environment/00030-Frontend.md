@@ -1,0 +1,74 @@
+## Frontend
+
+The user interface is a Javascript-based single-page app built by selecting a series of bundles that provide functionalities/capabilities for an application. A bundle can work "as is" for providing its functionality and/or it can provide a documented API that can be used to interact with the functionality programmatically. The API also helps implementing a customized drop-in replacements for functionalities when required. You can mix and match the bundles or create new ones to customize the application for your needs.
+
+Oskari UI is implemented as a collection of reusable bundles. Bundles are used as uniform containers to ship and share new functionality to the application setups. Additions to existing functionality are implemented as Plugins shipped within the bundles.
+
+### Frontend architecture
+
+![non-existing image frontend-architecture-1.png](../resources/images/oskari_architecture_frontend.png)
+
+Oskari-loader is started up when the browser signals the DOM is ready. The loader is passed the Oskari application startup sequence and configuration as JSON. The startApplication() method is called on loader and the processing of the startup sequence is started. Bundles referenced in the startup sequence are loaded and started. One bundle must be a "creator bundle" which initiates Oskari core. After the core init - services and request handlers can be registered to the core by any bundle. Reference to the map module can be fetched from the core and any map plugins can be registered to it.
+
+```mermaid
+sequenceDiagram
+    Frontend->>Frontend: Oskari.app.startApplication()
+    Frontend->>Server: GetAppSetup
+    Server-->>Frontend: list of bundles with config
+    loop For each bundle
+        Frontend->>Bundle: start
+        Bundle->Bundle: init functionality
+        Bundle->>Frontend: bundle.started
+    end
+    Frontend->>Frontend: app.started
+```
+
+**Oskari JavaScript framework**
+
+* Oskari-loader is started up when the browser signals the DOM is ready.
+* The loader is passed the Oskari application startup sequence and configuration as JSON.
+* The startApplication() method is called on loader and the processing of the startup sequence is started.
+* Bundles referenced in the startup sequence are loaded and started.
+* One bundle must be a "creator bundle" which initiates Oskari core.
+* After the core init - services and request handlers can be registered to the core by any bundle.
+* Reference to the map module can be fetched from the core and any map plugins can be registered to it.
+
+**Bundle functionality**
+
+![non-existing image frontend-architecture-2.png](../resources/images/oskari_architecture_frontend.png)
+
+* Bundles can provide a an interface for other bundles to request some operation through a request handler.
+* A bundle can provide a request class and register a handler for the request in the Oskari core.
+* Another bundle can then send the request which will be processed by the other bundle.
+* Another way to communicate with other bundles is to send out an event through Oskari core.
+* Any bundle registered as an eventlistener for the given event is then notified about the event.
+
+### Libraries and technologies
+
+Oskari frontend uses the following libraries and technologies:
+
+* OpenLayers (map component)
+* jQuery (map tools)
+* jQuery UI (UI)
+* React (map tools)
+* Ant Design (icons)
+* CesiumJS
+* Lo-Dash
+* geostats.js
+* D3.js
+
+You can get a list of all the libraries with npm with for example by running: npx license-checker. Just to get summary of licenses you can add --summary after the command.
+
+### Source code and folder structure
+
+You can find Oskari frontend source code in [here](https://github.com/oskariorg/oskari-frontend).
+
+Oskari frontend source code has the following folder structure:
+/applications - Definitions for application setups combining bundles into a specific application
+/bundles - Implementation files for extension bundles
+/packages - Definition files for extension bundles
+/resources - CSS styles/images for extension bundles
+/sources - Oskari core
+/libraries - jQuery plugins and other dependencies/libraries
+
+The folder structure follows a pattern where the first folder under the base folder is a namespace folder. Oskari uses framework for the main bundles, but this is optional and you can separate your bundles to own namespace. The next folder in the structure is named bundle. This is just a convention and is not a functional requirement. The next folder is named after the <bundle-identifier>.
