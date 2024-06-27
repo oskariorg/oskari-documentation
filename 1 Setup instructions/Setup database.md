@@ -45,7 +45,7 @@ Run these commands to create default user with all privileges
 	GRANT ALL PRIVILEGES ON DATABASE oskaridb to oskari;
 
 The preconfigured user in Oskari Jetty-bundle is oskari with the password oskari.
-See <a data-link-compiled-href="Setup Jetty" href="Setup jetty.md">Setup jetty</a> documentation for details where changes are needed when using another database user.
+See <a data-internal-anchor="Setup Jetty" href="Setup jetty.md">Setup jetty</a> documentation for details where changes are needed when using another database user.
 
 #### Application initialization and database content
 
