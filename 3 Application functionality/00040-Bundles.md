@@ -1,7 +1,3 @@
----
-ordinal: 4
----
-
 ## Bundles
 
 A bundle is a component in an Oskari application. A bundle is a selection of Oskari classes which form a component that offers additional functionality for an application. A bundle can offer multiple implementations for a functionality which can then be divided into smaller packages for different application setups. Packages can be used to offer a multiple views for the same functionality for example search functionality as a small on-map textfield or a window-like UI (see Tile/Flyout) for the same functionality.

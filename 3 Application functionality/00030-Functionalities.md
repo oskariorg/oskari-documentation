@@ -1,7 +1,3 @@
----
-ordinal: 3
----
-
 ## Other featured functionalities
 
 ### Multiple language support

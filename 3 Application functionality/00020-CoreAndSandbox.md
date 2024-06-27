@@ -1,7 +1,3 @@
----
-ordinal: 2
----
-
 ## Core and sandbox
 
 ### Core
