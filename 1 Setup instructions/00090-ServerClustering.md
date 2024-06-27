@@ -1,7 +1,3 @@
----
-ordinal: 9
----
-
 ### Server clustering (Optional)
 
 Oskari server can be used in a clustered environment setup.

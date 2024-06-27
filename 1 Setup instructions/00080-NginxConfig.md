@@ -1,7 +1,3 @@
----
-ordinal: 8
----
-
 ### Configuring nginx (Optional)
 
 This guide gives an example for configuring a reverse proxy for Oskari-server using [nginx](http://nginx.org/).

@@ -1,7 +1,3 @@
----
-ordinal: 4
----
-
 ## Setup Oskari development environment
 
 This document describes how to setup development environment for Oskari using source code. If you want to develop / maintain oskari yourself this is the correct section.

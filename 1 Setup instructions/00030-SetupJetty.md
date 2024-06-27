@@ -1,7 +1,3 @@
----
-ordinal: 3
----
-
 ## Setup Jetty
 
 This section contains instruction on setting up an instance from a downloaded jetty package with pre-installed/configured Oskari

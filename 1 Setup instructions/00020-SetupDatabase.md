@@ -1,7 +1,3 @@
----
-ordinal: 2
----
-
 ## Setup database
 
 This document describes how to set up a single database for the oskari-server component.
