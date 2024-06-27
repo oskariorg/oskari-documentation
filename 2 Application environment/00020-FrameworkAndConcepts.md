@@ -1,7 +1,3 @@
----
-ordinal: 2
----
-
 ## Framework and concepts
 
 Oskari provides tools for easily building multipurpose web mapping applications utilizing distributed Spatial Data Infrastructures like INSPIRE. The Oskari web application includes frontend code for browser-based user interface and a backend codebase that is run on the server. The user interface is implemented in JavaScript and the server functionality in Java. Both, the frontend and the backend, are built with extensibility in mind.

@@ -1,7 +1,3 @@
----
-ordinal: 4
----
-
 ## Backend
 
 Backend functionality of the platform is implemented as a Java servlet, which can also be extended to handle new functionality.
