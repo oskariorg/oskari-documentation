@@ -1,7 +1,3 @@
----
-ordinal: 10
----
-
 ### How to use Oskari classes
 
 Most code in Oskari is defined as classes. Defining a class is a simple call to `Oskari.clazz.define()` method:

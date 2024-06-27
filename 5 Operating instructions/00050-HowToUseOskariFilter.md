@@ -1,7 +1,3 @@
----
-ordinal: 5
----
-
 ### How to use Oskari filter
 
 JSON filter object for filttering features by features' property keys and values.

@@ -1,7 +1,3 @@
----
-ordinal: 27
----
-
 ### How to enable "My places" module
 
 **NOTE!** This document describes setup with [GeoServer](http://geoserver.org/). In case you have a different WMS service installed, adjust accordingly.

@@ -1,7 +1,3 @@
----
-ordinal: 4
----
-
 ### How to use localization
 
 Localization files are referenced in bundle definitions (`bundle.js` - locales array). Each languages localization is in its own file with structure like this:

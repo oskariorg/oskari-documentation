@@ -1,7 +1,3 @@
----
-ordinal: 11
----
-
 ### How to use user authentication
 
 Users in Oskari are described with a few attributes listed below:

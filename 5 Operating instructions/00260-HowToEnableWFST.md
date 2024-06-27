@@ -1,7 +1,3 @@
----
-ordinal: 26
----
-
 ### How to enable WFS-T (Content editor)
 
 Tampere Oskari bundle **content-editor**

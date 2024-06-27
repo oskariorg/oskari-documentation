@@ -1,7 +1,3 @@
----
-ordinal: 29
----
-
 ### How to enable the user data store
 
 **NOTE!** This document describes setup with [GeoServer](http://geoserver.org/). In case you have a different WMS service installed, adjust accordingly.

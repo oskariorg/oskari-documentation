@@ -1,7 +1,3 @@
----
-ordinal: 30
----
-
 ## Other instructions
 
 This operating instructions section contains this and that.

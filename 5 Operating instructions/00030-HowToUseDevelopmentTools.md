@@ -1,7 +1,3 @@
----
-ordinal: 3
----
-
 ### How to use development tools
 
 #### GitHub, the collaboration platform

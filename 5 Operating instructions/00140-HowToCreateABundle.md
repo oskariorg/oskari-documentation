@@ -1,7 +1,3 @@
----
-ordinal: 14
----
-
 ### How to create a bundle
 
 Decide `<bundle-identifier>` which is unique and describes the functionality the bundle offers e.g. 'search' (already implemented so prefix it with something like mysearch).

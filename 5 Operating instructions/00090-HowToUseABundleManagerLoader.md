@@ -1,7 +1,3 @@
----
-ordinal: 9
----
-
 ### How to use a bundle manager/loader
 
 * loads Bundle Definitions

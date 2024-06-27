@@ -1,7 +1,3 @@
----
-ordinal: 16
----
-
 ### How to add third party JavaScript libraries
 
 Usually using `npm install --save` to add a library and `import` it as ES-module is enough and the recommended approach.

@@ -1,7 +1,3 @@
----
-ordinal: 20
----
-
 ### How to configure 3D map view
 
 Oskari supports 3D map view since version 1.54 as an optional 3D-capable mapmodule has been added to Oskari. 3D mapmodule is based on [Ol-Cesium library](https://openlayers.org/ol-cesium/), which is meant for integrating OpenLayers and Cesium. Since Oskari 2D uses OpenLayers for map rendering and many map tools are built using OpenLayers most of the tools work out-of-the-box in 3D with Ol-Cesium.

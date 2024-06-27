@@ -1,7 +1,3 @@
----
-ordinal: 18
----
-
 ### How to create a custom Oskari Server Extension
 
 This document describes how to use maven artifacts provided in Oskari Maven repository to build customized Oskari-server.

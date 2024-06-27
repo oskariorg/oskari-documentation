@@ -1,7 +1,3 @@
----
-ordinal: 6
----
-
 ### How to use Oskari style
 
 JSON style object for styling layers. VisualizationForm component also supports getting and setting style values in Oskari style format.
