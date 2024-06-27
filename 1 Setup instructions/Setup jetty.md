@@ -2,7 +2,11 @@
 ordinal: 3
 ---
 
-## Setup Jetty with pre-installed/configured Oskari
+## Setup Jetty
+
+This section contains instruction on setting up an instance from a downloaded jetty package with pre-installed/configured Oskari
+
+**For setting up an oskari instance from source code skip this section and move to** <a data-internal-anchor="Setup Oskari development environment" href="Setup development environment.md">Setup development environment</a>
 
 After this you will have Oskari running including
 
