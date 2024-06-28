@@ -41,11 +41,11 @@ Run these commands to create default user with all privileges
 	GRANT ALL PRIVILEGES ON DATABASE oskaridb to oskari;
 
 The preconfigured user in Oskari Jetty-bundle is oskari with the password oskari.
-See <a data-internal-anchor="Setup Jetty" href="Setup jetty.md">Setup jetty</a> documentation for details where changes are needed when using another database user.
+See <a data-internal-anchor="Setup Jetty" href="00030-SetupJetty.md">Setup jetty</a> documentation for details where changes are needed when using another database user.
 
 #### Application initialization and database content
 
 The empty database will be populated when the oskari-server is started for the first time. The database population is split into modules. The core module creates and migrates the main database tables used by Oskari. The default configuration has a module named "example" enabled that will populate an example app and maplayer to get a nice unboxing experience. You should replace "example" module with your own app configuration and content for anything other than basic development and playing around.
 
 To learn how to customize Oskari including populating the database with your own content instead of example content see:
-* [Create a custom Oskari-server extension](/documentation/backend/setup-server-extension)
+* <a data-internal-anchor="../5 Operating instructions#How to create a custom Oskari Server Extension" href="../5 Operating instructions/00180-HowToCreateACustomOskariServerExtension.md">Create a custom Oskari-server extension</a>
