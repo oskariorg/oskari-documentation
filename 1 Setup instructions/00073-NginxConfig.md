@@ -98,7 +98,7 @@ This snippet modifies the cookie Jetty gives and adds secure, httponly and sames
     }
 ```
 
-## HTTPS-configuration
+#### HTTPS-configuration
 
 The following enables HTTPS on the server. Add the certificates on:
 - `/etc/nginx/ssl/public.crt` for public key
@@ -121,7 +121,7 @@ or change the configuration accordingly.
     # /ssl config
 ```
 
-### Proxying requests to non-secure services
+#### Proxying requests to non-secure services
 
 Oskari-server will proxy any map layer services that are not secure (https) to allow browsers show the map on secure domain.
 This requires the application server to be aware if the incoming request is secure.

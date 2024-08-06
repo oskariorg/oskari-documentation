@@ -1,8 +1,4 @@
----
-ordinal: 5
----
-
-## Setup Redis for Oskari (Optional)
+### Setup Redis for Oskari (Optional)
 
 Redis is used for caching data for example from statistical datasources to provide a cleaner user experience for statistical map functionalities (optional part of `oskari-map` webapp).
 
