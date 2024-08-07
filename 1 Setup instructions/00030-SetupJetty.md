@@ -16,7 +16,6 @@ The following are required for setting up Jetty.
 
 - JDK 8
 - Database available: <a data-internal-anchor="Setup database" href="00020-SetupDatabase.md">Instructions for setting up database</a>
-- Redis (Optional, required for WFS and statistical functionalities): [Setup Redis](/documentation/backend/setup-redis)
 
 #### Setting up Jetty
 
