@@ -8,7 +8,6 @@ After this you will have Oskari running including
 
 - Oskari-frontend based sample-application (https://github.com/oskariorg/sample-application)
 - Oskari-server based sample webapp (https://github.com/oskariorg/sample-server-extension)
-- Geoserver with WPS-plugin and Oskari extensions (https://github.com/oskariorg/oskari-server/tree/master/geoserver-ext)
 
 #### Requirements
 
