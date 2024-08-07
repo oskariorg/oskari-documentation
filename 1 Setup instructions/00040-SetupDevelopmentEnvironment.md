@@ -50,12 +50,3 @@ Check that the oskari.version in pom.xml matches the project version of oskari-s
 4\) Copy updated/relevant artifacts under `{jetty.base}/webapps`
 
 Map functionality: sample-server-extension/webapp-map/target/oskari-map.war
-
-5\) (Optional) To update geoserver extensions:
-
-a) Run `mvn clean install` in `oskari-server/geoserver-ext/wps`
-
-b) Copy updated artifacts to `{jetty.base}/webapps/geoserver/WEB-INF/lib`:
-- oskari-server/geoserver-ext/wps/IntersectionFeatureCollection2/target/IntersectionFeatureCollection2-2.13.2.jar
-- oskari-server/geoserver-ext/wps/oskari_point_stacker/target/oskari_point_stacker-2.13.2.jar
-- oskari-server/geoserver-ext/wps/ZoneSectorFeatureCollection/target/ZoneSectorFeatureCollection-2.13.2.war
