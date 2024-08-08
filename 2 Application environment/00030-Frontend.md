@@ -6,9 +6,11 @@ Oskari UI is implemented as a collection of reusable bundles. Bundles are used a
 
 ### Frontend architecture
 
-![non-existing image frontend-architecture-1.png](../resources/images/oskari_architecture_frontend.png)
+Frontend basic architecture is depicted in this picture.
 
-Oskari-loader is started up when the browser signals the DOM is ready. The loader is passed the Oskari application startup sequence and configuration as JSON. The startApplication() method is called on loader and the processing of the startup sequence is started. Bundles referenced in the startup sequence are loaded and started. One bundle must be a "creator bundle" which initiates Oskari core. After the core init - services and request handlers can be registered to the core by any bundle. Reference to the map module can be fetched from the core and any map plugins can be registered to it.
+![oskari_architecture_frontend.png](../resources/images/oskari_architecture_frontend.png)
+
+The sequence diagram below explains what happens in the frontend initialisation process.
 
 ```mermaid
 sequenceDiagram
@@ -34,8 +36,6 @@ sequenceDiagram
 * Reference to the map module can be fetched from the core and any map plugins can be registered to it.
 
 **Bundle functionality**
-
-![non-existing image frontend-architecture-2.png](../resources/images/oskari_architecture_frontend.png)
 
 * Bundles can provide a an interface for other bundles to request some operation through a request handler.
 * A bundle can provide a request class and register a handler for the request in the Oskari core.
