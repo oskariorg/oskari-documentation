@@ -4,17 +4,20 @@ Backend functionality of the platform is implemented as a Java servlet, which ca
 
 ### Backend architecture
 
+Oskari backend architecture depicted.
+
 ![oskari_architecture_backend.png](../resources/images/oskari_architecture_backend.png)
 
 Backend architecture can be divided into three layers: service layer, control layer and interface layer. Webapp for Oskari server is packaged as oskari-map.war in sample-server-extension.
 
-It handles most of the server side functionality alone using GeoServer for user generated content (myplaces, userlayers, analysis). The webapp is extensible and can be compiled from oskari-server components and built on them to create your own geoportal/web mapping server.
+It handles most of the server side functionality alone. The webapp is extensible and can be compiled from oskari-server components and built on them to create your own geoportal/web mapping server.
 
 The backend is layered as services, controls, interfaces (though only webapp-map uses this extensively at the moment).
 
 ![components.png](../resources/images/components.png)
 
 **Service layer**
+
 Service modules should be common libraries usable in any application. The actual business logic for Oskari operations should be in these modules.
 
 * service-base has some common helpers and domain classes which are used throughout Oskari backend
@@ -25,6 +28,7 @@ Service modules should be common libraries usable in any application. The actual
 * shared-test-resources has some common helpers/templates to help testing
 
 **Control layer**
+
 Control modules build on top of the service layer.
 
 ![Service.png](../resources/images/Service.png)
@@ -42,6 +46,7 @@ Functions:
 * format a response based on service response
 
 **Interface layer**
+
 The interface-modules build on top of the control-modules. Basically an HTTP interface with reference implementations for:
 
 * HTTP Servlet: oskari-server/servlet-map
@@ -72,6 +77,5 @@ Oskari backend uses the following libraries and technologies:
 You can find Oskari backend source code in [here](https://github.com/oskariorg/oskari-server).
 
 Oskari backend source code has the following folder structure:
-
 
 The folder structure follows a pattern where the first folder under the base folder is a namespace folder. Oskari uses framework for the main bundles, but this is optional and you can separate your bundles to own namespace. The next folder in the structure is named bundle. This is just a convention and is not a functional requirement. The next folder is named after the ```<bundle-identifier>```.
