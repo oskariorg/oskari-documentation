@@ -2,21 +2,23 @@
 
 This section contains instruction on setting up an instance from a downloaded jetty package with pre-installed/configured Oskari
 
-**For setting up an oskari instance from source code skip this section and move to** <a data-internal-anchor="Setup Oskari development environment" href="Setup development environment.md">Setup development environment</a>
+**For setting up an oskari instance from source code skip this section and move to** <p><a data-internal-anchor="Setup Oskari development environment" href="Setup development environment.md">Setup development environment</a></p>
 
 After this you will have Oskari running including
 
 - Oskari-frontend based sample-application (https://github.com/oskariorg/sample-application)
 - Oskari-server based sample webapp (https://github.com/oskariorg/sample-server-extension)
-- Geoserver with WPS-plugin and Oskari extensions (https://github.com/oskariorg/oskari-server/tree/master/geoserver-ext)
 
 #### Requirements
 
-* JDK 8
-* Database available: [Instructions for setting up database](/documentation/backend/setup-database)
-* Redis (Optional, required for WFS and statistical functionalities): [Setup Redis](/documentation/backend/setup-redis)
+The following are required for setting up Jetty.
+
+- JDK 8
+- Database available: <a data-internal-anchor="Setup database" href="00020-SetupDatabase.md">Instructions for setting up database</a>
 
 #### Setting up Jetty
+
+Follow the steps below to get Jetty properly set up.
 
 1\) Download the [Jetty Bundle](/download)
 
@@ -45,69 +47,6 @@ You can login as:
 - user with username "user" and password "user"
 - admin with username "admin" and password "oskari"
 
----
+#### Advanced configuration
 
-#### Defaults/assumptions
-
-The preconfigured Jetty uses these defaults. These can be changed by modifying `{jetty.base}/resources/oskari-ext.properties`.
-
-Redis:
-- redis running on localhost at default port (6379)
-
-Database (Postgres with postgis extension)
-- db URL: localhost in default port (5432)
-- db name: oskaridb
-- db user: oskari/oskari
-
-Oskari (provided in Jetty bundle)
-- url: http://localhost:8080/
-
-#### Custom configurations
-
-1\) Removing the unnecessary parts
-
-Oskari-server can run with just the oskari-map webapp. If you don't need all the features, you can remove them from under `{jetty.base}/webapps`.
-
-You will also need to remove the corresponding parts of the UI so users don't have access to them. This is done by removing "bundles" from "appsetups" (these are Oskari concepts: bundles provide  functionalities and appsetup defines which bundles are used in your app) and currently it needs to be done by modifying the database content. Bundles are linked to appsetups in the database table `portti_view_bundle_seq` and functionalities are removed from the UI by deleting rows from the table.
-
-2\) Editing article content
-
-- User guide: edit the file in {jetty.base}/resources/articlesByTag/userguide.html
-- Publisher terms of use: edit the file in {jetty.base}/resources/articlesByTag/termsofuse__mappublication__en.html
-
-3\) Changing the default port**
-
-- provide port in command line:
-
-    java -jar ${jetty.home}/start.jar jetty.http.port=8080
-
-- change `{jetty.base}/resources/oskari-ext.properties` where ever `8080` is referenced
-
-4\) Proxy settings
-
-If you need a proxy to access internet you can configure it in `{jetty.base}/start.d/oskari.ini`
-
-	-Dhttp.proxyHost=
-	-Dhttp.proxyPort=
-	-Dhttp.nonProxyHosts=
-	-Dhttps.proxyHost=
-	-Dhttps.proxyPort=
-	-Dhttps.nonProxyHosts=
-
-5\) Database url/name/user/pass are changed
-`{jetty.base}/resources/oskari-ext.properties` needs to be updated
-
-	db.url=jdbc:postgresql://[host]:[port]/[dbname]
-	db.username=[user]
-	db.password=[passwd]
-
-5\) Using external Redis
-`{jetty.base}/resources/oskari-ext.properties` needs to be updated
-
-	redis.hostname=localhost
-	redis.port=6379
-	redis.pool.size=10
-
-6\) How the Jetty bundle was built
-
-See the Howto.md inside the zip-file for details
+For further configuration check out <a data-internal-anchor="Advanced Jetty configuration" href="00071-AdvancedJettyConfiguration.md">Advanced jetty configuration</a>
