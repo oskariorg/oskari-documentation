@@ -1,4 +1,4 @@
-### How to configure map layers
+## How to configure map layers
 
 Note! This page is not complete but serves as a starting point for accumulating documentation for different configuration options.
 

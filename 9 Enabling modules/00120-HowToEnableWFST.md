@@ -1,4 +1,4 @@
-### How to enable WFS-T (Content editor)
+## How to enable WFS-T (Content editor)
 
 Tampere Oskari bundle **content-editor**
 
@@ -6,23 +6,23 @@ Extends Oskari functionality to support editing of wfs layer features and featur
 
 Available in Oskari 1.36 or above.
 
-#### Prerequisites
+### Prerequisites
 
 These instructions are based on  jetty-8.1.16-oskari package.
 
-##### Front-end
+### Front-end
 
 This bundle needs Oskari version 1.36 or above
 
-##### Back-end
+### Back-end
 
 This functionality needs Oskari version 1.36 or above  (oskari-map.war)
 
-####### Database
+##### Database
 
 Oskari database is needed without any special configuration
 
-#### Installation
+### Installation
 
 Create base folder i.e. Tampere
 ```
@@ -47,7 +47,7 @@ cd jetty-8.1.16-oskari
 ```
 
 
-##### Configuration
+### Configuration
 
 Add new permission type to oskari-ext.properties in [jetty-home]/resources folder
 
@@ -88,7 +88,7 @@ Then select the wfst layer in Oskari and the 'feature editor' link is available 
 </code>
 </pre>
 
-##### Remarks
+### Remarks
 
 <pre class="event-code-block">
 <code>
@@ -104,7 +104,7 @@ Mixed Srid could be checked with below sql:
 </code>
 </pre>
 
-##### Known issues
+### Known issues
 
 Geometry type of geometry-column must be **Geometry, MultiPoint, MultiLineString or MultiPolygon**
 in Postgres wfs-t edit table (layer) for time being.

@@ -1,4 +1,4 @@
-### How to configure a map projection
+## How to configure a map projection
 
 In Oskari application it is possible to configure different map projection for each view/appsetup. The map projection is configured for the mapfull bundle. Bundle configurations are in JSON-format that can be found in the database table *portti_view_bundle_seq* in column *config* where *bundle_id* matches the bundles id in portti_bundle table. If there are many views in the database, there are also many mapfull configurations.
 
