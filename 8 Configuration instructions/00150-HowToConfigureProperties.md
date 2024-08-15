@@ -1,8 +1,8 @@
-### How to configure properties
+## How to configure properties
 
 Most settings can and should be overridden to match your environment by including an `oskari-ext.properties` in the server classpath for example in Jetty you can add the custom properties as `{JETTY_HOME}/resources/oskari-ext.properties`.
 
-#### Properties
+### Properties
 
 The default values for properties used in the map application is found in `oskari-server/servlet-map/src/main/resources/oskari.properties`. To override all or any of these you can add an `oskari-ext.properties` file in your classpath.
 
@@ -25,7 +25,7 @@ Examples:
 
 The properties also setup various url links for search service, GIS metadata, GeoServer myplaces, print service, etc that needs to be modified to match the server environment.
 
-#### Environment variables
+### Environment variables
 
 Environment variables can also be used to append or override any property set in properties files. Any set environment variable will take precedence over a property in properties files following the two rules:
 * To avoid issues with casing and dots with environment variables all environment variables have to be uppercased and use underscores (`_`) instead of dots (`.`)
