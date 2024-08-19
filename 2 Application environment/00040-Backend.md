@@ -68,7 +68,6 @@ Oskari backend uses the following libraries and technologies:
 * F5 load balancer
 * Jetty
 * Tomcat
-* GeoServer
 * PostgreSQL (database)
 * PostGIS (spatial database)
 
