@@ -1,6 +1,6 @@
 ### How to use Oskari filter
 
-JSON filter object for filttering features by features' property keys and values.
+JSON filter object for filtering features by features' property keys and values.
 
 #### Use cases
 - Define filter for optional styles
