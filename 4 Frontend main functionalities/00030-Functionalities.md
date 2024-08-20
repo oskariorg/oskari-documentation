@@ -7,7 +7,7 @@ In the next subsections some of the core functionalities in Oskari are explained
 - Supported layer types:
 - WMS
 - WMTS
-- WFS (requires backend)
+- WFS
 - ArcGIS Cache layers
 - ArcGIS REST feature layers
 - Tile size and image format parameters are configurable
@@ -23,7 +23,7 @@ In the next subsections some of the core functionalities in Oskari are explained
 - Always active, starts by a single click / tap on the map
 - All GFI enabled map layers are queried on the single click
 - Response is shown in a popup dialog
-- Response can be styled using XSLT transformation (requires backend)
+- Response can be styled using XSLT transformation
 - Multiple response types are supported
 
 ## Mouse click functions
