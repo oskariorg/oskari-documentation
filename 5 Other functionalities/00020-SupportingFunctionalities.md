@@ -1,41 +1,40 @@
-## Supporting functionalities
+## Compatibility and support
 
-Some supporting features included are listed in the following paragraphs.
+This section outlines the various languages, browsers etc. Oskari supports, along with other compability considerations.
 
-### Multiple language support
+### Multilingual support
 
-Oskari fully supports English, Finnish and Swedish languages, and partially languages listed below.
+Oskari offers full support for English, Finnish and Swedish, and partially support for the following languages:
 
-- Estonian
-- German
-- French
-- Italian
-- Spanish
 - Dutch
-- Nynorsk
-- Norsk bokmål
-- Slovenian
-- Slovakian
+- Estonian
+- French
+- German
 - Icelandic
+- Italian
+- Norsk bokmål
+- Nynorsk
+- Slovakian
+- Slovenian
+- Spanish
 
 ### Browser support
 
-Oskari works with browsers listed below.
+Oskari is compatible with the following browsers:
 
-- Microsoft Edge
-- Firefox
 - Chrome
+- Firefox
+- Microsoft Edge
 - Safari
 
-### Multiple screen support
+### Multi-screen support
 
-Oskari interface works with tablets and mobile, but there's currently no separate mobile or tablet optimized version of Oskari. Embedded map tools are gradually developed into responsive tools which work well with smaller screens and are touch-friendly
+The Oskari interface is accessible on mobile device, including smartphones and tablets. However, there is currently **no** dedicated mobile or tablet-optimized version of Oskari (such as a mobile app). Embedded map tools are gradually being developed into responsive tools which work well with touchpad screens on mobile devices.
 
-### Role based user management
+### Role-based user management
 
-Some Oskari modules can make use of role-based user management. Users belonging to different roles can be given access to specific functionality.
+Some Oskari modules utilize role-based user management, allowing users with different roles to access specific functionalities. For example, only logged-in users can view certain layers or spesific user groups can add or edit map layers within the service.
 
 ### SSO authentication support
 
-Authentication and SSO is supported via SAML 2.0.
-
+Oskari supports authentication and Single Sign-On (SSO) via SAML 2.0.
