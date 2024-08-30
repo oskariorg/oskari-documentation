@@ -51,7 +51,7 @@ The functionalities of Selected map layers window are:
 - Layers can be temporarily hidden and shown
 - Layers can be organized in the layer stack by dragging and dropping
 - Layer opacity can be controlled using a slidebar or by entering opacity percentage
-- Layer metadata can be viewed (link to the metadata display portlet, which accesses CSW interface)
+- Layer metadata can be viewed (fetched for display using CSW interface)
 - WFS layers provide a link to attribute information table
 - WFS layer style can be changed on a temporary basis
 - GeoServer backed WMS layers can be visualized as heatmaps
