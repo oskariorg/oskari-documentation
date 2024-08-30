@@ -1,106 +1,84 @@
 # Frontend main functionalities
 
-In the next subsections some of the core functionalities in Oskari are explained in more detail.
+In the next subsections some of the core functionalities of the Map window, Map layer selector and Menu in Oskari are listed and explained in more detail.
 
-## Map window
+## Map window functionalities
 
-- Supported layer types:
-- WMS
-- WMTS
-- WFS (requires backend)
-- ArcGIS Cache layers
-- ArcGIS REST feature layers
-- Tile size and image format parameters are configurable
-- Coordinate system is configurable
-- Coordinate display adapts according to configured coordinate system
-- Zoom bar with a configurable number of zoom levels
-- Pan map view
-- Restore initial map state
-- Scale bar
+The map window offers various functionalities, some of which are controlled with mouse, others as separate tools. Some of the functions can also be configured programatically.
 
-## GetFeatureInfo
-
-- Always active, starts by a single click / tap on the map
-- All GFI enabled map layers are queried on the single click
-- Response is shown in a popup dialog
-- Response can be styled using XSLT transformation (requires backend)
-- Multiple response types are supported
-
-## Mouse click functions
-
-- Panning by dragging
+The following are **mouse-click functionalities** for the end-user:
+- Panning map view
 - Zoom in by double clicking on the map
-- GetFeatureInfo action with a single click on all map layers with GFI enabled
-- Feature information is returned also from WFS layers
+- GetFeatureInfo (GFI) action with a single click on all map layers with GFI enabled, including WFS layers
 
-## Menu bar
+The map window has **separate tools** to perform the following:
+- Restore the initial map state
+- A scale bar that updates with the map scale
+- Coordinate display that adapts according to configured coordinate system
 
-- Menu entries can be configured individually
-- Menu can be hidden (together with the toolbar)
+Map window has functions that can **configured programatically**:
+- Coordinate system
+- Zoom bar (appearance and number of zoom levels)
+- Tile size and image format parameters
 
-## Location search
+## Map layers
 
-- One-field search which can return search results from multiple sources, such as placename, address, cadastral parcel or similar services
-- Service access parameters are configurable in the backend
-
-## Metadata search
-
-- Search for metadata from a CSW backend
-- Advanced search options
-- Display resulting layers on the map
+Oskari supports various APIs for map layers: WMS, WMTS, WFS, ArcGIS Cache layers and ArcGIS REST feature layers. The map layers can be added by the admin - the instructions for this can be found from the Admin FAQ.
 
 ## Map layer selector
 
-- List of available map layers, grouped either by theme or by data provider
-- Add map layer to map view
-- Filter layers function
-- Show metadata for layers (link to the metadata display module, which accesses CSW interface)
-- Supported layer types are:
+The map layers can be accessed via map layer selector. The Map layer selector contains a list of all available map layers in the Oskari instance, grouped either by theme or by data provider. The map layer selector can be used to show map layers, filter them and to access their metadata. To view metadata there is link to the metadata display module, which accesses CSW interface.
+
+Supported layer types are:
 - map layer
-- map layer stack,
+- map layer stack
 - background map layer
 - WFS layer
 - thematic map layer
 - analysis results layer
-- own data layer
+- user's own data layer
 - time-enabled WMS layer (WMS-T)
-- New map layer types can be added programmatically
 
-## Selected map layers
+If needed, new map layer types can be also added programmatically.
 
-- List of layers displayed in the map view
-- Layers have localized titles and subtitles (optional)
-- Layer opacity can be controlled using a slidebar or by entering opacity percentage
+## Selected map layers window
+
+Oskari UI has a separate window for the selected map layers. Here are listed all the layers displayed in the map view.
+
+The functionalities of Selected map layers window are:
+
+- Layers have localized titles (and optionally subtitles)
 - Layers can be temporarily hidden and shown
-- Show metadata for layer (link to the metadata display portlet, which accesses CSW interface)
 - Layers can be organized in the layer stack by dragging and dropping
+- Layer opacity can be controlled using a slidebar or by entering opacity percentage
+- Layer metadata can be viewed (link to the metadata display portlet, which accesses CSW interface)
 - WFS layers provide a link to attribute information table
 - WFS layer style can be changed on a temporary basis
-- GeoServer-backed WMS-layers can be visualized as heatmaps
-- For WMS-layers the available styles can be viewed and selected for use
+- GeoServer backed WMS layers can be visualized as heatmaps
+- For WMS layers the available styles can be viewed and selected for use
 
-## Map Legends
+## Menu and toolbar
 
-- Flyout shows map legends from all selected layers
+The whole Oskari UI can be personalized by the main users. This includes the menu on the side of the map window. The menu can be, for example, hidden and the individual menu entries can be configured individually.
 
-## Toolbar
+Toolbar is anchored to the menu bar and contains various tools. The toolbar can be hidden and different buttons can be disabled and enabled individually. Tools can also be made to appear when a specific map layer is added to selected layers list.
 
-- Toolbar buttons can be disabled and enabled individually
-- Toolbar can be hidden
-- Restore initial map state button
-- Map view history manager: back and forward buttons
-- Rubber band zoom button
+**The toolbar buttons include**:
 - Drag & pan button (enabled by default)
-- Measurement tools: distance and area
+- Rubber band zoom button
+- Restore initial map state button
+- Map view history manager: navigation with back and forward buttons
+- Measurement tools: measure distance and area
+- Link map view: creates an URL which opens the current map view
 - Marker tool: markers with associated text can be created on the map and sent as link
-- Link map view: creates an url which opens the current map view
 - Print map view: starts the print mode
 - Save map view: Map view configurations can be saved by logged-in user
-- Find nearest place tool: Find the nearest placename by clicking on the map
-- Tools can be made to appear when a specific map layer is added to selected layers list
+- Find nearest place tool: Find the nearest place name by clicking on the map
 
-## Flyout manager
+## Location search and metadata search
 
-- Flyouts can be opened from the menu, moved around the map window and closed by the user or programmatically
-- Flyout size adapts to screen size
-- Some flyouts can be resized by the user
+Oskari has search functions for certain locations and the metadata of map layers.
+
+**The location search** is a one-field search which can return search results from multiple sources, such as placename, address, cadastral parcel or similar services. The service access parameters are configurable in the backend.
+
+**The metadata search** retrieves metadata from a CSW backend and offers advanced search options. Users can search for keywords within specific resource types, metadata languages, or layers published by selected organizations. After a successful search, the resulting layers can be viewed as a list or displayed on the map window.
