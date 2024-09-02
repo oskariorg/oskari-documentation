@@ -49,4 +49,4 @@ You can login as:
 
 #### Advanced configuration
 
-For further configuration check out <a data-internal-anchor="Advanced Jetty configuration" href="00071-AdvancedJettyConfiguration.md">Advanced jetty configuration</a>
+For further configuration check out <a data-internal-anchor="Advanced Jetty configuration" href="00070-AdvancedJettyConfiguration.md">Advanced jetty configuration</a>

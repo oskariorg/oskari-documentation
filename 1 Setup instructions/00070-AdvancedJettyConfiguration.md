@@ -1,7 +1,7 @@
 
 ### Advanced Jetty configuration
 
-#### Defaults/assumptions
+#### Jetty default configuration
 
 The preconfigured Jetty uses these defaults. These can be changed by modifying `{jetty.base}/resources/oskari-ext.properties`.
 

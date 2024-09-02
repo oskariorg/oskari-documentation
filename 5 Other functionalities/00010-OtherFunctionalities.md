@@ -4,7 +4,7 @@
 
 Some of the most important but more complex Oskari functionalities are listed here. Most of these require also the backend to work.
 
-### WFS layers and attribute data table (requires backend)
+### WFS layers and attribute data table
 
 - Attribute data from WFS layers can be displayed in an attribute table
 - Also complex schema WFS layers can be displayed
@@ -14,7 +14,7 @@ Some of the most important but more complex Oskari functionalities are listed he
 - Features can be highlighted by clicking either on the map or in the table rows
 - Shift / Ctrl can be used to select multiple rows
 
-### Create map mode (requires backend)
+### Create map mode
 
 - Tool for creating embedded map windows
 - The embeddable map window is shown in WYSIWYG mode
@@ -26,7 +26,7 @@ Some of the most important but more complex Oskari functionalities are listed he
 - Created embedded maps are saved and can be later edited
 - Status of an embedded map can be either published or unpublished
 
-### My Data (requires backend)
+### My Data
 
 - Points, lines and areas can be created and saved
 - Multigeometries and creation of holes is supported
@@ -34,14 +34,14 @@ Some of the most important but more complex Oskari functionalities are listed he
 - Symbology is separately configurable for each layer
 - Description of map view can be edited and may contain links to external resources
 
-### Print mode (requires backend)
+### Print mode
 
 - Paper size and layout selection
 - Automatic Print preview window
 - Printout format selection: PNG or PDF, also PDF/A
 - Title, scalebar, date and a logo can be added, also text and markers of your choice
 
-### Import data (requires backend)
+### Import data
 
 - Supported format for importing data as zipped files
 - Shapefile
@@ -49,7 +49,7 @@ Some of the most important but more complex Oskari functionalities are listed he
 - GPX trace
 - KMX (zipped KML)
 
-### Embedded map features (requires backend)
+### Embedded map features
 
 - Zooming and panning
 - Measure tools
@@ -72,13 +72,13 @@ Some of the most important but more complex Oskari functionalities are listed he
 - RPC API for interaction with the web site where the map is embedded
 - RPC API features are listed separately here: http://oskari.org/examples/rpc-api/rpc_example.html
 
-### Thematic Maps (requires backend)
+### Thematic Maps
 
 - Creation of thematic maps by joining statistical data and administrative units
 - Importing own statistical indicators
 - Downloading of indicator data into CSV/Excel formats
 
-### Spatial Analysis (requires backend)
+### Spatial Analysis
 
 Available analysis methods:
 - Buffer
@@ -94,7 +94,7 @@ Available analysis methods:
 - Clip a feature
 - The analysis tool also provides functionality to use search channel results as input for analysis.
 
-### Authentication and user management (requires backend)
+### Authentication and user management
 
 - Bundle for user management
 - Bundle for management of layers privileges
