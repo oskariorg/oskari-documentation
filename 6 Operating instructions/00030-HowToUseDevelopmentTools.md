@@ -19,10 +19,6 @@ process.
 
 Register a personal account at GitHub.
 
-Watch:
-
-<iframe width="560" height="315" src="http://www.youtube.com/embed/ijaaL_G6Jgo" frameborder="0" allowfullscreen></iframe>
-
 Fork the oskariorg/oskari and oskariorg/oskari-server repositories, and check out the source code
 from your forks to your local computer.
 

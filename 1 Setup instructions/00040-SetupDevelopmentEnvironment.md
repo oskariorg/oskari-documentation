@@ -1,7 +1,7 @@
 ## Setup Oskari development environment
 
 This document describes how to setup development environment for Oskari using source code. If you want to develop / maintain oskari yourself this is the correct section.
-For setting up an instance using the ready jetty bundle check out <a data-internal-anchor="Setup Jetty" href="Setup jetty.md">Setup jetty</a>
+For setting up an instance using the ready jetty bundle check out [Setup Jetty](00030-SetupJetty.md)
 
 ### Requirements
 
