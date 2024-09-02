@@ -49,4 +49,4 @@ You can login as:
 
 #### Advanced configuration
 
-For further configuration check out [Advanced jetty configuration](00071-AdvancedJettyConfiguration.md)
+For further configuration check out [Advanced jetty configuration](00070-AdvancedJettyConfiguration.md)
