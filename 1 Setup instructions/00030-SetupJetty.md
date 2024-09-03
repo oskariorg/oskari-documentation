@@ -2,7 +2,7 @@
 
 This section contains instruction on setting up an instance from a downloaded jetty package with pre-installed/configured Oskari
 
-**For setting up an oskari instance from source code skip this section and move to** <p><a data-internal-anchor="Setup Oskari development environment" href="Setup development environment.md">Setup development environment</a></p>
+**For setting up an oskari instance from source code skip this section and move to** [Setup development environment](00040-SetupDevelopmentEnvironment.md)
 
 After this you will have Oskari running including
 
@@ -14,7 +14,7 @@ After this you will have Oskari running including
 The following are required for setting up Jetty.
 
 - JDK 8
-- Database available: <a data-internal-anchor="Setup database" href="00020-SetupDatabase.md">Instructions for setting up database</a>
+- Database available: [Instructions for setting up database](00020-SetupDatabase.md)
 
 #### Setting up Jetty
 
@@ -49,4 +49,4 @@ You can login as:
 
 #### Advanced configuration
 
-For further configuration check out <a data-internal-anchor="Advanced Jetty configuration" href="00070-AdvancedJettyConfiguration.md">Advanced jetty configuration</a>
+For further configuration check out [Advanced jetty configuration](00070-AdvancedJettyConfiguration.md)
