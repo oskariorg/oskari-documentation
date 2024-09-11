@@ -1,12 +1,17 @@
 # Basic concepts
 
-Did you bump into a term that you couldn't underestand? See here for the explanation. If you didn't find the term you were looking for from this section, please create an issue! Below are listed Oskari-spesific terms.
+Here are listed the explanations for some of the basic Oskari concepts and Oskari-spesific terms. If you didn't find the term you were looking for from this section, please let us know by creating an issue in GitHub.
 
-## Bundle
+- Application = Provides a service for the end-user
+- Application-frontend = Oskari-frontend with collection of pre-existing bundles and application specific bundles.
+- Application-server = Provides backend functionality that enables the frontend to do its things.
 
-Oskari API is defined as bundles. Bundle is a definition of functionality that may provide external API to control the functionality.
+- Bundle = A component in Oskari application that provides some functionality for the service. Usually referred to with its **id** like 'search'. Basically the frontend application is a collection of bundles that together form the application.
+    - Bundle can consist of a selection of Oskari classes which together form a component that offers additional functionality for an application. A bundle can offer multiple implementations for a functionality which can then be divided into smaller packages for different application setups. Packages can be used to offer a multiple views for the same functionality - for example search functionality as a small on-map text field or a window-like UI (see Tile/Flyout).
 
-## RPC
-
-## Sample application
-
+- Class = Oskari-frontend uses custom implementation of classes (defined with `Oskari.clazz.define()`). These will eventually disappear from the frontend.
+- Component = Mainly used to refer a React-component? Sometimes used to refer a jQuery component like a common implementation for a button or such.- Feature = Currently used to refer vector features (points, lines, polygons on map in vector format). Generally not used anymore in Oskari documentation, but sometimes a synonym with functionality. 
+- Module = See Bundle. Modules are components that can be registered to Oskari. Registering allows these components, for example, to send requests and receive events. Registering a module also calls the module init method. Usually modules start listening to events and register request handlers on start methods. Stop method is called when the module is stopped but they usually aren't stopped.
+- Plugin = Bundles can contain plugins. They can be considered as mini-bundles that enhance the functionality of a bundle. Mostly used with the map module to add functionality for the map.
+- RPC =
+- Sample application = 

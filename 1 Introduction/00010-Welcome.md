@@ -27,22 +27,25 @@ Oskari's GitHub repositories are
 
 Note that this document is a work in progress. If you find any outdated information, notice that something is missing or that some sections could be improved, let us know by making an issue in GitHub or a Pull request to the Oskari documentation repository.
 
-If you have further questions or need help with your Oskari instance, see our Contribute and FAQ pages.
+If you have further questions or need help with your Oskari instance, see our Contribute and FAQ pages or feel free to reach out to us in Gitter or Rocket.chat!
 
-## Technological overview
+## Technical overview
 
-Oskari has a separate backend and a browser-based frontend. 
+Here is a brief technical overview of Oskari. More information about frontend and backend can be found in section _2 Application environment_.
 
-**The backend** is built on Java with Maven and these are usually run inside Tomcat or Jetty. For caching and clustering Oskari uses Redis. 
-The sample server extension can be found [here](https://github.com/oskariorg/sample-server-extension)
+Oskari has a separate browser-based frontend and a backend. 
 
-**Oskari's frontend** is a JavaScript-based Single Page Application (SPA). Front-end is modular, which makes it easy for developers to mix-and-match and create their own application. Frontend's Github repository can be found [here](https://github.com/oskariorg/oskari-frontend) 
+**Oskari's frontend** is a JavaScript-based Single Page Application (SPA). Front-end is modular, which makes it easy for developers to mix-and-match different functionalities and create their own application. Frontend's Github repository can be found [here](https://github.com/oskariorg/oskari-frontend) 
 
-**The sample application of Oskari's frontend** can be found [here](https://github.com/oskariorg/sample-application)
+**The backend** is built on Java with Maven and these are usually run inside Tomcat or Jetty. For caching and clustering Oskari uses Redis. Backend codebase is run on the server. The sample server extension can be found [here](https://github.com/oskariorg/sample-server-extension)
+
+An example for building your own service is provided as a template application that can be run as is and it enables an easy starting point for customizing the service.
+
+ **The sample application of Oskari's frontend** can be found [here](https://github.com/oskariorg/sample-application)
 
 See also **the unofficial Oskari bundles created by the Oskari community** [here](https://github.com/oskariorg/oskari-frontend-contrib)
 
-Aside of the frontend and backend, Oskari requires a PostgreSQL database. The scema of database has been documented here. (A mention of spatial data infrastucture in general?)
+Aside of the frontend and backend, Oskari requires a PostgreSQL/PostGIS database. The schema of database has been documented here. (A mention of spatial data infrastucture in general?)
 
 Previous versions of Oskari required a GeoServer installation, and even though many organisations that use Oskari have a GeoServer instance too, Oskari does not require it anymore. 
 
@@ -56,7 +59,7 @@ The requirements for developing the backend and the frontend differ. But which o
 - If you want to customize the way Oskari looks, what elements and tools are being shown and what they look like, you need to develop **the frontend**. 
 - If you want to make completely new functionalities, you have to make changes to **the backend**.
 
-Requirements for developing Oskari:
+Basic requirements for developing Oskari:
 
 - Version management: Git
 - Frontend: JavaScript, HTML, CSS, SCSS, React, OpenLayers
