@@ -21,7 +21,7 @@ This document describes how to use maven artifacts provided in Oskari Maven repo
 - Create your own action routes like [MyAction](https://github.com/oskariorg/sample-server-extension/blob/1.2.1/app-specific-code/src/main/java/org/oskari/example/MyActionHandler.java) under server-extension.
 
 The Oskari dependencies are downloaded from oskari.org Maven repository:
-
+```
  	<repositories>
         <repository>
             <id>oskari_org</id>
@@ -34,6 +34,7 @@ The Oskari dependencies are downloaded from oskari.org Maven repository:
             <url>https://oskari.org/nexus/content/repositories/snapshots/</url>
         </repository>
  	</repositories>
+```
 
 ##### Build
 
