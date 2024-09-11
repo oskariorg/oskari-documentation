@@ -4,7 +4,7 @@ Backend functionality of the platform is implemented as a Java servlet, which ca
 
 ### Backend architecture
 
-Oskari backend architecture depicted.
+Oskari backend architecture depicted:
 
 ![oskari_architecture_backend.png](../resources/images/oskari_architecture_backend.png)
 
@@ -77,4 +77,4 @@ You can find Oskari backend source code in [here](https://github.com/oskariorg/o
 
 Oskari backend source code has the following folder structure:
 
-The folder structure follows a pattern where the first folder under the base folder is a namespace folder. Oskari uses framework for the main bundles, but this is optional and you can separate your bundles to own namespace. The next folder in the structure is named bundle. This is just a convention and is not a functional requirement. The next folder is named after the ```<bundle-identifier>```.
+The folder structure follows a pattern where the first folder under the base folder is a namespace folder. Oskari uses framework for the main bundles, but this is optional and you can separate your bundles to own namespace. The next folder in the structure is named bundle. This is just a convention and is not a functional requirement. The next folder is named after the `<bundle-identifier>`.

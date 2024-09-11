@@ -1,8 +1,11 @@
 ## Frontend
 
-The user interface is a Javascript-based single-page app built by selecting a series of bundles that provide functionalities/capabilities for an application. A bundle can work "as is" for providing its functionality and/or it can provide a documented API that can be used to interact with the functionality programmatically. The API also helps implementing a customized drop-in replacements for functionalities when required. You can mix and match the bundles or create new ones to customize the application for your needs.
+The user interface is a Javascript-based single-page app. The UI is built by selecting a series of bundles that provide functionalities/capabilities for an application. You can mix and match the bundles or create new ones to customize the application for your needs.
 
-Oskari UI is implemented as a collection of reusable bundles. Bundles are used as uniform containers to ship and share new functionality to the application setups. Additions to existing functionality are implemented as Plugins shipped within the bundles.
+ Bundles are used as uniform containers to ship and share new functionality to the application setups. Additions to an existing functionality are implemented as plugins shipped within the bundles.
+
+A bundle can work "as is" for providing its functionality and/or it can provide a documented API that can be used to interact with the functionality programmatically. The API also helps implementing a customized drop-in replacements for functionalities when required.
+
 
 ### Frontend architecture
 
@@ -57,11 +60,18 @@ Oskari frontend uses the following libraries and technologies:
 * geostats.js
 * D3.js
 
-You can get a list of all the libraries with npm with for example by running: npx license-checker. Just to get summary of licenses you can add --summary after the command.
+You can get a list of all the libraries with npm, for example by running: 
+
+    npx license-checker
+    
+Just to get summary of licenses you can add --summary after the command:
+
+    npx license-checker --summary
+
 
 ### Source code and folder structure
 
-You can find Oskari frontend source code in [here](https://github.com/oskariorg/oskari-frontend).
+You can find Oskari frontend source code [here](https://github.com/oskariorg/oskari-frontend).
 
 Oskari frontend source code has the following folder structure:
 /applications - Definitions for application setups combining bundles into a specific application
@@ -71,4 +81,4 @@ Oskari frontend source code has the following folder structure:
 /sources - Oskari core
 /libraries - jQuery plugins and other dependencies/libraries
 
-The folder structure follows a pattern where the first folder under the base folder is a namespace folder. Oskari uses framework for the main bundles, but this is optional and you can separate your bundles to own namespace. The next folder in the structure is named bundle. This is just a convention and is not a functional requirement. The next folder is named after the <bundle-identifier>.
+The folder structure follows a pattern where the first folder under the base folder is a namespace folder. Oskari uses framework for the main bundles, but this is optional and you can separate your bundles to own namespace. The next folder in the structure is named bundle. This is just a convention and is not a functional requirement. The next folder is named after the `<bundle-identifier>`.
