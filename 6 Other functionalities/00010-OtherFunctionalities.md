@@ -75,9 +75,7 @@ The print mode functionalities include:
 
 ## Thematic Maps (requires backend)
 
-- Creation of thematic maps by joining statistical data and administrative units
-- Importing own statistical indicators
-- Downloading of indicator data into CSV/Excel formats
+The GetFeatureInfo functionality is always active and starts by a single click / tap on the map. All GFI enabled map layers are queried on the single click. The response is shown in a popup dialog and can be styled using XSLT transformation (requires backend). Multiple response types are supported.
 
 ## WFS layers and attribute data table functionalities (requires backend)
 
