@@ -86,9 +86,3 @@ The GetFeatureInfo functionality is always active and starts by a single click /
 - Data can be sorted ascending/descending
 - Features can be highlighted by clicking either on the map or in the table rows
 - Shift / Ctrl can be used to select multiple rows
-
-## Digiroad Feature selector
-
-- Adds a grid to display features fetched via WFS or some other protocol supported by OpenLayers
-- Users can view the features and edit their attributes
-- Features get added to the grid when the user clicks on the map. Alt and Ctrl keys can be used as modifiers
