@@ -1,8 +1,8 @@
-### How to enable "My places" module
+## How to enable "My places" module
 
 **NOTE!** This document describes setup with [GeoServer](http://geoserver.org/). In case you have a different WMS service installed, adjust accordingly.
 
-#### Assumes pre-installed:
+### Assumes pre-installed:
 
 * JDK 1.8+
 * Maven 3+ (tested with 3.0.5)
@@ -10,21 +10,21 @@
 * existing [server](/documentation/backend/setup-jetty)
 * existing [development environment](/documentation/backend/setup-development)
 
-#### Configuration
+### Configuration
 
-##### Create database tables to oskaridb database for myplaces result storage
+#### Create database tables to oskaridb database for myplaces result storage
 
 Enable Flyway-module `myplaces` on `oskari-ext.properties`:
 
     db.additional.modules=[...], myplaces
 
-#### Note! Everything below is outdated
+### Note! Everything below is outdated
 
 But might give you hints what is required for my places to work
 
 ---
 
-##### Create a view
+#### Create a view
 
 [Create a new view](/documentation/backend/database-populate#adding-a-new-view) with `myplaces2` and `mapwfs2` bundles (edit the view to match your environment and remove the config for `myplaces2` if you prefer to cofigure using properties file instead):
 
@@ -37,7 +37,7 @@ Take a note of the uuid the command prints out at the end, you will need it late
 SQLs for these are listed in `oskari-server/content-resources/src/main/resouces/sql/PostgreSQL/trigger-myplaces.sql`.
 You need to run these manually in psql or pgAdmin SQL window since at the moment the sql parser can't handle them correctly.*
 
-##### Install GeoServer
+#### Install GeoServer
 
 *Tested with version 2.4.3*
 
@@ -54,7 +54,7 @@ Replace GeoServer data directory, add `OskariMarkFactory` extension and start Ge
 * If there are problems in layer preview, check workspace and store setups with GeoServer admin interface (see guidelines below).
 * Restart GeoServer
 
-##### Configure properties
+#### Configure properties
 
 Check settings in `{jetty}/resources/oskari-ext.properties` and uncomment or add the following settings and set them point to your geoserver url:
 
@@ -92,11 +92,11 @@ The config for `myplaces2` bundle gets generated from the properties above. You 
     # Default if not defined: 'oskari:my_places_categories'
     layerDefaults.wmsName : <myplaces.xmlns.prefix> + ':my_places_categories'
 
-##### Test Oskari
+#### Test Oskari
 
 Start e.g. http://localhost:8888/oskari-map?uuid={uuid} in your browser. Replace `{uuid}` with the uuid of the view you created. Logged in users should be able to add own points, lines and polygons.
 
-#### Troubleshooting
+### Troubleshooting
 
 If there are troubles to add myplaces you should check that `featureNS` (default namespace should be *http://www.oskari.org* with prefix *oskari*) and ajax url are correct according to your environment. `wmsUrl` should be normal ajax url (default is `/?` or `/oskari-map/?`) + `action_route=MyPlacesTile&myCat=`. The easiest way to verify these are correct is to check what gets returned to the browser from `GetAppSetup`.
 
@@ -119,15 +119,15 @@ WHERE bundle_id=(SELECT id FROM portti_bundle WHERE name='myplaces2') AND view_i
 
 You may also need to change `oskari-server/service-map/src/main/resources/fi/nls/oskari/map/myplaces/service/GetFeatureInfoMyPlaces.xsl` to fix your geoserver url and namespace.
 
-#### Guidelines for GeoServer configuration
+### Guidelines for GeoServer configuration
 
 Open GeoServer admin interface (e.g. http://localhost:8082/geoserver, default credentials: admin/geoserver).
 
-##### Create a workspace
+#### Create a workspace
 
 Create a new workspace *oskari* . Set it as default and enable WFS and WMS services. Set namespace URI to e.g. http://www.oskari.org.
 
-##### Create a store
+#### Create a store
 
 Add your database as a new postgis store:
 
@@ -139,14 +139,14 @@ Add your database as a new postgis store:
     * database: oskaridb, schema: public
     * user: *username*, passwd: *password* (sample default postgres/postgres)
 
-##### Create a style
+#### Create a style
 
 
 You can create your own style choosing Styles and modifying existing style or uploading a new style file.
 
 You can find an example file at `oskari-server/docs/example-server-conf/MyPlacesSampleStyle.sld`
 
-##### Add layers
+#### Add layers
 
 Add layers `categories`, `my_places`, and `my_places_gategories`
 
@@ -169,11 +169,11 @@ Add layers `categories`, `my_places`, and `my_places_gategories`
     * Publishing -> Set Default Style (e.g. "MyPlacesSampleStyle")
     * Save
 
-##### Add a security rule
+#### Add a security rule
 
 Add read access to everyone and write access to authenticated role.
 
-##### Setup cache
+#### Setup cache
 
 Select `oskari:my_places_categories` layer -> tile caching setup:
 

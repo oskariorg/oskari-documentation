@@ -14,7 +14,7 @@ Oskari enables the user to:
 - View multiple map layers simultaneously
 - Visualizing spatial data
 - Embedding user's own maps to other websites as an iFrame
- 
+
 Oskari's appearance, UI and functionalities are customizable. The developers can create their own tools, too.
 
 As an open source project Oskari is developed together. The development is coordinated by National Land Survey of Finland. Oskari is dual-licenced MIT/EUPL 1.2.
@@ -29,13 +29,13 @@ Note that this document is a work in progress. If you find any outdated informat
 
 If you have further questions or need help with your Oskari instance, see our Contribute and FAQ pages or feel free to reach out to us in Gitter or Rocket.chat!
 
-## Technical overview
+### Technical overview
 
 Here is a brief technical overview of Oskari. More information about frontend and backend can be found in section _2 Application environment_.
 
-Oskari has a separate browser-based frontend and a backend. 
+Oskari has a separate browser-based frontend and a backend.
 
-**Oskari's frontend** is a JavaScript-based Single Page Application (SPA). Front-end is modular, which makes it easy for developers to mix-and-match different functionalities and create their own application. Frontend's Github repository can be found [here](https://github.com/oskariorg/oskari-frontend) 
+**Oskari's frontend** is a JavaScript-based Single Page Application (SPA). Front-end is modular, which makes it easy for developers to mix-and-match different functionalities and create their own application. Frontend's Github repository can be found [here](https://github.com/oskariorg/oskari-frontend)
 
 **The backend** is built on Java with Maven and these are usually run inside Tomcat or Jetty. For caching and clustering Oskari uses Redis. Backend codebase is run on the server. The sample server extension can be found [here](https://github.com/oskariorg/sample-server-extension)
 
@@ -47,16 +47,16 @@ See also **the unofficial Oskari bundles created by the Oskari community** [here
 
 Aside of the frontend and backend, Oskari requires a PostgreSQL/PostGIS database. The schema of database has been documented here. (A mention of spatial data infrastucture in general?)
 
-Previous versions of Oskari required a GeoServer installation, and even though many organisations that use Oskari have a GeoServer instance too, Oskari does not require it anymore. 
+Previous versions of Oskari required a GeoServer installation, and even though many organisations that use Oskari have a GeoServer instance too, Oskari does not require it anymore.
 
 The data displayed on the service is fetched from APIs.
 
-## Requirements for developing Oskari
+### Requirements for developing Oskari
 
 Developer is a person who develops new features or improves existing functionalities in Oskari. An Oskari developer can contribute to Oskari core or Oskari community plugin development.
 
-The requirements for developing the backend and the frontend differ. But which one should you make changes to? As a rule of thumb: 
-- If you want to customize the way Oskari looks, what elements and tools are being shown and what they look like, you need to develop **the frontend**. 
+The requirements for developing the backend and the frontend differ. But which one should you make changes to? As a rule of thumb:
+- If you want to customize the way Oskari looks, what elements and tools are being shown and what they look like, you need to develop **the frontend**.
 - If you want to make completely new functionalities, you have to make changes to **the backend**.
 
 Basic requirements for developing Oskari:
