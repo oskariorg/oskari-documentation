@@ -1,8 +1,8 @@
-### How to enable the user data store
+## How to enable the user data store
 
 **NOTE!** This document describes setup with [GeoServer](http://geoserver.org/). In case you have a different WMS service installed, adjust accordingly.
 
-#### Assumes pre-installed:
+### Assumes pre-installed:
 
 * JDK 1.8+
 * Maven 3+ (tested with 3.0.5)
@@ -11,21 +11,21 @@
 * existing [development environment](/documentation/backend/setup-development)
 * configure myplaces and wfs support (http://oskari.org/documentation/backend/enabling-myplaces)
 
-#### Configuration
+### Configuration
 
-##### Create user data tables to oskaridb database for kmz, shz (shp file set) file import storage
+#### Create user data tables to oskaridb database for kmz, shz (shp file set) file import storage
 
 Enable Flyway-module `userlayer` on `oskari-ext.properties`:
 
     db.additional.modules=[...], userlayer
 
-##### Note! Everything below is outdated
+#### Note! Everything below is outdated
 
 But might give you hints what is required for userlayers to work
 
 ---
 
-##### Add wfs base layer to oskari_maplayer table for userlayer featuredata management
+#### Add wfs base layer to oskari_maplayer table for userlayer featuredata management
 
 Use pgAdmin or psql to execute below SQL-script file
 
@@ -33,11 +33,11 @@ Use pgAdmin or psql to execute below SQL-script file
 
 Remember layer id of this new inserted layer for properties configuration
 
-##### Configure default view and bundle config for to add `myplacesimport` or create new view according to lastest Oskari documentation
+#### Configure default view and bundle config for to add `myplacesimport` or create new view according to lastest Oskari documentation
 
     \content-resources\src\main\resources\sql\PostgreSQL\add_userlayer_to_default_view.sql
 
-##### Configure GeoServer
+#### Configure GeoServer
 
 *Tested with version 2.4.3*
 
@@ -63,7 +63,7 @@ Replace GeoServer data directory, add `OskariMarkFactory` extension and start Ge
 * If there are problems in layer preview, check workspace and store setups with GeoServer admin interface (see guidelines below).
 * Restart GeoServer
 
-##### Configure properties
+#### Configure properties
 
 Check settings in `{jetty}/resources/oskari-ext.properties` and uncomment or add the following settings and set them point to your geoserver url:
 
@@ -127,27 +127,27 @@ Check settings in `{jetty}/resources/oskari-ext.properties` and uncomment or add
 
 
 
-##### Test Oskari
+#### Test Oskari
 
 Start e.g. `http://localhost:2373/oskari-map?uuid={uuid}` in your browser. Replace `{uuid}` with the id of the view you created.
 Logged in users should be able to import for example shapefiles.
 
-#### Troubleshooting
+### Troubleshooting
 
     * Database operations failed --> look at Jetty (oskari-map.war) log stream  or Postgres log (/var/lib/pgsql/9.3/data/pg_log/)
     * Database permission problems --> edit /var/lib/pgsql/9.3/data/pg_hba.conf
     * Is there password for postgres  --> use psql  / passwd postgres
 
-#### Guidelines for GeoServer configuration
+### Guidelines for GeoServer configuration
 
 Open GeoServer admin interface (e.g. `http://localhost:8082/geoserver`, default credentials: admin/geoserver).
 
-##### Create a workspace
+#### Create a workspace
 
 *Skip this, if oskari workspace is already there*.
 Create a new workspace *oskari* . Set it as default and enable WFS and WMS services. Set namespace URI to e.g. http://www.oskari.org.
 
-##### Create a store
+#### Create a store
 
 Add your database as a new postgis store:
 
@@ -159,11 +159,11 @@ Add your database as a new postgis store:
     * database: oskaridb, schema: public
     * user: *username*, passwd: *password* (sample default postgres/postgres)
 
-##### Add metadata table for primary key
+#### Add metadata table for primary key
 
 * Stores -> select user_layers -> insert to **Primary key metadata table** "gt_pk_metadata_table"  -> Save
 
-##### Create a style
+#### Create a style
 
 
 You can create your own style choosing Styles and modifying existing style or uploading a new style file.
@@ -173,7 +173,7 @@ which is used for user data layer rendering / layer: `user_layer_data_style`.
 
 
 
-##### Add layers
+#### Add layers
 
 Add layers `user_layer` , `user_layer_data_style`  and `vuser_layer_data`
 
@@ -196,12 +196,12 @@ Add layers `user_layer` , `user_layer_data_style`  and `vuser_layer_data`
     * Publishing -> Set Default Style ( "UserLayerDefaultStyle")
     * Save
 
-##### Add a data security rule for layers
+#### Add a data security rule for layers
 
     * Add read access to everyone (user_layer, vuser_layer_data_data and user_layer_data_style)
 
 
-##### Setup cache (optional)
+#### Setup cache (optional)
 
 Select `oskari:user_layer_data_style` layer -> tile caching setup:
 
