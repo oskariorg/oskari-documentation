@@ -35,7 +35,6 @@ Supported layer types are:
 - background map layer
 - WFS layer
 - thematic map layer
-- analysis results layer
 - user's own data layer
 - time-enabled WMS layer (WMS-T)
 

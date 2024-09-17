@@ -34,7 +34,7 @@ Control modules build on top of the service layer.
 ![Service.png](../resources/images/Service.png)
 
 * control-base is the basis for all control-modules and has most of the basic AJAX handlers needed by the Oskari frontend.
-	* NOTE! control-base contains some very specific functionalities that should be separated into separate control-extensions (for example analysis and thematic maps support)
+	* NOTE! control-base contains some very specific functionalities that should be separated into separate control-extensions (for example thematic maps support)
 * control-myplaces has AJAX funtionality related to myplaces functionality.
 * control-example has example implementations for AJAX functionalities required by Oskari but usually overridden by platform specific functionalities such as user and content management.
 * content-resources has tools, templates and scripts for populating and upgrading the database

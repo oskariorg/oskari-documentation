@@ -80,9 +80,9 @@ Check settings in `{jetty}/resources/oskari-ext.properties` and uncomment or add
     db.password=postgres
 
     # mark any addition pool property tokens so we can check/add them automagically
-    # jdbc/OskariPool is used for myplaces and analysis and user data store, if there is no definition for extra pools
+    # jdbc/OskariPool is used for myplaces and user data store, if there is no definition for extra pools
     #
-    #db.additional.pools=myplaces,analysis
+    #db.additional.pools=myplaces
 
     # jdbc/omat_paikatPool
     #db.myplaces.jndi.name=jdbc/OskariPool
@@ -90,11 +90,6 @@ Check settings in `{jetty}/resources/oskari-ext.properties` and uncomment or add
     #db.myplaces.username=postgres
     #db.myplaces.password=postgres
 
-    # jdbc/analysisPool
-    #db.analysis.jndi.name=jdbc/OskariPool
-    #db.analysis.url=jdbc:postgresql://localhost:5432/oskaridb
-    #db.analysis.username=postgres
-    #db.analysis.password=postgres
     ##################################
 
     ....
@@ -122,7 +117,7 @@ Check settings in `{jetty}/resources/oskari-ext.properties` and uncomment or add
     oskari.proxy.userlayertile.user=admin
     oskari.proxy.userlayertile.pass=geoserver
 
-    # oskari.proxyservices = print, property, wfsquery, myplacestile, analysistile, userlayertile
+    # oskari.proxyservices = print, property, wfsquery, myplacestile, userlayertile
     oskari.proxyservices = userlayertile
 
 
