@@ -1,14 +1,14 @@
-# Git process
+## Git process
 
 This document describes the source management process used by the Oskari project. As internal development at NLS uses a ​rather ​well ​documented ​branching ​model called ​Git Flow, this document emphasizes interfacing with external developers/teams instead of reiterating ​Git Flow documentation readily available on the Web.
 
-## Oskari Git Flow overview
+### Oskari Git Flow overview
 
 gitflow.svg
 
 Read Atlassian's awesome [Git Flow documentation](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) for more information.
 
-## Branches & Repos
+### Branches & Repos
 
 **master**
 - The latest stable release.
@@ -41,26 +41,26 @@ The branching model utilized by an external team is generally irrelevant to the 
 
 Code acquired from external sources will be subject to adaptation (if deemed necessary), normal _feature testing_ and bugfixes before it can be merged into **the develop branch**.
 
-## Creating releases
+### Creating releases
 
 For creating a branch for version x.y.z
 
     git checkout develop
     git pull
     git checkout -b release/x.y.z
-    # TODO: Bump version at this point on the *release* branch (see below for instructions)
+    ## TODO: Bump version at this point on the *release* branch (see below for instructions)
 
-    # Get the version commit to develop
+    ## Get the version commit to develop
     git checkout develop
     git merge --no-ff release/x.y.z
-    # TODO: Bump next development version on the *develop* branch (see below for instructions)
-    # Checkout to the release branch
+    ## TODO: Bump next development version on the *develop* branch (see below for instructions)
+    ## Checkout to the release branch
     git checkout release/x.y.z
 
 Merging pull requests to release
 
     git pull https://github.com/zakarfin/oskari-frontend.git some-bugfix
-    # git cherry-pick from develop etc
+    ## git cherry-pick from develop etc
     git push origin release/x.y.z
 
 Merging changes back to master
@@ -78,48 +78,48 @@ Merging changes back to develop
     git checkout develop
     git pull
     git merge --no-ff release/x.y.z
-    # possible merging of conflicts
+    ## possible merging of conflicts
     git push origin develop
 
 Cleanup
 
-    # remove local branch
+    ## remove local branch
     git branch -D release/x.y.z
-    # remove remote branch
+    ## remove remote branch
     git push origin :release/x.y.z
 
-## Versioning the code
-- Releases should move the minor version 1.50.0 -> 1.51.0
-- Hotfixes should move the patch version so 1.50.0 -> 1.50.1
+### Versioning the code
+- Releases should move the minor version 1.0.0 -> 1.1.0
+- Hotfixes should move the patch version so 1.0.0 -> 1.0.1
 
-### Server
-    # Checkout to branch that should have the version updated
+#### Server
+    ## Checkout to branch that should have the version updated
     git checkout {branch}
-    
-    # Run the maven versions plugin to update version
+
+    ## Run the maven versions plugin to update version
     mvn -N versions:set -DnewVersion=x.y.z
-    
-    # Commit the changes to Git
+
+    ## Commit the changes to Git
     git add .
     git commit -m 'Bump version'
     git push
 
-Develop branch version should always be the next version + "-SNAPSHOT". For an example if the version in master is "1.50.0", develop should be "1.51.0-SNAPSHOT".
+Develop branch version should always be the next version + "-SNAPSHOT". For an example if the version in master is "1.0.0", develop should be "1.1.0-SNAPSHOT".
 
-### Frontend
+#### Frontend
 
-    # checkout to branch that should have the version updated
+    ## checkout to branch that should have the version updated
     git checkout {branch}
-    
-    # Edit the version number on package.json
+
+    ## Edit the version number on package.json
     nano package.json
-    
-    # Commit the changes to Git
+
+    ## Commit the changes to Git
     git add .
     git commit -m 'Bump version'
     git push
 
-### Creating hotfixes
+#### Creating hotfixes
 Much like creating releases except hotfixes are based on the master version (releases are based on develop).
 
 For creating a branch for version x.y.z
@@ -130,9 +130,9 @@ For creating a branch for version x.y.z
 
 Merging pull requests to hotfix
 
-    # TODO: Bump version at this point (see below for instructions)
+    ## TODO: Bump version at this point (see below for instructions)
     git pull https://github.com/zakarfin/oskari-frontend.git hotfix/my-urgent-fix
-    # git cherry-pick from develop etc
+    ## git cherry-pick from develop etc
     git push origin hotfix/x.y.z
 
 Merging changes back to master
@@ -150,12 +150,12 @@ Merging changes back to develop
     git checkout develop
     git pull
     git merge --no-ff hotfix/x.y.z
-    # possible merging of conflicts
+    ## possible merging of conflicts
     git push origin develop
 
 Cleanup
 
-    # remove local branch
+    ## remove local branch
     git branch -D hotfix/x.y.z
-    # remove remote branch
+    ## remove remote branch
     git push origin :hotfix/x.y.z
