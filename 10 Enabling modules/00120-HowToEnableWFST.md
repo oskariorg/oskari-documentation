@@ -81,7 +81,7 @@ Use case in Oskari
 <pre class="event-code-block">
 <code>
 
-Find out a wfs layer, which is enabled to wfs-t or import your own layer to Oskari Geoserver (e.g. with shp2pgsql-gui.exe)
+Find out a wfs layer, which is enabled to wfs-t or import your own layer to Oskari (e.g. with shp2pgsql-gui.exe)
 Add 'Edit' right  to that layer in Oskari Layer Rights method.
 Then select the wfst layer in Oskari and the 'feature editor' link is available in layer selection.
 

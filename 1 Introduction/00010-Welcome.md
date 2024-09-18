@@ -65,7 +65,7 @@ Basic requirements for developing Oskari:
 - Frontend: JavaScript, HTML, CSS, SCSS, React, OpenLayers
 - Backend: OpenLayers, Java, PostgreSQL/PostGIS, Redis, Jetty/Tomcat
 - Build infrastructure & tests: Maven/JUnit for server, Webpack/Jest for frontend.
-- Understanding about the following software: PostGIS, Jetty, Redis, GeoServer, Nginx
+- Understanding about the following software: PostGIS, Jetty, Redis, Nginx
 - Understanding about OGC standards: WMS, WMTS, WFS, WPS, WCS
 
 If you are planning to develop Oskari, don't hesitate to contact NLS FI right at the start. The coordinators from NLS are willing to guide your work and give general guidelines for developing work. Remember **to always document your work** and please use the official Oskari documentation as a reference for your own documentation. As an open source project Oskari requires the contribution of the community that uses it, so please make pull requests to the main Oskari repositories, too.
