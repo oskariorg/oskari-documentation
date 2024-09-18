@@ -46,7 +46,6 @@ The embedded map parameters are name, website and language. The status of an emb
 - My Data
 - Imported data
 - Thematic Maps and Tables
-- Analysis results
 - ArcGIS rest Feature Layer
 - Address, placename and real estate search
 - Customizable layout (colours and tool positioning)

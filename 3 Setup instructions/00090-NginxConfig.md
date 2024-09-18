@@ -46,43 +46,6 @@ upstream oskariserver {
 
 ```
 
-Oskari-server and Geoserver can both be on the same Jetty, but having Geoserver on the same JVM affects projection
- handling due to this: http://docs.geotools.org/latest/userguide/library/referencing/order.html
-
-Because of this reason it's recommended that Geoserver is not running on the same Jetty as Oskari-server.
-
-##### Geoserver for myplaces/analysis/userlayers
-
-Geoserver should be running on localhost in port 8082.
-This can be changed by modifying these lines:
-
-
-```
-upstream geoserver {
-    server localhost:8082;
-}
-
-```
-
-##### Security on user-generated content
-
-**Note! Geoserver does not need to be publicly available for Oskari to work. Just configure the direct address to `oskari-ext.properties`**
-
-Geoserver access should be restricted so anonymous users can't download user-generated content.
-This can be done by configuring geoservers access rules or by restricting external access in the nginx configuration.
-The sample contains an IP-address based restriction so geoserver admin interface is accessible from the configured IP while setting up the service.
-Edit the following line to match the IP-address you wish to grant access to Geoserver (Replace `1.2.3.4` with IP):
-
-
-```
-    location ^~ /geoserver {
-		# Restrict connections to single ip - EDIT IP FOR YOU ENVIRONMENT
-		allow 1.2.3.4/32; deny all;
-		...
-	}
-
-```
-
 ##### Cross-site request forgery protection
 
 Java libraries don't support the SameSite-flag for cookies yet so we need to protect our service from session manipulation and CSRF by modifying the cookies on nginx.
@@ -154,4 +117,3 @@ This enables the http-forwarded module for Jetty 9 which allows webapps like Osk
 This allows Oskari to proxy requests that don't support HTTPS.
 
 **Note! This also adds a great amount of network traffic going through your server!**
-

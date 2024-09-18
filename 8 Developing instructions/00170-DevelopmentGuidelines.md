@@ -1,6 +1,6 @@
-# Development Guidelines
+## Development Guidelines
 
-## General
+### General
 
 - There's a difference for developing generic Oskari functionality and application specific functionality.
 - Oskari repositories should not contain application specific functionalities (the community-repository can contain application specific code as examples).
@@ -8,7 +8,7 @@
 - In most cases you want to use develop-branch as baseline. Only use master as base if you need something urgently fixed (included in a hotfix for latest version).
 - If you are uncertain, ask for help. You can reach other Oskari developers at Rocket.chat, Gitter and Oskari-userlist
 
-## Code
+### Code
 
 - Always remember to write/update documentation: API docs, MigrationGuide, ReleaseNotes, Changelog
 - Use english and descriptive names for variables/methods etc.
@@ -19,14 +19,14 @@
 - Use existing features like PropertyUtil for oskari-server or the localization support from Oskari in the frontend instead of reinventing the wheel.
 - Try to use existing libraries when creating new features. For each new framework added to the client side code the more end-users need to download to get the application.
 
-## Commits
+### Commits
 
 - Configure GIT line endings setting: see [GitHub's guide on line endings](https://help.github.com/articles/dealing-with-line-endings/)
 - Never commit on master - always work with the latest develop version
 - Keep commits small and use descriptive comments
 - This means you don't dump your entire feature from svn into single massive git commit.
 
-## Pull requests
+### Pull requests
 
 - Keep pull requests small/having a single feature
 - See [GitHub's guide on how to write the perfect pull request](https://github.com/blog/1943-how-to-write-the-perfect-pull-request)
@@ -37,7 +37,7 @@
     - service-[functionality]-[plugin name] as a plugin part to service-[functionality] with non-generic functionality
     - control-[functionality] as a wrapper for action routes/http-layer where you parse params and format a JSON response for the result of the operation.
 
-## Changing the API
+### Changing the API
 
 Be very careful when changing the API. Changing the API means that others will need to change their code as well. This is a especially problematic on the RPC API. For frontend this means request/event/conf/state/services
 
@@ -55,7 +55,7 @@ For server:
 **Any changes to API need to be documented always!**
 
 
-## Frontend
+### Frontend
 
 Requirements for new bundles to the core
 - API documentation (event, requests, service, config, state)
@@ -77,7 +77,7 @@ Requirements for new bundles to the core
     jQuery('<div class="search-mainpanel"><input type="text" class="searchfield" /></div>');
     jQuery('.search-mainpanel .searchfield').val();
 
-### Bundles 
+#### Bundles
 
 Bundles are independent components:
 - A bundle should not hard code references to other bundles or modules
@@ -89,17 +89,17 @@ Bundles should not have hard coded references to any backend etc. outside source
 - Attach event handling functions to DOM with JavaScript assignments rather than HTML markup:
 
 **WRONG:**
-    
+
     $('<button onclick="myglobal.myinstance.someMethod()"></button>');
 
 **RIGHT:**
-    
+
     var btn = jQuery('button.myButton')
     btn.bind('click', function() {
     myinstance.someMethod();
     });
 
-## User interface
+### User interface
 - Use template variables for defining DOM elements in class and build UI for the bundle by cloning them
 - Retain handles (a variable or class member field) to UI elements and use them when modifying UI
 - Use CSS selectors and traversal to access DOM snippet substructure under the current functionality. Don't alter the UI created by another functionality.
@@ -107,7 +107,7 @@ Bundles should not have hard coded references to any backend etc. outside source
 - Avoid post processing of library generated DOM (f.ex ExtJS dom) with jQuery
 - Avoid visible DOM rendering. Hide element before editing and when editing is finished make element again visible. Hide element adding class `oskari-hidden` and make it visible again by removing `oskari-hidden` class.
 
-## Documentation
+### Documentation
 
 You should comment your Oskari classes in a format recognized by the API generator tool [YUIDoc](https://yui.github.io/yuidoc/):
 
@@ -122,7 +122,7 @@ You should comment your Oskari classes in a format recognized by the API generat
         return 'foo ' + arg + ' bar';
     }
 
-## Server
+### Server
 
 - JUnit tests for any action routes that test parameter/user combinations
 - documentation of external dependencies and possible configurations/properties
