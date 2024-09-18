@@ -81,9 +81,9 @@ Use case in Oskari
 <pre class="event-code-block">
 <code>
 
-Find out a wfs layer, which is enabled to wfs-t or import your own layer to Oskari (e.g. with shp2pgsql-gui.exe)
-Add 'Edit' right  to that layer in Oskari Layer Rights method.
-Then select the wfst layer in Oskari and the 'feature editor' link is available in layer selection.
+Find out a WFS-layer where the service supports Transaction operation (WFS-T).
+Add 'Edit' permission for that layer in Oskari Layer Rights functionality or through the layer administration UI (Edit permission type requires configuration on oskari-ext.properties to be shown).
+Add the layer on the map in Oskari and the 'feature editor' functionality can now be accessed through the geoportals selected layers listing by selecting it from the tools for that layer.
 
 </code>
 </pre>
