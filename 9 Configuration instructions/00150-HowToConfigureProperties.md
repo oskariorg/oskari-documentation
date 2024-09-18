@@ -23,7 +23,7 @@ Examples:
     # Supported locales, comma separated and default first
     oskari.locales=en_US,fi_FI,sv_SE
 
-The properties also setup various url links for search service, GIS metadata, print service, etc that needs to be modified to match the server environment.
+The properties also setup various url links for search service, CSW metadata, etc that needs to be modified to match the server environment.
 
 ### Environment variables
 
