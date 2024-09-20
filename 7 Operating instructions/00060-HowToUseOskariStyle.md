@@ -123,9 +123,9 @@ Hover options describes how to visualize layer's features on hover and what kind
 
 #### Optional styles
 
-The styling definitions for optional style is same as above. Features that uses optional style are filtered with [Oskari filter](/documentation/examples/oskari-filter) definition by features' property keys and values. To filter features by different property keys you can use AND or OR operators.
+The styling definitions for optional style is same as above. Features that uses optional style are filtered with [Oskari filter](00050-HowToUseOskariFilter.md) definition by features' property keys and values. To filter features by different property keys you can use AND or OR operators.
 
-You can pass the optional styles array with the key `optionalStyles` when you pass the base style with key `featureStyle` in for example [AddFeaturesToMapRequest](/api/requests/#/latest/mapping/mapmodule/request/addfeaturestomaprequest.md).
+You can pass the optional styles array with the key `optionalStyles` when you pass the base style with key `featureStyle` in for example [AddFeaturesToMapRequest](/documentation/api/requests/latest/AddFeaturesToMapRequest).
 
 #### Optional style examples
 
