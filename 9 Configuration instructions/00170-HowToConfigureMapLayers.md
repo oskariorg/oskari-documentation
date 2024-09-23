@@ -13,4 +13,4 @@ Most of the toggles that an admin can change in `oskari_maplayer` are located in
 The attributes column can also have configuration specific to a layer type.
 
 See:
-- [Configuration options for vector feature layers](maplayers/vectorlayers)
+- [Configuration options for vector feature layers](000171-Vectorlayers.md)
