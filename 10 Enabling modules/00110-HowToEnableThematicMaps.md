@@ -4,4 +4,4 @@ Oskari can display statistical data and link it to map layers creating thematic 
 
 See [requirements](./00111-ThematicMapsRequirements.md) for using the thematic maps functionality in Oskari application.
 
-See instructions for [configuring](./00112-ThematicMapsConfig.mdg) the thematic maps functionality.
+See instructions for [configuring](./00112-ThematicMapsConfig.md) the thematic maps functionality.
