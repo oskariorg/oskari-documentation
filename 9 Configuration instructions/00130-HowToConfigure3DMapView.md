@@ -29,7 +29,7 @@ Oskari frontend contains additional bundles for controlling camera and displayed
 import 'oskari-loader!oskari-frontend/packages/mapping/time-control-3d/bundle.js';
 import 'oskari-loader!oskari-frontend/packages/mapping/camera-controls-3d/bundle.js';
 ```
-Cesium adjusts the sun's position and visualizes the shadows according to the time set for the map. You can also adjust displayed time with [SetTimeRequest](/documentation/api/requests/latest/SetTimeRequest).
+Cesium adjusts the sun's position and visualizes the shadows according to the time set for the map. You can also adjust displayed time with [SetTimeRequest](https://oskari.org/documentation/api/requests/latest/SetTimeRequest).
 
 #### Using 2D and 3D maps side by side
 
