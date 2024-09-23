@@ -1,6 +1,6 @@
 ## Configuration options for vector feature layers
 
-Vector features can come from WFS or OGC API Features endpoint and displaying them can be customized with a config on the [database table](https://oskari.org/db/tables/oskari_maplayer.html) `oskari_maplayer`.
+Vector features can come from WFS or OGC API Features endpoint and displaying them can be customized with a config on the database table `oskari_maplayer`.
 
 For example localized names can be given for feature properties with a JSON-configuration on the `attributes` column.
 
