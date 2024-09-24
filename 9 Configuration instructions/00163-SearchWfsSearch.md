@@ -51,12 +51,12 @@ There is a more specific user interface for end-user searching that goes well wi
 
 More information about Flyway can be found in [here](/documentation/backend/upgrading). Or you can add it to a single view by manually running an SQL like this:
 
-    INSERT INTO portti_view_bundle_seq (view_id, seqno, bundle_id, startup, config, state)
-       VALUES ([view_id],
-        (SELECT (max(seqno) + 1) FROM portti_view_bundle_seq WHERE view_id = [view_id]),
-        (SELECT id FROM portti_bundle WHERE name = 'search-from-channels'),
-        (SELECT startup FROM portti_bundle WHERE name = 'search-from-channels'),
+    INSERT INTO oskari_appsetup_bundles (appsetup_id, seqno, bundle_id, bundleinstance, config, state)
+       VALUES ([appsetup_id],
+        (SELECT (max(seqno) + 1) FROM oskari_appsetup_bundles WHERE appsetup_id = [appsetup_id]),
+        (SELECT id FROM oskari_bundle WHERE name = 'search-from-channels'),
+        (SELECT name FROM oskari_bundle WHERE name = 'search-from-channels'),
         (SELECT config FROM portti_bundle WHERE name = 'search-from-channels'),
         (SELECT state FROM portti_bundle WHERE name = 'search-from-channels'));
 
-By replacing `[view_id]` with the id of the view you want to use it in.
+By replacing `[appsetup_id]` with the id of the appsetup you want to use it in.
