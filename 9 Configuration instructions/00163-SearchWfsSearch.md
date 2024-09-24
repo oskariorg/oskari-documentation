@@ -56,7 +56,7 @@ More information about Flyway can be found in [here](/documentation/backend/upgr
         (SELECT (max(seqno) + 1) FROM oskari_appsetup_bundles WHERE appsetup_id = [appsetup_id]),
         (SELECT id FROM oskari_bundle WHERE name = 'search-from-channels'),
         (SELECT name FROM oskari_bundle WHERE name = 'search-from-channels'),
-        (SELECT config FROM portti_bundle WHERE name = 'search-from-channels'),
-        (SELECT state FROM portti_bundle WHERE name = 'search-from-channels'));
+        (SELECT config FROM oskari_bundle WHERE name = 'search-from-channels'),
+        (SELECT state FROM oskari_bundle WHERE name = 'search-from-channels'));
 
 By replacing `[appsetup_id]` with the id of the appsetup you want to use it in.
