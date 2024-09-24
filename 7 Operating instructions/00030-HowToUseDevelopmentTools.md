@@ -157,6 +157,6 @@ over.
 #### Building the backend
 
 The development build for the backend is compiled and run using Maven, as described [in the
-development documentation](/documentation/backend/setup-development).
+development documentation](../3 Setup instructions/00040-SetupDevelopmentEnvironment.md).
 
 * * *

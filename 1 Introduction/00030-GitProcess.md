@@ -23,7 +23,7 @@ Read Atlassian's awesome [Git Flow documentation](https://www.atlassian.com/git/
 - Development for a new feature
 - These should be used in forks, not the official repositories
 - Once the feature is completed the branch will be merged into develop
-- See [how to contribute](LINK_Development/how-to-contribute) for Git instructions
+- See [how to contribute](../7 Operating instructions/00310-HowToContributeToOskariProject.md) for Git instructions
 
 **release/x.y.z**
 - A release branch is opened as a code freeze some time before the next release based on the current develop-branch.

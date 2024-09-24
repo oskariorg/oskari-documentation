@@ -1,6 +1,6 @@
 ### Configuring thematic maps functionality
 
-See [requirements](requirements) for enabling the code that powers the thematic maps functionality.
+See [requirements](00111-ThematicMapsRequirements.md) for enabling the code that powers the thematic maps functionality.
 
 #### Adding regionsets as maplayers
 
