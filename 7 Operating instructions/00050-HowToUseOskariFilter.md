@@ -80,4 +80,4 @@ To have WFS layer that contains only features which regionCode '091' and service
 
 #### Oskari style
 Using filter with optional styles see:
-[Oskari style](../7 Operating instructions/00060-HowToUseOskariStyle.md)
+[Oskari style](00060-HowToUseOskariStyle.md)

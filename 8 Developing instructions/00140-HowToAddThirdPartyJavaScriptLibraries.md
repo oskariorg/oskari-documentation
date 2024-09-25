@@ -1,7 +1,7 @@
-### How to add third party JavaScript libraries
+## How to add third party JavaScript libraries
 
 Usually using `npm install --save` to add a library and `import` it as ES-module is enough and the recommended approach.
-However sometimes you might need a more old-school approach that is described below:
+However sometimes you might need a more old school approach that is described below:
 
 * Add library files under `[oskari-frontend or your repository]/libraries/<yourLibrary>/`
 
