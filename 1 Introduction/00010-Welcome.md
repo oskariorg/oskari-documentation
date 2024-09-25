@@ -9,11 +9,9 @@ Oskari is an open source Web Map Framework. The aim of Oskari is to help organis
 Oskari enables you to create a map service that is either a full blown geoportal, a highly customized embedded map or something in between.
 
 Oskari enables the user to:
-- View spatial data on their web browser
-- Combine many different data sources into one map service
-- View multiple map layers simultaneously
-- Visualizing spatial data
-- Embedding user's own maps to other websites as an iFrame
+- View and compare spatial data from multiple data sources on their web browser
+- Embed user's own maps to other websites as an iframe
+- Visualize statistical data
 
 Oskari's appearance, UI and functionalities are customizable. The developers can create their own tools, too.
 
