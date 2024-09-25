@@ -42,7 +42,7 @@ See also **the unofficial Oskari bundles created by the Oskari community** [here
 
 Aside of the frontend and backend, Oskari requires a PostgreSQL/PostGIS database. For caching purposes and messaging in clustered environments Oskari uses Redis. Oskari is built for featuring benefits of a spatial data infrastucture and uses data from standard OGC-services.
 
-Previous versions of Oskari required a GeoServer installation, and even though many organisations that use Oskari have a GeoServer instance too, Oskari does not require it anymore.
+Previous versions of Oskari required a GeoServer installation for handling user generated data, and even though many organisations that use Oskari have a GeoServer instance too, Oskari does not require it anymore.
 
 The data displayed on the service is fetched from APIs.
 
