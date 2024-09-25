@@ -48,7 +48,7 @@ The data displayed on the service is fetched from APIs.
 
 ### Requirements for developing Oskari
 
-Developer is a person who develops new features or improves existing functionalities in Oskari. An Oskari developer can contribute to Oskari core or Oskari community plugin development.
+Developer is a person who has at least basic understanding of writing or copy/paste/modifying code. Oskari consists of a Java web application running on the server with SPA Javascript frontend for the browser, so working with web applications or similar projects helps understanding how Oskari works. Enabling and disabling functionalities for an Oskari-based service requires less knowledge about coding, but still requires compiling code. Its possible to both develop new functionalities for an Oskari-based application for custom requirements and/or improve existing functionalities in Oskari as we welcome pull requests on GitHub.
 
 The requirements for developing the backend and the frontend differ. But which one should you make changes to? As a rule of thumb:
 - If you want to customize the way Oskari looks, what elements and tools are being shown and what they look like, you need to develop **the frontend**.
