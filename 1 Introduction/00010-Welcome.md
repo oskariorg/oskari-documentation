@@ -39,15 +39,15 @@ Oskari has a separate browser-based frontend and a server-side backend that comb
 
 **Oskari's frontend** is a JavaScript-based collection of "bundles". A bundle in Oskari is a technical term used to describe a frontend code package that implements a specific functionality. The bundles can be easily used by developers to mix-and-match different functionalities and used as building blocks for their own Oskari-based application. Frontend's GitHub repository can be found [here](https://github.com/oskariorg/oskari-frontend).
 
-**The backend** is a Java web application built with Maven that can be deployed to a Java Servlet container like Tomcat or Jetty. The oskari-server GitHub repository can be found [here](https://github.com/oskariorg/oskari-server) and consists of Maven modules that can be used as building blocks for Oskari-based webapps. Oskari.org provides a Maven repository as an easy way to use these in Oskari-based applications. The sample server extension is a template repository that can be used to quickly start working on a customized backend for Oskari-service and can be found [here](https://github.com/oskariorg/sample-server-extension)
+**The backend** is a Java web application built with Maven that can be deployed to a Java Servlet container like Tomcat or Jetty. The oskari-server GitHub repository can be found [here](https://github.com/oskariorg/oskari-server) and consists of Maven modules that can be used as building blocks for Oskari-based webapps. Oskari.org provides a Maven repository as an easy way to use these in Oskari-based applications. The sample server extension is a template repository that can be used to quickly start working on a customized backend for Oskari-service and can be found [here](https://github.com/oskariorg/sample-server-extension).
 
- **The sample application of Oskari's frontend** is a Single Page Application (SPA) that uses the modules from oskari-frontend for creating an Oskari-based application. It is a template repository that can be used to quickly start working on a customized application frontend and can be found [here](https://github.com/oskariorg/sample-application)
+ **The sample application of Oskari's frontend** is a Single Page Application (SPA) that uses the modules from oskari-frontend for creating an Oskari-based application. It is a template repository that can be used to quickly start working on a customized application frontend and can be found [here](https://github.com/oskariorg/sample-application).
 
 The template (sample) repositories are meant to be used as starting points for creating an Oskari-based service with your own selection of functionalities, data, users, layout, colors and other customizations. These can also be used to add new service specific functionalities without forking the Oskari codebase.
 
-See also **the unofficial Oskari bundles created by the Oskari community** [here](https://github.com/oskariorg/oskari-frontend-contrib)
+See also **the unofficial Oskari bundles created by the Oskari community** [here](https://github.com/oskariorg/oskari-frontend-contrib).
 
-Aside of the frontend and backend, Oskari requires a PostgreSQL/PostGIS database. The schema of database has been documented here. (A mention of spatial data infrastucture in general?). For caching purposes and messaging in clustered environments Oskari uses Redis.
+Aside of the frontend and backend, Oskari requires a PostgreSQL/PostGIS database. For caching purposes and messaging in clustered environments Oskari uses Redis. Oskari is built for featuring benefits of a spatial data infrastucture and uses data from standard OGC services.
 
 Previous versions of Oskari required a GeoServer installation, and even though many organisations that use Oskari have a GeoServer instance too, Oskari does not require it anymore.
 
