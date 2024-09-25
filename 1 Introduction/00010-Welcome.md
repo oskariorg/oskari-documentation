@@ -48,19 +48,21 @@ The data displayed on the service is fetched from APIs.
 
 ### Requirements for developing Oskari
 
-Developer is a person who has at least basic understanding of writing or copy/paste/modifying code. Oskari consists of a Java web application running on the server with SPA Javascript frontend for the browser, so working with web applications or similar projects helps understanding how Oskari works. Enabling and disabling functionalities for an Oskari-based service requires less knowledge about coding, but still requires compiling code. Its possible to both develop new functionalities for an Oskari-based application for custom requirements and/or improve existing functionalities in Oskari as we welcome pull requests on GitHub.
+Developer is a person who has at least basic understanding of reading/writing or copy/paste/modifying code. Oskari consists of a Java web application running on the server with SPA Javascript frontend for the browser, so working with web applications or similar projects helps understanding how Oskari works. Enabling and disabling functionalities for an Oskari-based service requires less knowledge about coding, but still requires compiling code. Its possible to both develop new functionalities for an Oskari-based application for custom requirements and/or improve existing functionalities in Oskari as we welcome pull requests on GitHub.
 
 The requirements for developing the backend and the frontend differ. But which one should you make changes to? As a rule of thumb:
-- If you want to customize the way Oskari looks, what elements and tools are being shown and what they look like, you need to develop **the frontend**.
-- If you want to make completely new functionalities, you have to make changes to **the backend**.
+- If you want to add new user-interface elements to your application, you need to develop **the frontend**.
+- If those user-interface elements need to access something on the server, you might need to make changes to **the backend**.
+- If you want to enable or disable functionalities that are provided in Oskari you should make changes to both the **the backend** (configuration of functionalities to use) and **the frontend** (to package in or remove code that is sent to the browser), but this is usually fairly simple copy/pasting of existing code samples.
+- If you want to customize the way Oskari looks, Oskari supports theming that is represented as JSON on the **the backend**. However you might want to tweak some settings on the **the frontend** as well depending on the requirements.
 
 Basic requirements for developing Oskari:
 
 - Version management: Git
 - Frontend: JavaScript, HTML, CSS, SCSS, React, OpenLayers
-- Backend: Java, PostgreSQL/PostGIS, Redis, Jetty/Tomcat
+- Backend: Java, PostgreSQL (with PostGIS for user generated data), Redis, Jetty(/Tomcat or similar)
 - Build infrastructure & tests: Maven/JUnit for server, Webpack/Jest for frontend.
-- Understanding about the following software: PostGIS, Jetty/Tomcat, Redis, Nginx/httpd
+- Basic understanding about the following software: PostGIS, Jetty(/Tomcat or similar), Redis, Nginx (/Apache httpd or similar)
 - Understanding about OGC standards: WMS, WMTS, WFS, WCS
 
 If you are planning to develop Oskari, don't hesitate to contact NLS FI right at the start. The coordinators from NLS are willing to guide your work and give general guidelines for developing work. Remember **to always document your work** and please use the official Oskari documentation as a reference for your own documentation. As an open source project Oskari requires the contribution of the community that uses it, so please make pull requests to the main Oskari repositories, too.
