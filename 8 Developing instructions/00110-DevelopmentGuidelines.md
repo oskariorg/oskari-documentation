@@ -77,7 +77,7 @@ Requirements for new bundles to the core
     jQuery('<div class="search-mainpanel"><input type="text" class="searchfield" /></div>');
     jQuery('.search-mainpanel .searchfield').val();
 
-#### Bundles
+#### Bundles 
 
 Bundles are independent components:
 - A bundle should not hard code references to other bundles or modules
@@ -89,11 +89,11 @@ Bundles should not have hard coded references to any backend etc. outside source
 - Attach event handling functions to DOM with JavaScript assignments rather than HTML markup:
 
 **WRONG:**
-
+    
     $('<button onclick="myglobal.myinstance.someMethod()"></button>');
 
 **RIGHT:**
-
+    
     var btn = jQuery('button.myButton')
     btn.bind('click', function() {
     myinstance.someMethod();
