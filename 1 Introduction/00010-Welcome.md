@@ -8,7 +8,7 @@ Oskari is an open source Web Map Framework. The aim of Oskari is to help organis
 
 Oskari enables you to create a [map service](https://oskari.org/discover/use-cases) that is either a full blown geoportal, a highly customized embedded map or something in between.
 
-Oskari's appearance, UI and [functionalities](https://oskari.org/discover/functionalities) are customizable. The developers can create their own tools, too.
+Oskari's appearance, UI and [functionalities](https://oskari.org/discover/functionalities) are customizable. Oskari is easily extendable and allows adding application specific functionalities.
 
 As an open source project Oskari is developed together. The development is coordinated by National Land Survey of Finland. Oskari is dual-licenced MIT/EUPL 1.2.
 
