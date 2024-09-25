@@ -6,7 +6,7 @@ Welcome to Oskari's documentation!
 
 Oskari is an open source Web Map Framework. The aim of Oskari is to help organisations to create better map applications to be used on web browsers and mobile devices. Oskari supports EU's INSPIRE directive and OGC standards.
 
-Oskari enables you to create a [map service](https://oskari.org/discover/use-cases) that is either a full blown geoportal, a highly customized embedded map or something in between.
+Oskari enables you to create [a map service](https://oskari.org/discover/use-cases) that is either a full blown geoportal, a highly customized embedded map or something in between.
 
 Oskari's appearance, UI and [functionalities](https://oskari.org/discover/functionalities) are customizable. Oskari is easily extendable and allows adding application specific functionalities.
 
@@ -20,19 +20,21 @@ Oskari's GitHub repositories are
 -  https://github.com/oskariorg/oskari-documentation
 
 
-Note that this document is a work in progress. If you find any outdated information, notice that something is missing or that some sections could be improved, let us know by making an issue in GitHub or a Pull request to the Oskari documentation [repository](https://github.com/oskariorg/oskari-documentation).
+Note that this document is a work in progress. If you find any outdated information, notice that something is missing or that some sections could be improved, let us know by making an issue in GitHub or a Pull request to [the Oskari documentation repository](https://github.com/oskariorg/oskari-documentation).
 
-If you have further questions or need help with your Oskari instance, see our Contribute and FAQ pages or feel free to reach out to us in [Gitter](https://gitter.im/oskariorg/chat) or the mailing list!
+If you have further questions or need help with your Oskari instance, see our [Contribute](https://oskari.org/contribute/) and [FAQ pages](https://oskari.org/faq/) or feel free to reach out to us in [Gitter](https://gitter.im/oskariorg/chat) or the mailing list!
 
 ### Technical overview
 
-Here is a brief technical overview of Oskari. More information about frontend and backend can be found in section _2 Application environment_.
+Here is a brief technical overview of Oskari. More information about frontend and backend can be found in section [2 Application environment](../2 Application environment/).
 
 Oskari has a separate browser-based frontend and a server-side backend that combine into an Oskari-based service.
 
 **Oskari's frontend** is a JavaScript-based collection of "bundles". A bundle in Oskari is a technical term used to describe a frontend code package that implements a specific functionality. The bundles can be easily used by developers to mix-and-match different functionalities and used as building blocks for their own Oskari-based application. Frontend's GitHub repository can be found [here](https://github.com/oskariorg/oskari-frontend).
 
-**The backend** is a Java web application built with Maven that can be deployed to a Java Servlet container like Tomcat or Jetty. The oskari-server GitHub repository can be found [here](https://github.com/oskariorg/oskari-server) and consists of Maven modules that can be used as building blocks for Oskari-based webapps. Oskari.org provides a Maven repository as an easy way to use these in Oskari-based applications. The sample server extension is a template repository that can be used to quickly start working on a customized backend for Oskari-service and can be found [here](https://github.com/oskariorg/sample-server-extension).
+**The backend** is a Java web application built with Maven that can be deployed to a Java Servlet container like Tomcat or Jetty. The oskari-server GitHub repository can be found [here](https://github.com/oskariorg/oskari-server) and consists of Maven modules that can be used as building blocks for Oskari-based webapps. Oskari.org provides a Maven repository as an easy way to use these in Oskari-based applications. 
+
+**The sample server extension** is a template repository that can be used to quickly start working on a customized backend for Oskari-service and can be found [here](https://github.com/oskariorg/sample-server-extension).
 
  **The sample application of Oskari's frontend** is a Single Page Application (SPA) that uses the modules from oskari-frontend for creating an Oskari-based application. It is a template repository that can be used to quickly start working on a customized application frontend and can be found [here](https://github.com/oskariorg/sample-application).
 
