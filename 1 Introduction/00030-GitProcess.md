@@ -4,7 +4,7 @@ This document describes the source management process used by the Oskari project
 
 ### Oskari Git Flow overview
 
-gitflow.svg
+![gitflow.svg](../resources/images/gitflow.svg)
 
 Read Atlassian's awesome [Git Flow documentation](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) for more information.
 
