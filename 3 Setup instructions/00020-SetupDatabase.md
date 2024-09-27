@@ -48,4 +48,4 @@ See [Setup Jetty](00030-SetupJetty.md) documentation for details where changes a
 The empty database will be populated when the oskari-server is started for the first time. The database population is split into modules. The core module creates and migrates the main database tables used by Oskari. The default configuration has a module named "example" enabled that will populate an example app and maplayer to get a nice unboxing experience. You should replace "example" module with your own app configuration and content for anything other than basic development and playing around.
 
 To learn how to customize Oskari including populating the database with your own content instead of example content see:
-* [Create a custom Oskari-server extension](../8 Developing instructions/00160-HowToCreateACustomOskariServerExtension.md)
+* [Create a custom Oskari-server extension](../8 Developing instructions/00150-HowToCreateACustomOskariServerExtension.md)
