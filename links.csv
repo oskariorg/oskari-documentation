@@ -1,0 +1,131 @@
+1 Introduction;;
+https://github.com/oskariorg/oskari-frontend;here;ok
+https://github.com/oskariorg/sample-server-extension;here;ok
+https://github.com/oskariorg/sample-application;here;ok
+https://github.com/oskariorg/oskari-frontend-contrib;here;ok
+https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow;Git Flow documentation;ok
+7-Operating-instructions#How-to-contribute-to-Oskari-project;how to contribute;ok
+;;
+2 Application environment;;
+https://github.com/oskariorg/oskari-frontend;here;ok
+https://github.com/oskariorg/oskari-server;here;ok
+;;
+3 Setup instructions;;
+http://www.postgresql.org/;PostgreSQL 11+;ok
+http://postgis.net/;PostGIS;ok
+3-Setup-instructions#Setup-Jetty;Setup Jetty;ok
+8-Developing-instructions#How-to-create-a-custom-Oskari-Server-Extension;Create a custom Oskari-server extension;ok
+3-Setup-instructions#Setup-Oskari-development-environment;Setup development environment;ok
+3-Setup-instructions#Setup-database;Instructions for setting up database;ok
+/download;Jetty Bundle;ok
+3-Setup-instructions#Advanced-Jetty-configuration;Advanced jetty configuration;ok
+3-Setup-instructions#Setup-Jetty;Setup Jetty;ok
+http://maven.apache.org/;Maven 3+;ok
+/download;Jetty bundle;ok
+https://help.github.com/articles/dealing-with-line-endings/;https://help.github.com/articles/dealing-with-line-endings/;ok
+/download;Jetty bundle;ok
+https://github.com/oskariorg/oskari-server/blob/master/MigrationGuide.md;Migration Guide;ok
+https://github.com/oskariorg/oskari-server/blob/master/ReleaseNotes.md;Server release notes;ok
+https://github.com/oskariorg/oskari-frontend/blob/master/ReleaseNotes.md;Frontend release notes;ok
+https://github.com/oskariorg/sample-server-extension;sample-server-extension;ok
+https://github.com/oskariorg/sample-server-extension/blob/1.2.1/pom.xml#L13;pom.xml;ok
+https://github.com/oskariorg/sample-application;sample-application;ok
+https://github.com/oskariorg/sample-application/blob/1.2.1/package.json#L9;package.json;ok
+https://github.com/oskariorg/sample-application/blob/1.2.1/package.json#L3;package.json;ok
+https://github.com/oskariorg/sample-application/blob/1.3.0/applications/geoportal/main.js;geoportal appsetup;ok
+https://github.com/oskariorg/sample-application/blob/1.3.0/applications/embedded/main.js;embedded map;ok
+https://github.com/oskariorg/sample-application/blob/1.3.0/package.json#L19;script for build;ok
+http://nginx.org/;nginx;ok
+;;
+4 Application core functionality;;
+/documentation/api/bundles/latest/;here;ok
+/documentation/api/requests/latest/;here;ok
+/documentation/api/events/latest/;here;ok
+/examples/rpc-api/;here;ok
+;;
+5 Frontend main functionalities;;
+;;
+6 Other functionalities;;
+;;
+7 Operating instructions;;
+https://github.com/oskariorg;oskariorg;ok
+https://www.atlassian.com/git/tutorials/comparing-;;
+workflows/gitflow-workflow;Git Flow documentation;ok
+/download;Jetty bundle;ok
+https://github.com/oskariorg/oskari-server/raw/master/LICENSE-EUPL.pdf;EUPL;ok
+https://github.com/oskariorg/oskari-server/blob/master/LICENSE-MIT.txt;MIT;ok
+/documentation/backend/upgrading;upgrading;PUUTTUU
+3-Setup-instructions#Setup-Oskari-development-environment;in the development documentation;ok
+https://formatjs.io/guides/message-syntax/;ICU message syntax;EI L÷YDY
+https://formatjs.io/guides/message-syntax/#plural-format;multiple plural forms;EI L÷YDY
+https://formatjs.io/guides/message-syntax/#select-format;different messages depending on value;EI L÷YDY
+7-Operating-instructions#How-to-use-Oskari-style;Oskari style;ok
+7-Operating-instructions#How-to-use-Oskari-filter;Oskari filter;ok
+/documentation/api/requests/latest/AddFeaturesToMapRequest;AddFeaturesToMapRequest;ok
+7-Operating-instructions#How-to-use-Oskari-classes;Oskari classes;ok
+/guides/quick-start/create-your-own-bundle;create your own bundle;PUUTTUU
+2-Application-environment#Frontend;here;ok
+/guides/quick-start/sample-bundle-definition;Sample bundle definition;PUUTTUU
+/documentation/backend/upgrading;here;PUUTTUU
+/documentation/backend/upgrade_scripts;here;PUUTTUU
+4-Application-core-functionality#Core-and-sandbox;Oskari sandbox;ok
+https://github.com/oskariorg/oskari-server/tree/develop/control-users;oskari-server/control-users;ok
+https://github.com/oskariorg/oskari-server/blob/develop/servlet-map/src/main/resources/locale/messages.properties;locale/messages-ext.properties;ok
+https://github.com/oskariorg/oskari-server/blob/master/service-base/src/main/java/fi/nls/oskari/service/db/UserContentService.java;UserContentServices;
+;;
+8 Developing instructions;;pit‰‰ k‰yd‰ viel‰ uudemman kerran l‰pi koko sektio 8 kunhan se on p‰ivitetty
+/guides/quick-start/sample-bundle-definition;this sample;
+/guides/quick-start/sample-instance-definition;this sample;
+/documentation/core-concepts/oskari-bundle;here;
+http://maven.apache.org/;Maven 3+;
+/download;Jetty bundle;
+https://github.com/oskariorg/sample-server-extension/generate;Generate;
+https://github.com/oskariorg/sample-server-extension/blob/1.2.1/pom.xml#L13;oskari.version;
+https://github.com/oskariorg/sample-server-extension/tree/1.2.1/app-resources;app-resources;
+https://github.com/oskariorg/sample-server-extension/blob/1.2.1/webapp-map/src/main/webapp/WEB-INF/jsp/geoportal.jsp;geoportal.jsp;
+https://github.com/oskariorg/sample-server-extension/blob/1.2.1/app-specific-code/src/main/java/org/oskari/example/MyActionHandler.java;MyAction;
+https://help.github.com/articles/dealing-with-line-endings/;GitHub's guide on line endings;
+https://github.com/blog/1943-how-to-write-the-perfect-pull-request;GitHub's guide on how to write the perfect pull request;
+LINK;API docs;
+LINK;Generated API;
+LINK_Oskari_bundle_configuration;configuration;
+https://yui.github.io/yuidoc/;YUIDoc;
+;;
+9 Configuration instructions;;
+/documentation/backend/upgrading;Upgrading;PUUTTUU
+/documentation/backend/upgrade_scripts;Migration scripts;PUUTTUU
+https://openlayers.org/ol-cesium/;Ol-Cesium library;ok
+https://www.opengeospatial.org/standards/3DTiles;3D Tiles;ok
+https://demo.oskari.org/3d;demo.oskari.org;ok
+https://github.com/oskariorg/sample-application;Sample application;ok
+/documentation/api/requests/latest/SetTimeRequest;SetTimeRequest;ok
+https://github.com/oskariorg/sample-server-extension;Sample server-extension;ok
+https://github.com/oskariorg/sample-server-extension/tree/master/app-resources/src/main/java/flyway/example3d;example3d;ok
+https://github.com/oskariorg/sample-configs/blob/master/jetty-9/oskari-server/resources/oskari-ext.properties;configuration;ok
+https://github.com/oskariorg/sample-server-extension/blob/master/app-resources/src/main/resources/json/views/geoportal-3d.json;geoportal-3d.json;ok
+https://github.com/oskariorg/sample-server-extension/blob/1.3.0/app-resources/src/main/java/flyway/example3d/V1_1__setup_3D_publishing.java;metadata;ok
+https://cesium.com/cesium-ion/;Cesium ion;ok
+http://spatialreference.org/ref/epsg/isn93-lambert-1993/;spatial reference web site;ok
+http://proj4js.org/;proj4js;ok
+9-Configuration-instructions#Creating-a-custom-location-search-channel;Guide for creating custom search channel;ok
+9-Configuration-instructions#ChannelProvider-customizations;Guide for creating ChannelProviders;ok
+9-Configuration-instructions#WFS-search-functionality-deployment;Guide for setting up WFS-based search channels;ok
+9-Configuration-instructions#ChannelProvider-customizations;ChannelProviders;ok
+/documentation/backend/upgrading;here;PUUTTUU
+9-Configuration-instructions#Configuration-options-for-vector-feature-layers;Configuration options for vector feature layers;ok
+https://oskari.org/db/tables/oskari_maplayer.html;database table;poistettu linkki koska piti poistaa 
+https://github.com/oskariorg/oskari-frontend/blob/2.5.1/bundles/mapping/mapmodule/plugin/getinfo/ValueFormatters.js;ValueFormatters;ok
+;;
+10 Enabling modules;;
+10-Enabling-modules#Requirements-for-thematic-maps;requirements;ok
+10-Enabling-modules#Configuring-thematic-maps-functionality;configuring;ok
+requirements;requirements;ok
+/documentation/backend/permissions;view permissions;PUUTTUU
+;;
+11 Application troubleshooting;;
+https://github.com/oskariorg/oskari-docs/issues;GitHub issues;ok
+;;
+12 Changelog;;
+https://github.com/oskariorg/oskari-frontend/blob/master/ReleaseNotes.md;Oskari frontend release notes;ok
+https://github.com/oskariorg/oskari-server/blob/master/ReleaseNotes.md;Oskari server release notes;ok
+https://github.com/oskariorg/oskari-server/blob/master/MigrationGuide.md;Migration guide;ok
