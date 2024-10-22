@@ -64,15 +64,17 @@ Just to get summary of licenses you can add --summary after the command:
 You can find an Oskari-based sample application source code [here](https://github.com/oskariorg/sample-application).
 
 The sample application frontend source code has the following folder structure:
+```
 /applications - Definitions for application setups combining bundles into a specific application
 /bundles - Implementation for application specific bundles
 /packages - The main import point for application specific bundles
-
+```
 We are likely to remove the packages folder in the future and just have the bundle.js or similar in the bundles folder as this is mostly an older relic for the framework part. The path of the bundle.js nor the filename doesn't really matter any more. What matters is what is referenced on the main.js file under applications and that import points to the actual place where the main starting point (bundle.js currently) is located.
 
 You can find Oskari frontend source code [here](https://github.com/oskariorg/oskari-frontend).
 
 Oskari frontend source code has the following folder structure:
+```
 /api - The documentation of bundles and APIs they provide with a change log of changes to the API
 /bundles - Implementation files for extension bundles
 /packages - Definition files for extension bundles (mainly linking to files under bundles-folder)
@@ -81,7 +83,7 @@ Oskari frontend source code has the following folder structure:
 /tools - Random templates and scripts for generating CSV-files based on localization (most likely deprecated)
 /webpack - Helpers and configurations for current build tools
 /libraries - Older jQuery plugins and other dependencies/libraries that are not reasonably available through npm
-
+```
 The main folders are the bundles (for debugging functionality implementations), packages (for linking functionalities to be used in applications), src (for framework code) and webpack (for build scripts). The packages folder is likely to be removed in the future and when it is, the imports on the applications need to be updated (but this is a light change and will be documented on the migration guide when done).
 
 The folder structure follows a pattern where the first folder under the base folder is a namespace folder. Oskari uses `framework` and `mapping` for most of the bundles and `admin` for admin tools, but this is optional and you can separate your bundles to own namespace. The next folder in the structure is named bundle. This is just a convention and is not a functional requirement. The next folder is named after the `{bundle-identifier}`.
