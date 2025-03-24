@@ -4,17 +4,35 @@ Backend functionality of the platform is implemented as a Java servlet, which ca
 
 ### Backend architecture
 
-Oskari backend architecture depicted:
+Oskari backend flow architecture depicted:
 
-![oskari_architecture_backend.png](../resources/images/oskari_architecture_backend.png)
+```mermaid
+flowchart TD
+    A>User] -->|Opens page| S
+    X>User] -->|Makes a search| S
+    PU>User] -->|Publishes a map| S
+    S[ActionRouteController] --> C{ActionRoute}
+    C -->|Load page| D[GetAppSetupHandler]
+    C -->|Publish a map| P[AppSetupHandler]
+    C -->|Search results| E[SearchHandler]
+    C -->|Application specific action| F[Your code]
+    D -->|Load appsetup| AppSetupService(AppSetupService)
+    P -->|Create appsetup| AppSetupService(AppSetupService)
+    E -->|Search| SS(SearchService)
+    SS --> |Search|OpenStreetMap>OpenStreetMap]
+    SS --> |Search|WFS-service>WFS-service]
+    AppSetupService --> dbId[("oskaridb")]
+```
+The Java webapp archive (war-file) for Oskari server is packaged as oskari-map.war in sample-server-extension (the webapp-map module).
 
-Backend architecture can be divided into three layers: service layer, control layer and interface layer. Webapp for Oskari server is packaged as oskari-map.war in sample-server-extension.
+It handles most of the server side functionality alone, but doesn't need to include much code as it uses the Maven modules from `oskari-server` that handle most of the things it needs.
 
-It handles most of the server side functionality alone. The webapp is extensible and can be compiled from oskari-server components and built on them to create your own geoportal/web mapping server.
+The webapp is extensible and you can add more modules from oskari-server or remove ones you don't need in your app. It is also very easy to add more handlers for any application specific needs when creating your own geoportal/web mapping server.
 
-The backend is layered as services, controls, interfaces (though only webapp-map uses this extensively at the moment).
-
-![components.png](../resources/images/components.png)
+The backend architecture in oskari-server can be divided into three layers: service layer, control layer and interface layer:
+1) The interface layer is very light with Spring framework Controllers for handling requests and can be easily substituted to run as portlets or similar.
+2) The controllers pass concrete HTTP-requests on to Oskari control-modules that can further process the requests and write responses.
+3) Services are used by the control-modules to handle business-logic. The service-modules could (in theory) be used in any Java-based software as libraries.
 
 **Service layer**
 
@@ -31,17 +49,15 @@ Service modules should be common libraries usable in any application. The actual
 
 Control modules build on top of the service layer.
 
-![Service.png](../resources/images/Service.png)
-
-* control-base is the basis for all control-modules and has most of the basic AJAX handlers needed by the Oskari frontend.
+* control-base is the basis for all control-modules and has most of the basic request handlers needed by the Oskari frontend.
 	* NOTE! control-base contains some very specific functionalities that should be separated into separate control-extensions (for example thematic maps support)
-* control-myplaces has AJAX funtionality related to myplaces functionality.
-* control-example has example implementations for AJAX functionalities required by Oskari but usually overridden by platform specific functionalities such as user and content management.
-* content-resources has tools, templates and scripts for populating and upgrading the database
+* control-myplaces provides funtionality related to myplaces functionality.
+* control-example provides example implementations for functionalities required by Oskari but usually overridden by platform specific functionalities such content management for user guide etc.
+* content-resources has tools, templates and scripts for populating and migrating the database
 
 Functions:
-* Handles AJAX requests made by Oskari frontend
-* Parses request parameters for input values to be used on service invocations (ActionParameters is not )
+* Handles requests made by Oskari frontend
+* Parses request parameters for input values to be used on service invocations
 * calls one or more services to do business logic
 * format a response based on service response
 
@@ -62,19 +78,21 @@ Responsible for:
 
 Oskari backend uses the following libraries and technologies:
 
+* Tomcat/Jetty or similar as Java servlet container
+* PostgreSQL (database)
+* PostGIS (spatial data extension for PostgreSQL)
+* Redis (for caching and communication in clustered server environment)
+
+Based on your needs you can decorate your architecture by adding components like these in front of the Oskari server:
+
 * HAProxy (proxy, load balancer)
-* Apache (proxy, load balancer)
+* Apache HTTPD (proxy, load balancer)
 * Nginx (proxy, load balancer)
 * F5 load balancer
-* Jetty
-* Tomcat
-* PostgreSQL (database)
-* PostGIS (spatial database)
+
+Having HTTPD or nginx for serving the static frontend application and passing other requests to Tomcat/Jetty is a popular choice.
 
 ### Source code and folder structure
 
 You can find Oskari backend source code in [here](https://github.com/oskariorg/oskari-server).
-
-Oskari backend source code has the following folder structure:
-
-The folder structure follows a pattern where the first folder under the base folder is a namespace folder. Oskari uses framework for the main bundles, but this is optional and you can separate your bundles to own namespace. The next folder in the structure is named bundle. This is just a convention and is not a functional requirement. The next folder is named after the `<bundle-identifier>`.
+ It doesn't have a runnable webapp as that is usually (heavily) customized per application requirements but you can find a template to start customization [here](https://github.com/oskariorg/sample-server-extension).
