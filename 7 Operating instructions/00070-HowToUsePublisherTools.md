@@ -91,7 +91,7 @@ Many of these are handled by the `publisher/tools/AbstractPublisherTool` base cl
 
 #### Tool, component and handler
 
-When a tool has more options than just enabling or disabling a plugin on map we need to provide a component for rendering extra options in publsiher as well as a handler to maintain the component's state and possibly handle more complex logic. Here's an example how one would go forth to add a new react tool to map tools panel.
+When a tool has more options than just enabling or disabling a plugin on map we need to provide a component for rendering extra options in publisher as well as a handler to maintain the component's state and possibly handle more complex logic. Here's an example how one would go forth to add a new react tool to map tools panel.
 
 ##### The tool
 
