@@ -1,6 +1,6 @@
 ## Frontend
 
-The user interface is a Javascript-based single-page app. The UI is built by selecting a series of bundles that provide functionalities/capabilities for an application. You can mix and match the bundles or create new ones to customize the application for your needs.
+The user interface for Oskari-based services usually is a Javascript-based single-page app. The UI is built by selecting a series of bundles that provide functionalities/capabilities for an application. You can mix and match the bundles or create new ones to customize the application for your needs.
 
 Bundles are used as uniform containers to ship and share new functionality to the application setups. Additions to an existing functionality are implemented as plugins shipped within the bundles.
 
@@ -69,6 +69,11 @@ Just to get summary of licenses you can add --summary after the command:
 
 
 ### Source code and folder structure
+
+The frontend for Oskari-based applications can be divided into two (or more) parts:
+- the application that can be customized for a specific need
+- oskari-frontend that provides the frontend framework, built-in UI-component library and bundles that can be used as building blocks when creating applications.
+- you can also use bundles from oskari-frontend-contrib repository like ones from oskari-frontend and/or another third party repository
 
 You can find an Oskari-based sample application source code [here](https://github.com/oskariorg/sample-application).
 

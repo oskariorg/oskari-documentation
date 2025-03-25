@@ -1,63 +1,33 @@
-## Directory structure for Oskari
+## Frontend bundle implementation convention
 
-The main folders for Oskari are:
+**The folder structure** follows a pattern where the first folder under the base `bundles` folder is a `namespace` folder. Application specific bundles can choose to skip the namespace especially if all bundles of the application would be under the same namespace. Oskari uses `framework`, `mapping` and `admin` namespace for most bundles. The next folder is named after the `<bundle-identifier>`.
 
-`/applications` - Definitions for application setups combining bundles into a specific application
+Any events, requests (and request handlers) and services a bundle implements should be separated into subfolders under the bundles implementation. However this is a convention, not a requirement for application specific bundles. In addition if you have divided the code into views or components that are shown on the flyout, you can create subfolders for them as well. Having an `index.js` file as the starting point for bundle definition is a nice way of shortening the reference to the bundle in applications main.js file.
 
-`/bundles` - Implementation files for extension bundles
-
-`/packages` - Definition files for extension bundles
-
-`/resources` - CSS styles/images for extension bundles
-
-`/sources` - Oskari core
-
-`/libraries` - jQuery plugins and other dependencies/libraries
-
-
-**The folder structure** follows a pattern where the first folder under the base folder is a namespace folder. Oskari uses framework for the main bundles, but this is optional and you can separate your bundles to own namespace. The next folder in the structure is named `bundle`. This is just a convention and is not a functional requirement. The next folder is named after the `<bundle-identifier>`.
-
-    <your root dir>
-    |--bundles
-    |  |--<mynamespace>
-    |     |--bundle
-    |        |--<bundle-identifier>
-    |           |--instance.js
-    |--packages
-    |  |--<mynamespace>
-    |     |--bundle
-    |        |--<bundle-identifier>
-    |           |--bundle.js
-    |--resources
-        |--<mynamespace>
-          |--bundle
-             |--<bundle-identifier>
-                |--css
-                |  |--style.css
-                |--images
-                   |--image.png
-
-### Bundle implementation convention
-
-Any events, requests (and request handlers) and services a bundle implements should be separated into subfolders under the bundles implementation. In addition if you have divided the code into views or components that are shown on the flyout, you can create subfolders for them as well.
+There is a functional requirement when using the `oskari-bundle` loader to load your bundle that localization files should be under `resources/locale` folder relative to the `index.js` (bundle definition/instance factory file). Usually the files are named after the language code for the localization, but this is not a functional requirement. The contents of the file declares the locale for localization.
 
     <your root dir>
     |--bundles
        |--<mynamespace>
-          |--bundle
-             |--<bundle-identifier>
-                |--event
-                |  |--MyEvent.js
-                |--request
-                |  |--MyRequest.js
-                |  |--MyRequestHandler.js
-                |--service
-                |  |--MyService.js
-                |--component
-                |  |--MyComponent.js
-                |--view
-                |  |--MyLoggedInView.js
-                |  |--MyGuestView.js
-                |--instance.js
-                |--Tile.js
-                |--Flyout.js
+         |--<bundle-identifier>
+            |--component
+            |  |--MyComponent.js
+            |--event
+            |  |--MyEvent.js
+            |--request
+            |  |--MyRequest.js
+            |  |--MyRequestHandler.js
+            |--resources
+            |  |--locale
+            |    |--en.js
+            |    |--fi.js
+            |    |--sv.js
+            |--service
+            |  |--MyService.js
+            |--view
+            |  |--MyLoggedInView.js
+            |  |--MyGuestView.js
+            |--index.js
+            |--instance.js
+            |--Tile.js
+            |--Flyout.js
