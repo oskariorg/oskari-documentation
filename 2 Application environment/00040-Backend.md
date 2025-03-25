@@ -87,7 +87,7 @@ Responsible for:
 * Generating an ActionParameters object based on incoming request abstracting/normalizing the request for control layer
 * Forwarding the request to control layer
 
-### Libraries and technologies
+### Server-side libraries and technologies
 
 Oskari backend uses the following libraries and technologies:
 
@@ -105,7 +105,10 @@ Based on your needs you can decorate your architecture by adding components like
 
 Having HTTPD or nginx for serving the static frontend application and passing other requests to Tomcat/Jetty is a popular choice.
 
-### Source code and folder structure
+### Server-side source code
 
 You can find Oskari backend source code in [here](https://github.com/oskariorg/oskari-server).
- It doesn't have a runnable webapp as that is usually (heavily) customized per application requirements but you can find a template to start customization [here](https://github.com/oskariorg/sample-server-extension).
+
+Note that oskari-server doesn't have a runnable webapp to reduce forking as webapps are usually (heavily) customized per application requirements.
+
+You can find a template to start your server customization with our example template [here](https://github.com/oskariorg/sample-server-extension).

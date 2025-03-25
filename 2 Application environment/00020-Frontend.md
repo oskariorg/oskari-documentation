@@ -46,7 +46,7 @@ The bundle called `mapfull` is usually a starting point for the bundle sequence 
 * Another way to communicate with other bundles is to send out an event through Oskari framework.
 * Any bundle registered as an eventlistener for the given event is then notified about the event.
 
-### Libraries and technologies
+### Frontend libraries and technologies
 
 Oskari frontend uses the following libraries and technologies (for details see `package.json` on the [oskari-frontend](https://github.com/oskariorg/oskari-frontend) repository):
 
@@ -68,7 +68,7 @@ Just to get summary of licenses you can add --summary after the command:
     npx license-checker --summary
 
 
-### Source code and folder structure
+### Frontend source code and folder structure
 
 The frontend for Oskari-based applications can be divided into two (or more) parts:
 - the application that can be customized for a specific need

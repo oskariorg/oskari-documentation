@@ -6,10 +6,11 @@ Any events, requests (and request handlers) and services a bundle implements sho
 
 There is a functional requirement when using the `oskari-bundle` loader to load your bundle that localization files should be under `resources/locale` folder relative to the `index.js` (bundle definition/instance factory file). Usually the files are named after the language code for the localization, but this is not a functional requirement. The contents of the file declares the locale for localization.
 
-    <your root dir>
-    |--bundles
-       |--<mynamespace>
-         |--<bundle-identifier>
+```
+${your root dir}
+   |--bundles
+      |--${namespace}
+         |--${bundle-identifier}
             |--component
             |  |--MyComponent.js
             |--event
@@ -29,5 +30,5 @@ There is a functional requirement when using the `oskari-bundle` loader to load 
             |  |--MyGuestView.js
             |--index.js
             |--instance.js
-            |--Tile.js
             |--Flyout.js
+```
