@@ -48,7 +48,7 @@ The bundle called `mapfull` is usually a starting point for the bundle sequence 
 
 ### Libraries and technologies
 
-Oskari frontend uses the following libraries and technologies (for details see package.json on the oskari-frontend repository):
+Oskari frontend uses the following libraries and technologies (for details see `package.json` on the [oskari-frontend](https://github.com/oskariorg/oskari-frontend) repository):
 
 * OpenLayers (map implementation)
 * jQuery (older UI implementations, migrating towards React)

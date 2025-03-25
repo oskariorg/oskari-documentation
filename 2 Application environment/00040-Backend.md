@@ -1,10 +1,33 @@
 ## Backend
 
-Backend functionality of the platform is implemented as a Java servlet, which can also be extended to handle new functionality.
+Backend functionality of the platform is implemented with Controllers from Spring framework and can be easily extended to handle new functionality. Also the Spring-layer is very light on top and could be substituted with another if needed.
+
+The server-side codebase can be divided into two parts:
+- the application that can be customized for a specific need
+- oskari-server as library of maven modules
 
 ### Backend architecture
 
-Oskari backend flow architecture depicted:
+The Java webapp archive (war-file) for Oskari server is packaged as oskari-map.war in [sample-server-extension](https://github.com/oskariorg/sample-server-extension) (the `webapp-map` module).
+
+It handles most of the server side functionality alone, but doesn't need to include much code as it uses the Maven modules from `oskari-server` that handle most of the things it needs.
+
+You can find Oskari-server source code [here](https://github.com/oskariorg/oskari-server).
+
+The webapp is extensible and you can add more modules from oskari-server or remove ones you don't need to adjust the functionalities your app requires. It is also very easy to add more handlers/controllers for any application specific needs when creating your own geoportal/web mapping application.
+
+The server application template has Maven modules for an example setup with:
+
+- app-resources (has initial database data and migrations for the application)
+- app-specific-code (has a "Hello World" request/action handler as an example of app specific code)
+- webapp-map (uses the other two modules and packages everything up in a Java war-file)
+
+The backend architecture in oskari-server Maven-modules can be divided into three layers: service layer, control layer and interface layer:
+1) The interface layer is very light with Spring framework Controllers for handling requests and can be easily substituted to run as portlets or similar.
+2) The controllers pass concrete HTTP-requests on to Oskari control-modules that can further process the requests and write responses.
+3) Services are used by the control-modules to handle business-logic. The service-modules could (in theory) be used in any Java-based software as libraries.
+
+Oskari uses a concept of "action route" for processing requests made by the frontend application. Requests for action routes are processed like this:
 
 ```mermaid
 flowchart TD
@@ -23,16 +46,6 @@ flowchart TD
     SS --> |Search|WFS-service>WFS-service]
     AppSetupService --> dbId[("oskaridb")]
 ```
-The Java webapp archive (war-file) for Oskari server is packaged as oskari-map.war in sample-server-extension (the webapp-map module).
-
-It handles most of the server side functionality alone, but doesn't need to include much code as it uses the Maven modules from `oskari-server` that handle most of the things it needs.
-
-The webapp is extensible and you can add more modules from oskari-server or remove ones you don't need in your app. It is also very easy to add more handlers for any application specific needs when creating your own geoportal/web mapping server.
-
-The backend architecture in oskari-server can be divided into three layers: service layer, control layer and interface layer:
-1) The interface layer is very light with Spring framework Controllers for handling requests and can be easily substituted to run as portlets or similar.
-2) The controllers pass concrete HTTP-requests on to Oskari control-modules that can further process the requests and write responses.
-3) Services are used by the control-modules to handle business-logic. The service-modules could (in theory) be used in any Java-based software as libraries.
 
 **Service layer**
 
