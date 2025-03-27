@@ -17,7 +17,9 @@ The following components are assumed pre-installed:
 
 #### Create an empty database with PostGIS extension
 
-The default configurations assume the database name is "oskaridb". It's configurable in oskari-ext.properties. Run the create database SQL in for example psql or pgAdmin:
+The default configurations assume the database name is "oskaridb". It's configurable in oskari-latest-stable/oskari-server/lib/oskari-ext.properties. 
+
+Run the create database SQL in for example psql or pgAdmin (see if they were installed in the PostgreSQL installation package):
 
      CREATE DATABASE oskaridb
      WITH OWNER = postgres
@@ -25,13 +27,23 @@ The default configurations assume the database name is "oskaridb". It's configur
        TABLESPACE = pg_default
        CONNECTION LIMIT = -1;
 
-Add the PostGIS extension (for the oskaridb database) by first connecting to the database (example for psql):
+Add the PostGIS extension (for the oskaridb database). 
 
+**In psql:**
+
+First connect to the database:
     \c oskaridb
 
 Add the extension by running SQL:
 
     CREATE EXTENSION postgis;
+
+**In pgAdmin:**
+
+Add the PostGIS extension by running SQL query to the oskaridb database:
+
+    CREATE EXTENSION postgis;
+
 
 #### Setup a database user for oskaridb
 
