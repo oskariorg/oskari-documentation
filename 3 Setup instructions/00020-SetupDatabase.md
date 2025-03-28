@@ -9,55 +9,60 @@ PostGIS extension for serving content and authenticating users.
 
 The following components are assumed pre-installed:
 
-* [PostgreSQL 11+](http://www.postgresql.org/) (Known to work with 11, 12, 14 mainly affected by the FlywayDB version we use. Developed using 14.)
+* [PostgreSQL 11+](http://www.postgresql.org/) (Known to work with 11, 12, 14 mainly affected by the version of FlywayDB-dependency that is used by `oskari-server`. Developed using 14.)
 * [PostGIS](http://postgis.net/) (Developed using 3)
 
 
 ### Steps to create the database
 
+Install a supported version of PostgreSQL and PostGIS on your environment.
+ The default configurations assume PostgreSQL is installed on `localhost` with the default PostgreSQL port (`5432`).
+ This is configurable in `oskari-ext.properties` file (found under `oskari-server/lib/` folder in the [downloadable](https://oskari.org/download) file).
+
 #### Create an empty database with PostGIS extension
 
-The default configurations assume the database name is "oskaridb". It's configurable in oskari-latest-stable/oskari-server/lib/oskari-ext.properties. 
+The default configurations assume the database name is `oskaridb` (configurable in `oskari-ext.properties` file).
 
 Run the create database SQL in for example psql or pgAdmin (see if they were installed in the PostgreSQL installation package):
 
+```sql
      CREATE DATABASE oskaridb
      WITH OWNER = postgres
        ENCODING = 'UTF8'
        TABLESPACE = pg_default
        CONNECTION LIMIT = -1;
+```
 
-Add the PostGIS extension (for the oskaridb database). 
+Connect to the database with `\c oskaridb` in psql or by opening the query tool on pgAdmin or similar for the `oskaridb` database.
 
-**In psql:**
+Run this SQL on the database to add the PostGIS extension:
 
-First connect to the database:
-    \c oskaridb
-
-Add the extension by running SQL:
-
+```sql
     CREATE EXTENSION postgis;
-
-**In pgAdmin:**
-
-Add the PostGIS extension by running SQL query to the oskaridb database:
-
-    CREATE EXTENSION postgis;
-
+```
 
 #### Setup a database user for oskaridb
 
 Run these commands to create default user with all privileges
 
+```sql
 	CREATE USER oskari WITH PASSWORD 'oskari';
-	GRANT ALL PRIVILEGES ON DATABASE oskaridb to oskari;
+	GRANT ALL PRIVILEGES ON DATABASE oskaridb TO oskari;
+```
 
-The preconfigured database user in Oskari example application is `oskari` with the password `oskari`.
-See [Setup Jetty](00030-SetupJetty.md) documentation for details where changes are needed when using another database user.
+The preconfigured database user in Oskari example application is `oskari` with the password `oskari` (configurable in `oskari-ext.properties` file).
+
+Some versions of PostgreSQL might also need you to run:
+
+```sql
+	GRANT ALL PRIVILEGES ON SCHEMA public TO oskari;
+```
+If you see error messages like this when starting the server: `Message: ERROR: permission denied for schema public` you need to add privileges for the schema as well.
+For production environments you can define lesser privileges for the database user, however the migration scripts (run on version updates) can create, drop or alter tables on the database so you will need to allow these. It is also possible to run the migrations required on server updates with a user that has more privileges while using another user with lesser prileges for operational use.
 
 #### Application initialization and database content
 
-The empty database will be populated when the oskari-server is started for the first time. The database population is split into modules. The core module creates and migrates the main database tables used by Oskari. The default configuration has a module named "example" enabled that will populate an example app and maplayer to get a nice unboxing experience. You should replace "example" module with your own app configuration and content for anything other than basic development and playing around.
+The empty database will be populated with table structure and example data when the application server is started for the first time using automatic migrations. The database migrations are split into modules. The core module creates and migrates the main database tables used by Oskari. The example configuration has a module named `app` enabled (in `oskari-ext.properties`) that will populate initial example data to get a nice unboxing experience. Changing or replacing the `app` module is the intended way of customizing any application specific migrations and possible intial data/users. Note that migrations are run only once so making changes to existing migration files and restarting the application server requires an empty database (or removing related rows on the migration status database tables). However the migrations follow versioning through naming so you can add migrations to modify an existing database by naming the migrations in a certain way.
 
 To learn how to customize Oskari including populating the database with your own content instead of example content see:
 * [Create a custom Oskari-server extension](../8 Developing instructions/00150-HowToCreateACustomOskariServerExtension.md)
