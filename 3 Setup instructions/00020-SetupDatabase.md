@@ -26,11 +26,11 @@ The default configurations assume the database name is `oskaridb` (configurable 
 Run the create database SQL in for example psql or pgAdmin (see if they were installed in the PostgreSQL installation package):
 
 ```sql
-     CREATE DATABASE oskaridb
-     WITH OWNER = postgres
-       ENCODING = 'UTF8'
-       TABLESPACE = pg_default
-       CONNECTION LIMIT = -1;
+CREATE DATABASE oskaridb
+WITH OWNER = postgres
+  ENCODING = 'UTF8'
+  TABLESPACE = pg_default
+  CONNECTION LIMIT = -1;
 ```
 
 Connect to the database with `\c oskaridb` in psql or by opening the query tool on pgAdmin or similar for the `oskaridb` database.
@@ -38,7 +38,7 @@ Connect to the database with `\c oskaridb` in psql or by opening the query tool 
 Run this SQL on the database to add the PostGIS extension:
 
 ```sql
-    CREATE EXTENSION postgis;
+CREATE EXTENSION postgis;
 ```
 
 #### Setup a database user for oskaridb
@@ -46,8 +46,8 @@ Run this SQL on the database to add the PostGIS extension:
 Run these commands to create default user with all privileges
 
 ```sql
-	CREATE USER oskari WITH PASSWORD 'oskari';
-	GRANT ALL PRIVILEGES ON DATABASE oskaridb TO oskari;
+CREATE USER oskari WITH PASSWORD 'oskari';
+GRANT ALL PRIVILEGES ON DATABASE oskaridb TO oskari;
 ```
 
 The preconfigured database user in Oskari example application is `oskari` with the password `oskari` (configurable in `oskari-ext.properties` file).
@@ -55,7 +55,7 @@ The preconfigured database user in Oskari example application is `oskari` with t
 Some versions of PostgreSQL might also need you to run:
 
 ```sql
-	GRANT ALL PRIVILEGES ON SCHEMA public TO oskari;
+GRANT ALL PRIVILEGES ON SCHEMA public TO oskari;
 ```
 If you see error messages like this when starting the server: `Message: ERROR: permission denied for schema public` you need to add privileges for the schema as well.
 For production environments you can define lesser privileges for the database user, however the migration scripts (run on version updates) can create, drop or alter tables on the database so you will need to allow these. It is also possible to run the migrations required on server updates with a user that has more privileges while using another user with lesser prileges for operational use.
