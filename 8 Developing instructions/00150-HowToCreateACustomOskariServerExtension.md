@@ -4,9 +4,9 @@ This document describes how to use maven artifacts provided in Oskari Maven repo
 
 ### Requirements
 
-* JDK 8
-* [Maven 3+](http://maven.apache.org/) (developed using 3.5.0)
-* [Jetty bundle](/download) installed
+* JDK 17
+* [Maven 3+](http://maven.apache.org/) (developed using 3.6.3)
+* [Tomcat bundle](/download) installed
 
 #### Template maven project
 
@@ -14,26 +14,26 @@ This document describes how to use maven artifacts provided in Oskari Maven repo
 
 #### Start modifying the content
 
-- Edit the `pom.xml`s to change the groupId/artifactId and [oskari.version](https://github.com/oskariorg/sample-server-extension/blob/1.2.1/pom.xml#L13).
+- Edit the `pom.xml`s to change the groupId/artifactId and [oskari.version](https://github.com/oskariorg/sample-server-extension/blob/2.0.0/pom.xml#L13).
 - Edit the `pom.xml`s to add/change the included dependencies
-- The [app-resources](https://github.com/oskariorg/sample-server-extension/tree/1.2.1/app-resources) contain configurations what functionalities, users, map layers and other content to initialize for the Oskari-based server.
-- Edit the [geoportal.jsp](https://github.com/oskariorg/sample-server-extension/blob/1.2.1/webapp-map/src/main/webapp/WEB-INF/jsp/geoportal.jsp) under webapp-map to modify the base HTML.
-- Create your own action routes like [MyAction](https://github.com/oskariorg/sample-server-extension/blob/1.2.1/app-specific-code/src/main/java/org/oskari/example/MyActionHandler.java) under server-extension.
+- The [app-resources](https://github.com/oskariorg/sample-server-extension/tree/2.0.0/app-resources) contain configurations what functionalities, users, map layers and other content to initialize for the Oskari-based server.
+- Edit the [geoportal.jsp](https://github.com/oskariorg/sample-server-extension/blob/2.0.0/webapp-map/src/main/webapp/WEB-INF/jsp/geoportal.jsp) under webapp-map to modify the base HTML.
+- Create your own action routes like [MyAction](https://github.com/oskariorg/sample-server-extension/blob/2.0.0/app-specific-code/src/main/java/org/oskari/example/MyActionHandler.java) under server-extension.
 
 The Oskari dependencies are downloaded from oskari.org Maven repository:
-```
- 	<repositories>
-        <repository>
-            <id>oskari_org</id>
-            <name>Oskari.org release repository</name>
-            <url>https://oskari.org/nexus/content/repositories/releases/</url>
-        </repository>
-        <repository>
-            <id>oskari_org_snapshot</id>
-            <name>Oskari.org snapshot repository</name>
-            <url>https://oskari.org/nexus/content/repositories/snapshots/</url>
-        </repository>
- 	</repositories>
+```xml
+<repositories>
+    <repository>
+        <id>oskari_org</id>
+        <name>Oskari.org release repository</name>
+        <url>https://oskari.org/nexus/content/repositories/releases/</url>
+    </repository>
+    <repository>
+        <id>oskari_org_snapshot</id>
+        <name>Oskari.org snapshot repository</name>
+        <url>https://oskari.org/nexus/content/repositories/snapshots/</url>
+    </repository>
+</repositories>
 ```
 
 #### Build

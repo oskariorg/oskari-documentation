@@ -67,15 +67,19 @@ Requirements for new bundles to the core
 
 **WRONG:**
 
-    jQuery('<input type="text" name="name" />');
-    jQuery('<input type="text" id="searchfield" />');
-    jQuery('#searchfield').val();
+```javascript
+jQuery('<input type="text" name="name" />');
+jQuery('<input type="text" id="searchfield" />');
+jQuery('#searchfield').val();
+```
 
 **RIGHT:**
 
-    jQuery('<input type="text" data-name="name" />');
-    jQuery('<div class="search-mainpanel"><input type="text" class="searchfield" /></div>');
-    jQuery('.search-mainpanel .searchfield').val();
+```javascript
+jQuery('<input type="text" data-name="name" />');
+jQuery('<div class="search-mainpanel"><input type="text" class="searchfield" /></div>');
+jQuery('.search-mainpanel .searchfield').val();
+```
 
 #### Bundles 
 
@@ -90,14 +94,17 @@ Bundles should not have hard coded references to any backend etc. outside source
 
 **WRONG:**
     
-    $('<button onclick="myglobal.myinstance.someMethod()"></button>');
-
+```javascript
+$('<button onclick="myglobal.myinstance.someMethod()"></button>');
+```
 **RIGHT:**
-    
-    var btn = jQuery('button.myButton')
-    btn.bind('click', function() {
+
+```javascript
+var btn = jQuery('button.myButton')
+btn.bind('click', function() {
     myinstance.someMethod();
-    });
+});
+```
 
 ### User interface
 - Use template variables for defining DOM elements in class and build UI for the bundle by cloning them
@@ -111,16 +118,18 @@ Bundles should not have hard coded references to any backend etc. outside source
 
 You should comment your Oskari classes in a format recognized by the API generator tool [YUIDoc](https://yui.github.io/yuidoc/):
 
-    /*
-     * Returns a 'foobared' string.
-     *
-     * @method fooBar
-     * @param {String} arg
-     * @return {String} returns the argument prefixed with 'foo' and postfixed with 'bar'
-     */
-    function fooBar(arg) {
-        return 'foo ' + arg + ' bar';
-    }
+```javascript
+/*
+    * Returns a 'foobared' string.
+    *
+    * @method fooBar
+    * @param {String} arg
+    * @return {String} returns the argument prefixed with 'foo' and postfixed with 'bar'
+    */
+function fooBar(arg) {
+    return 'foo ' + arg + ' bar';
+}
+```
 
 ### Server
 
