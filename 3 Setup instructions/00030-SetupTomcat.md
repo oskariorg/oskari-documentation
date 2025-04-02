@@ -20,7 +20,7 @@ The following are required for setting up Jetty.
 
 Follow the steps below to get Tomcat properly set up.
 
-1\) Download the [Oskari installation](/download)
+1\) Download the [Oskari example](/download)
 
 2\) Unpack the zip file to selected location
 
@@ -42,7 +42,7 @@ The zip includes
 
 By running the command (in `{tomcat.base}`):
 - `server.bat start` for Windows OR
-- `server.sh start` for *nix-based OS (or Windows WSL)
+- `server.sh start` for *nix-based OS (Ubuntu, MacOS, Windows WSL etc)
 
 Note that for folder references it's important where you run the command/what is the working directory so run the command in the `oskari-server` folder.
 The scripts are for convenience only, you could download Tomcat from their site and use that to run Oskari. Separating `{tomcat.base}` and `{tomcat.home}` is useful
