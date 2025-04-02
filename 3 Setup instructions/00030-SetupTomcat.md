@@ -1,6 +1,6 @@
-## Setup Tomcat
+## Setup application server
 
-This section contains instructions on setting up an instance from a downloaded Tomcat package with pre-installed/configured Oskari
+This section contains instructions on setting up a Java application server for Oskari using the [download](/download) package with Tomcat and pre-installed/configured Oskari
 
 **For setting up an Oskari instance from source code skip this section and move to** [Setup development environment](00040-SetupDevelopmentEnvironment.md)
 
@@ -20,7 +20,7 @@ The following are required for setting up Jetty.
 
 Follow the steps below to get Tomcat properly set up.
 
-1\) Download the [Tomcat Bundle](/download)
+1\) Download the [Oskari example](/download)
 
 2\) Unpack the zip file to selected location
 
@@ -38,13 +38,25 @@ The zip includes
     db.username=[user]
     db.password=[passwd]
 
-4\) Startup the Jetty by running (in `{tomcat.base}`)
+4\) Startup the Tomcat
 
-    java -jar ../jetty-distribution-9.4.12.v20180830/start.jar
+By running the command (in `{tomcat.base}`):
+- `server.bat start` for Windows OR
+- `server.sh start` for *nix-based OS (Ubuntu, MacOS, Windows WSL etc)
 
-Note that for folder references it's important where you run the command/what is the working directory so run the command in oskari-server folder and refer to start.jar under the {jetty.home}:
+Note that for folder references it's important where you run the command/what is the working directory so run the command in the `oskari-server` folder.
+The scripts are for convenience only, you could download Tomcat from their site and use that to run Oskari. Separating `{tomcat.base}` and `{tomcat.home}` is useful
+ if you want to use Tomcat binaries as shared library (the `{tomcat.home}` folder) and have multiple different Oskari-based applications with their own config and code on their own Tomcat instances.
+ You can add parallel instances by just making copies of the `{tomcat.base}` and changing their configurations.
 
-5\) After Jetty is up and running open a browser with URL
+ The main configurations you might want to take a look at under `{tomcat.base}` when setting up a different setup are:
+ - eveything under `lib/*` with the most important file being `lib/oskari-ext.properties`. This is the main configuration file and is searched from the Java classpath on server startup.
+ - context XML-files under `conf/Catalina/localhost/*.xml`
+ - log files are generated under the `logs` folder
+
+ The zip has `sample-application` and `oskari-map.war` as the actual applications that are served from Tomcat. These are referenced in the `conf/Catalina/localhost/*.xml` files. If you want to have the files somewhere else, you can modify the XML-files to use some other location.
+
+5\) After Tomcat is up and running open a browser with URL
 
     http://localhost:8080
 
