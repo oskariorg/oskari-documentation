@@ -24,19 +24,22 @@ Follow the steps below to get Tomcat properly set up.
 
 2\) Unpack the zip file to selected location
 
-The zip includes 
+The zip includes:
+
 * Readme.md
-* oskari-map.war
 * licence folder
-* sample-application folder
+* oskari-map.war as prebuilt server application
+* sample-application folder with the prebuilt frontend application code
 * apache-tomcat-10.1.39 (referred as `{tomcat.home}`)
 * oskari-server folder (referred as `{tomcat.base}`) 
 
 3\) Configure the database properties (host/credentials) by editing `{tomcat.base}/lib/oskari-ext.properties`
 
-    db.url=jdbc:postgresql://[host]:[port]/[dbname]
-    db.username=[user]
-    db.password=[passwd]
+```properties
+db.url=jdbc:postgresql://[host]:[port]/[dbname]
+db.username=[user]
+db.password=[passwd]
+```
 
 4\) Startup the Tomcat
 
@@ -44,10 +47,9 @@ By running the command (in `{tomcat.base}`):
 - `server.bat start` for Windows OR
 - `server.sh start` for *nix-based OS (Ubuntu, MacOS, Windows WSL etc)
 
-Note that for folder references it's important where you run the command/what is the working directory so run the command in the `oskari-server` folder.
-The scripts are for convenience only, you could download Tomcat from their site and use that to run Oskari. Separating `{tomcat.base}` and `{tomcat.home}` is useful
- if you want to use Tomcat binaries as shared library (the `{tomcat.home}` folder) and have multiple different Oskari-based applications with their own config and code on their own Tomcat instances.
- You can add parallel instances by just making copies of the `{tomcat.base}` and changing their configurations.
+Note that it's important where you run the command/what is the working directory so run the command in the `oskari-server` folder. Otherwise folder references in those scripts might not work as expected.
+The scripts are for convenience only, you could download Tomcat from their [site](https://tomcat.apache.org/) and use that to run Oskari. Separating `{tomcat.base}` and `{tomcat.home}` is useful if you want to use Tomcat binaries as shared library
+ (the `{tomcat.home}` folder) and have multiple different Oskari-based applications with their own config and code on their own Tomcat instances. You can add parallel instances by just making copies of the `{tomcat.base}` and changing their configurations.
 
  The main configurations you might want to take a look at under `{tomcat.base}` when setting up a different setup are:
  - eveything under `lib/*` with the most important file being `lib/oskari-ext.properties`. This is the main configuration file and is searched from the Java classpath on server startup.
@@ -60,11 +62,12 @@ The scripts are for convenience only, you could download Tomcat from their site 
 
     http://localhost:8080
 
-
 You can login as:
 - user with username "user" and password "user"
 - admin with username "admin" and password "oskari"
 
+Note! These default users are introduced in the database migration module for the example application (sample-server-extension) and publicly advertized on the sample-info bundle in the sample-application (frontend repository). You should change/remove these for any applications you create based on the example setup.
+
 #### Advanced configuration
 
-For further configuration check out [Advanced jetty configuration](00070-AdvancedJettyConfiguration.md)
+For further configuration check out [Server configuration](00070-ServerConfiguration.md)
