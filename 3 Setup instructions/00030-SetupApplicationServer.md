@@ -2,9 +2,7 @@
 
 This section contains instructions on setting up a Java application server for Oskari using the [download](/download) package with Tomcat and pre-installed/configured Oskari
 
-**For setting up an Oskari instance from source code skip this section and move to** [Setup development environment](00040-SetupDevelopmentEnvironment.md)
-
-After completing this section you will have Oskari running, including:
+After completing this section you will have the Oskari-based example application running, including:
 
 - Oskari-frontend based sample-application (https://github.com/oskariorg/sample-application)
 - Oskari-server based sample webapp (https://github.com/oskariorg/sample-server-extension)
@@ -20,7 +18,7 @@ The following are required for setting up Jetty.
 
 Follow the steps below to get Tomcat properly set up.
 
-1\) Download the [Oskari example](/download)
+1\) Download the [Oskari example application](/download)
 
 2\) Unpack the zip file to selected location
 
