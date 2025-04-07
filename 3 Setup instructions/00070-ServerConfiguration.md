@@ -3,7 +3,7 @@
 
 #### Default configuration
 
-The preconfigured Jetty uses these defaults. These can be changed by modifying `{tomcat.base}/lib/oskari-ext.properties`.
+The preconfigured Tomcat uses these defaults. These can be changed by modifying `{tomcat.base}/lib/oskari-ext.properties`.
 
 Redis:
 - running on localhost
