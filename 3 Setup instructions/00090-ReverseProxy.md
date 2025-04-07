@@ -1,8 +1,8 @@
 ### Configuring a reverse proxy (Optional)
 
-This guide gives an example for configuring a reverse proxy for Oskari-server.
+This guide gives an example for configuring a reverse proxy in front of an Oskari-based application.
  You can use software such as [nginx](https://nginx.org/) or [Apache httpd](https://httpd.apache.org/) or similar for this and use the chosen server to serve the static frontend application files as well.
- The server can function as a load balancer or just as a dummy proxy that decides to answer with a static file for the frontend application or proxy the request to the underlying application server.
+ The server can function as a load balancer or just as a dummy proxy that decides to respond with static files for the frontend application or proxy the request to the underlying application server.
 
 *Using a reverse proxy is not required for development, but is recommended for production use*
 
@@ -103,7 +103,6 @@ This can be changed by modifying these lines:
 upstream oskariserver {
     server localhost:8080;
 }
-
 ```
 
 ##### Protecting cookies
