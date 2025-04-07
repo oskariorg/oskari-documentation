@@ -38,42 +38,53 @@ Related database tables are:
 
 2\) Editing article content
 
-- User guide: edit the file in {jetty.base}/resources/articlesByTag/userguide.html
-- Publisher terms of use: edit the file in {jetty.base}/resources/articlesByTag/termsofuse__mappublication__en.html
+- User guide: edit the file in `{tomcat.base}/lib/articlesByTag/userguide.html`
+- Publisher terms of use: edit the file in `{tomcat.base}/lib/articlesByTag/termsofuse__mappublication__en.html`
 
 3\) Changing the default port**
 
-- provide port in command line:
+Change `{tomcat.base}/conf/server.xml` where ever `8080` is referenced in [here](
+https://github.com/oskariorg/sample-configs/blob/master/tomcat-10/oskari-server/conf/server.xml)
 
-    java -jar ${jetty.home}/start.jar jetty.http.port=8080
-
-- change `{jetty.base}/resources/oskari-ext.properties` where ever `8080` is referenced
+```xml
+<Connector port="8080" protocol="HTTP/1.1"
+			connectionTimeout="20000"
+			redirectPort="8080"
+			maxParameterCount="1000"
+			relaxedQueryChars="|"
+			scheme="https" secure="true"
+			parseBodyMethods="POST,PUT" 
+			/>
+```
 
 4\) Proxy settings
 
-If you need a proxy to access internet you can configure it in `{jetty.base}/start.d/oskari.ini`
+If you need a proxy to access internet you can pass the configuration in the application server command line start commaned with:
+```
+-Dhttp.proxyHost=
+-Dhttp.proxyPort=
+-Dhttp.nonProxyHosts=
+-Dhttps.proxyHost=
+-Dhttps.proxyPort=
+-Dhttps.nonProxyHosts=
+```
 
-	-Dhttp.proxyHost=
-	-Dhttp.proxyPort=
-	-Dhttp.nonProxyHosts=
-	-Dhttps.proxyHost=
-	-Dhttps.proxyPort=
-	-Dhttps.nonProxyHosts=
+In the [Oskari download](/download) the `variables.sh` holds placeholder for configuring [proxy settings](https://github.com/oskariorg/sample-configs/blob/master/tomcat-10/oskari-server/variables.sh)
 
 5\) Database url/name/user/pass are changed
-`{jetty.base}/resources/oskari-ext.properties` needs to be updated
+`{tomcat.base}/lib/oskari-ext.properties` needs to be updated
 
-	db.url=jdbc:postgresql://[host]:[port]/[dbname]
-	db.username=[user]
-	db.password=[passwd]
+```properties
+db.url=jdbc:postgresql://[host]:[port]/[dbname]
+db.username=[user]
+db.password=[passwd]
+```
 
 5\) Using external Redis
-`{jetty.base}/resources/oskari-ext.properties` needs to be updated
+`{tomcat.base}/lib/oskari-ext.properties` needs to be updated
 
-	redis.hostname=localhost
-	redis.port=6379
-	redis.pool.size=10
-
-6\) How the Jetty bundle was built
-
-See the Howto.md inside the zip-file for details
+```properties
+redis.hostname=localhost
+redis.port=6379
+redis.pool.size=10
+```
