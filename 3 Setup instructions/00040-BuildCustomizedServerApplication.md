@@ -3,19 +3,20 @@
 This section describes how to replace the prebuilt server side webapp with your own version.
 This is the intended way of customizing Oskari-based applications.
 
-### Requirements
+### Server requirements
 
 The following items are required for the development process:
 
 * JDK 17
-* [Maven 3+](http://maven.apache.org/) (developed using 3.6.3)
-* [Git client](http://git-scm.com/) (optional)
+* [Maven 3+](https://maven.apache.org/) (developed using 3.6.3)
+* [Git client](https://git-scm.com/) (optional)
+* [GitHub account](https://github.com/) (optional)
 
 You will need an environment to run the code in as described on [Setup application server](00030-SetupApplicationServer.md)
 
 Feel free to use the [git conventions](../8 Developing instructions/00115-GitGuidelines.md) used in Oskari development with your own customizations, but it's your app so you can make your own choices.
 
-### Create your application repository
+### Create your server application repository
 
 You can use our `sample-server-extension` template for creating a repository that will have your application customizations under your own GitHub user/organization:
 https://github.com/new?template_name=sample-server-extension&template_owner=oskariorg
@@ -54,3 +55,13 @@ These are some easy to test modifications to see that your server application ha
 
 **Note!**  When you change something in the code, you need to recompile/build a new version of `oskari-map.war` and deploy the new version on the server.
 If you change anything on the initial data/migrations you need to drop the database and create a new empty one. To migrate the content from it's initial state you can _add new migrations_ that will be run on an existing database, but modifying ones that have already been executed on the database will not be rerun on a non-empty database.
+
+### WAR-file location
+
+If you want to use the war-file from another location you can change the reference to the war-file. This can be changed in `oskari-server/conf/Catalina/localhost/ROOT.xml`
+([https://github.com/oskariorg/sample-configs/blob/master/tomcat-10/oskari-server/conf/Catalina/localhost/ROOT.xml](here)) by changing the value of `docBase`:
+
+```xml
+<Context docBase="../../oskari-map.war" reloadable="true" />
+```
+For development it's easiest to have it reference the `{your.git.repo.root}/webapp-map/target/oskari-map.war` directly so it will be redeployed as soon as you compile a new version without need to copy the file around.
