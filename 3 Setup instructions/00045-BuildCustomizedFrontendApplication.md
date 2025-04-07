@@ -68,10 +68,10 @@ Where the version in `oskari-ext.properties` must match the folder where the fro
 An easy way of seeing a `Hello world` type of modification is adding something like `console.log("Hello world")` in the `start()` function of the [SampleInfoBundleInstance.js](https://github.com/oskariorg/sample-application/blob/master/bundles/sample-info/SampleInfoBundleInstance.js).
 
 Unfortunately any change to the frontend requires a build to be run to see the changes updated. To help with this the frontend offers the option to use Webpack dev-server by running `npm run start` instead of `npm run build`.
-The dev-server starts serving the frontend files from http://localhost:8081 and requires the server to respond from http://localhost:8080. It also requires that the server is configured to use this client version in `oskari-server/lib/oskari-ext.properties`:
+The dev-server starts serving the frontend files from http://localhost:8081 and requires the server to respond from http://localhost:8080. It also requires that the server is configured to use this client version in `oskari-server/lib/oskari-ext.properties` (as opposed to version from package.json):
 
 ```properties
-oskari.client.version=dist/2.0.0
+oskari.client.version=dist/devapp
 ```
 **Note!** Changes to `oskari-ext.properties` requires the server to restart to take effect.
 
