@@ -12,15 +12,14 @@ C4Deployment
 
 Person(user, "User", "")
 
-Boundary(service, "Oskari-based service", ""){
+Boundary(service, "Oskari-based service", "") {
     Boundary(frontend, "Web server", "nginx/httpd"){
         Component(sample-app, "sample-application", "Javascript")
     }
-    Boundary(server, "Servlet container", "tomcat/jetty"){
-            Component(sample-server, "sample-server-extension", "Java")
-
+    Boundary(server, "Servlet container", "tomcat/jetty") {
+        Component(sample-server, "sample-server-extension", "Java")
     }
-    Boundary(db, "Databases", ""){
+    Boundary(db, "Databases", "") {
         ContainerDb(postgres, "PostgreSQL", "PostGIS/SQL", "Application config and user data")
         ContainerDb(redis, "Redis", "", "Caching")
     }
