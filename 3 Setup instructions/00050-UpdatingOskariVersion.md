@@ -14,7 +14,7 @@ Before updating, the following links are recommended to at least skim through:
 
 In most cases updating Oskari version means:
 1. updating the version of Oskari dependency for the frontend and server and 
-2. building new versions of your app/server 
+2. building new versions of your frontend app/server
  
 Sometimes there are additional things that need to be done when updating. These are documented on [the Migration Guide in oskari-server repository](https://github.com/oskariorg/oskari-server/blob/master/MigrationGuide.md).
 
