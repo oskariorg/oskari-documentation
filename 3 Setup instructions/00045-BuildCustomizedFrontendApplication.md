@@ -34,8 +34,10 @@ Note! The sample application, including its source code and build, is available 
 
 ### Build your version of the frontend application
 
+Modern web applications are developed using JavaScript syntax that is not fully supported by older browsers and the code needs to be processed before it can be used by the end-user browsers. This step also includes bundling and minifying the code so it's more compact for consumption than the human-friendly version that is used for development. This will reduce the startup time for the end-user dramatically.
+
 1) Go to the root folder of the repository (`cd sample-application`)
-2) On the first time run `npm install` to install dependencies
+2) On the first time (or after you have updated Oskari version) run `npm install` to install dependencies
 3) Run the npm command to generate new build product:
 
 ```sh
@@ -75,4 +77,14 @@ oskari.client.version=dist/devapp
 ```
 **Note!** Changes to `oskari-ext.properties` requires the server to restart to take effect.
 
-The dev-server provides the changed version after automatic page reloading so it's much more convenient to use for development than running the build after every change.
+The dev-server provides the changed version after automatic page reloading so it's much more convenient to use for development than running the build after every change, but it's not perfect so if you don't see your changes you might need to restart the dev-server during development.
+
+#### Frontend build details
+
+The build scripts work by reading a `main.js` file that links all the functionality/bundles you want to use in your application together and should match the appsetup (bundle collection) used on the website you are creating including any dynamic (role-based) bundles that are added on the fly. So basically all the bundles you want to use in that application. Here's an example for the basic [geoportal appsetup](https://github.com/oskariorg/sample-application/blob/2.0.0/applications/geoportal/main.js) and for an [embedded map](https://github.com/oskariorg/sample-application/blob/2.0.0/applications/embedded/main.js). These are both processed when running `npm run build`. Note that linking the bundles to be part of the frontend application in `main.js` only includes the functionalities that _CAN_ be used in an application. The server/database configurations dictates which of the functionalitise that have been included is actually started for a given application. This allows for example admin-bundles to be shown only when the user has the admin role, but also allows reusing the same frontend application to show different kinds of applications based on the database configuration. For example using the same `embedded` application for all different kinds of published maps where end-users can select through a browser-based UI which functionalities will be included in any given embedded map.
+
+If you take a look at the package.json [script for build](https://github.com/oskariorg/sample-application/blob/2.0.0/package.json#L22) you can see that the parameter `--env appdef=applications` is used to point the build to search for main.js files under the `applications` folder. You can change this in your own app as you wish.
+
+The best point to start customizing your app is changing the `main.js` file under the sample `geoportal` application to only include the bundles that you are using. This reduces the amount of code the end-user needs to load. You can also safely remove the 3D applications if you don't need them. The `embedded` application (code for published maps) usually stays more or less the same and the `geoportal` one is usually customized based on requirements.
+
+When changing `main.js` to include application specific bundles and/or customizing the application you need to run `npm run build` again to create new build product under the `dist` folder. You will also need to do this when updating the new version of Oskari or after changing any application specific code/bundles you want to use.
