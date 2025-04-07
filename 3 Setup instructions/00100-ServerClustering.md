@@ -4,9 +4,8 @@ Oskari server can be used in a clustered environment setup.
 A server cluster can be used to increase availability, reliability and scalability and help
 deal with software crashes/hardware failures etc in the system.
 
-A simple clustered environment can be set up by having 1-n Jetty-servers (or Tomcat etc) running Oskari-server based webapp and having a load balancer
-like nginx as a an entrypoint that forwards requests to the Jetty-instances. The requests can be forwarded in a round-robin fashion. "Sticky sessions"
- are not required but could benefit debugging etc (see Identified challenges).
+A simple clustered environment can be set up by having 1-n application servers (Tomcat/Jetty etc) running Oskari-server based webapp and having a load balancer
+like nginx or Apache httpd as a an entrypoint that forwards (and even load-balances) requests to the application servers. The requests can be forwarded in a round-robin fashion. "Sticky sessions" are not required but could benefit debugging etc (see Identified challenges).
 
 Currently this means:
 - User sessions can be saved/tracked in Redis (shared between nodes)
@@ -17,9 +16,9 @@ Note! A "cluster" with just one server instance still means persistent sessions 
 
 #### Enabling cluster handling
 
-Clustered environment handling is enabled with `oskari.profiles` in `oskari-ext.properties`:
+Clustered environment handling is enabled with the `oskari.profiles` key in `oskari-ext.properties`:
 
-```
+```properties
 # Comma-separated list of profiles to activate.
 oskari.profiles=redis-session
 ```
@@ -37,11 +36,11 @@ boolean isClustered = org.oskari.cluster.ClusterManager.isClustered();
 
 ##### Messaging
 
-Calling `ClusterManager.getClientFor([functionality id])` returns a `ClusterClient` instance that is created on first call and shared between returning calls. This keeps the number of Redis-connections manageable. The `ClusterClient` can be used to send messages and listen to messages. The `ClusterManager` handles that messages from the same instance are not received by listeners of that same instance. `ClusterClient` handles that messages from other functionalities on the same instance are not received by other functionalities for example "cache" functionality doesn't receive messages from "logger" functionality making it easier to handle messages based on the functionality.
+Calling `ClusterManager.getClientFor([functionality id])` returns a `ClusterClient` instance that is created on first call and shared between returning calls. This keeps the number of Redis-connections manageable. The `ClusterClient` can be used to send messages and listen to messages between cluster nodes (application server instances). The `ClusterManager` handles that messages from an instance is not received by listeners of that same instance. `ClusterClient` handles message scoping so messages from one functionality are not received by other functionalities. For example "cache" functionality doesn't receive messages from "logger" functionality making it easier to handle messages based on the functionality.
 
 For example `cache` is used by Oskari cache classes as functionality id.
 
-Messaging also has a `channel` that can be used to further filter messages for specific listeners. Channel could be considered an event name for usual event based code. In the cache functionality `channel` is used to identify the cache instance (maplayer, dataprovider etc).
+Messaging also has a `channel` concept that can be used to further filter messages for specific listeners. Channel could be considered an event name for usual event based code. In the cache functionality `channel` is used to identify the cache instance (maplayer, dataprovider etc).
 
 ##### Sending messages
 
@@ -66,7 +65,7 @@ ClusterManager
     .getClientFor(functionalityId)
     .addListener(channel, (msg) -> handleClusterMsg(msg));
 ```
-The `handleClusterMsg()` will receive the `REM:1` message from the above example and in the case of caches will remove the value with key 1 from the cache. Note that channel is used to identify the cache so only the `maplayer` cache would remove the item with key 1, not for example a cache for dataproviders.
+The `handleClusterMsg()` will receive the `REM:1` message from the above example and in the case of caches will remove/flush the value with key 1 (maplayer id used as cache key) from the cache so an updated version is loaded from the database when it's next requested.. Note that channel is used to identify the cache so only the `maplayer` cache would remove the item with key 1, not for example a cache for dataproviders.
 
 ##### Identified challenges
 
