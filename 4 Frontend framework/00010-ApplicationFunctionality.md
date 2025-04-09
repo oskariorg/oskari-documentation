@@ -1,3 +1,3 @@
 # Frontend framework
 
-This documentation section contains documentation of some of the functionalities of Oskari frontend.
+This documentation section contains documentation for the frontend framework that Oskari frontend provides and what it means for applications that are built using oskari-frontend.

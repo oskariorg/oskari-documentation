@@ -1,6 +1,6 @@
 ## Oskari global and sandbox
 
-The Oskari frontend framework functionality is located in the `/src` folder in [oskari-frontend](https://github.com/oskariorg/oskari-frontend/tree/master/src).
+The Oskari frontend framework functionality is located in the `/src` folder in [oskari-frontend repository](https://github.com/oskariorg/oskari-frontend/tree/master/src).
 The folder also includes React.js based UI-component library (based on AntD-components).
 
 ### Oskari global
@@ -8,15 +8,30 @@ The folder also includes React.js based UI-component library (based on AntD-comp
 A global `Oskari` variable is introduced for Oskari frontend applications to access the framework functionalities.
 
 It provides some functionalities that applictions can use (bundles usually) like:
-- application environment like supported languages, current language and application UI theme
-- bundle registry
-- sandbox registry (see below)
-- bundle lifecycle handling
-- tracking of current user
-- access to localizations
-- class system (being migrated away in favor of ES-classes)
-- helper functions for colors etc
-- logging functionality
+- application environment like:
+    - current language `Oskari.getLang()`
+    - supported languages `Oskari.getSupportedLanguages()` and `Oskari.getDefaultLanguage()`
+    - setup configuration `Oskari.app.getApplicationSetup()`
+    - type `Oskari.app.getType()` and uuid `Oskari.app.getUuid()`
+    - theme `Oskari.app.getTheming().getTheme()` and `setTheme()`
+- instance customization:
+    - marker selection `Oskari.getMarkers()` and `Oskari.getDefaultMarker()`
+    - default app setups `Oskari.app.getSystemDefaultViews()`
+    - urls `Oskari.urls.getRoute('route name')`
+- bundle registry `Oskari.bundle()` and `Oskari.lazyBundle()`
+- sandbox registry (see below) `Oskari.getSandbox()`
+- app/bundle lifecycle handling `Oskari.on('bundle.start')` and `Oskari.on('app.start')`
+- tracking of current user `Oskari.user()`
+- access to localizations `Oskari.getMsg(locId, locKey, params)`
+- class system (being migrated away in favor of ES-classes) `Oskari.clazz.define()` and `.create()`
+- helper functions:
+    - for colors etc `Oskari.util.hexToRgb('#FFAA33')`
+    - number formatting `Oskari.getNumberFormatter()`
+    - coordinate formatting `Oskari.util.coordinateMetricToDegrees()`
+    - sequence tracking `Oskari.getSeq('sequenceId').curVal()` and `.nextVal()`
+    - url building `Oskari.urls.buildUrl('https://mydomain/path', {param: 'value'})`
+- DOM element helpers like `Oskari.dom.getNavigationEl()`
+- logging functionality `Oskari.log('loggername').warn('some warning')`
 
 ### Sandbox
 
