@@ -1,6 +1,6 @@
 ## Oskari global and sandbox
 
-The Oskari frontend framework functionality is located in the `/src` folder in [oskari-frontend repository](https://github.com/oskariorg/oskari-frontend/tree/master/src).
+The Oskari frontend framework functionality is located in the `src` folder in [oskari-frontend repository](https://github.com/oskariorg/oskari-frontend/tree/master/src).
 The folder also includes React.js based UI-component library (based on AntD-components).
 
 ### Oskari global
