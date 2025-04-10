@@ -37,10 +37,17 @@ It provides some functionalities that applictions can use (bundles usually) like
 
 Sandbox is:
 - event/message bus for frontend bundles to communicate through requests and events etc
-- registry for modules (~bundle instances except bundle can have many "modules")
-- registry for services (bundles that expose their services for other bundles to use)
-- conveniency getters for map state
-- functionality context
+    - `sandbox.postRequestByName('AddMapLayerRequest', [...params]);`
+    - `sandbox.notifyAll(someEvent)`
+    - `sandbox.addRequestHandler(someReqName, someHandler)`
+    - `sandbox.registerForEventByName('AfterMapLayerAddEvent')`
+- registry for modules `sandbox.register(this)` (required for listening to events)
+    - `sandbox.findRegisteredModuleInstance()`
+- registry for services `sandbox.registerService(someService)` and `sandbox.getService(serviceName)`
+- conveniency getters for map state:
+    - `sandbox.getMap()`
+    - `sandbox.findAllSelectedMapLayers()`
+- functionality context for scoping events/requests
 
 There can be multiple sandboxes in an Oskari frontend application to scope messaging, but most commonly there is just one that can be accesssed with `Oskari.getSandbox()`.
  The function takes a string-parameter enabling multiple sandbox instances to be used but it's very uncommon to use other than the default sandbox.
