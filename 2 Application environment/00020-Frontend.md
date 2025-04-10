@@ -72,8 +72,8 @@ Just to get summary of licenses you can add --summary after the command:
 
 The frontend for Oskari-based applications can be divided into two (or more) parts:
 - the application that can be customized for a specific need
-- oskari-frontend that provides the frontend framework, built-in UI-component library and bundles that can be used as building blocks when creating applications.
-- you can also use bundles from oskari-frontend-contrib repository like ones from oskari-frontend and/or another third party repository
+- `oskari-frontend` that provides the frontend framework, built-in UI-component library and bundles that can be used as building blocks when creating applications.
+- you can also use bundles from `oskari-frontend-contrib` repository like ones from oskari-frontend and/or another third party repository
 
 You can find an Oskari-based sample application source code [here](https://github.com/oskariorg/sample-application).
 
@@ -86,24 +86,4 @@ The applications folder has for example `geoportal` and `embedded` as applicatio
  For the sample-application the `geoportal` is what you expect to see when opening the Oskari application and lists all the bundles that will be used on different `geoportal` views on the example application (https://demo.oskari.org etc).
  The `embedded` application references the bundles that users can select to be included when publishing maps from the geoportal. We need to reference any bundle that could be started on an embedded map, but we can still optimize by using the `oskari-bundle` loader for ones that are always used (like the map) and use `oskari-lazy-bundle` to reference ones that see less use (like thematic maps). This way the file that end-users need to download when opening the map only has the ones that are common to get a smaller file size while also enabling users to use the more specific functionalities that are only loaded when used on the embedded maps.
 
-You can find Oskari frontend source code [here](https://github.com/oskariorg/oskari-frontend).
-
-Oskari frontend source code has the following folder structure:
-```
-/api - The documentation of bundles and APIs they provide with a change log of changes to the API
-/bundles - Implementation files for built-in bundles
-/packages - Legacy-definition files for bundles (content is being migrated to bundles).
-/resources - Common CSS styles/images
-/src - Code for Oskari framework
-/tools - Random templates and scripts for generating CSV-files based on localization
-/webpack - Helpers and configurations for current build tools
-/libraries - Older jQuery plugins and other dependencies/libraries that are not reasonably available through npm
-```
-The main folders are:
-- bundles (for debugging functionality implementations)
-- src (for framework code)
-- webpack (for build scripts)
-
- Note! We have started migrating the contents under `packages` folder to `bundles` with a newer format. These two formats require different Webpack-loaders when referenced from the application `main.js` file.
-
-The folder structure for bundles follows a pattern where the first folder under the base folder is a namespace folder. Oskari uses `framework` and `mapping` namespaces for most of the bundles and `admin` for admin tools. The namespace is purely cosmetic and is for grouping the bundles/organizational purposes. When creating app-specific bundles you don't have to use a namespace but you can if you wish. The next folder after the namespace is named after the `{bundle-identifier}`. Note that under the `packages` folder there can be a folder with the name `bundle` in between. 
+Applications can and usually do use many of the bundles provided in `oskari-frontend`. You can find a list of these bundles in the [bundle documentation](/documentation/api/bundles). If you want to learn more about about [oskari-frontend](https://github.com/oskariorg/oskari-frontend) in general, you will find documentation for it under the "[Frontend framework](../4 Frontend framework/00010-ApplicationFunctionality.md)" section of the documentation.
