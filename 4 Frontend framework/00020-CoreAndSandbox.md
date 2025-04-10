@@ -29,7 +29,7 @@ It provides some functionalities that applictions can use (bundles usually) like
     - number formatting `Oskari.getNumberFormatter()`
     - coordinate formatting `Oskari.util.coordinateMetricToDegrees()`
     - sequence tracking `Oskari.getSeq('sequenceId').curVal()` and `.nextVal()`
-    - url building `Oskari.urls.buildUrl('https://mydomain/path', {param: 'value'})`
+    - url building `Oskari.urls.buildUrl('https://mydomain/path', { paramName: 'value' })`
 - DOM element helpers like `Oskari.dom.getNavigationEl()`
 - logging functionality `Oskari.log('loggername').warn('some warning')`
 
