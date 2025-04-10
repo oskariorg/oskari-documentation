@@ -1,6 +1,8 @@
 ## Bundles
 
-A bundle is a component in an Oskari application. A bundle is a selection of Oskari classes which form a component that offers additional functionality for an application. A bundle can offer multiple implementations for a functionality which can then be divided into smaller packages for different application setups. Packages can be used to offer a multiple views for the same functionality for example search functionality as a small on-map textfield or a window-like UI (see Tile/Flyout) for the same functionality.
+A bundle can be considered as a building block in an Oskari application. A bundle provide some documented functionality and optionally an API that it offers to other bundles for interaction purposes. A bundle has an `id` that is used to document the functionality and the API, but can have multiple parallel implementations with the idea that switching between implementations is a drop-in replacement. An example of this could be a 2D (OpenLayers) and a 3D (Cesium) implementation of the map functionality (`mapmodule`). They both integrate with the rest of the application by providing and using the same documented API, but offer a very different experience for the end-user.
+
+The implementation details of a bundle should not really matter, but the API and the functionality they provide should be documented and either be backwards compatible or any changes need to be documented in the changelog.
 
 A comprehensive versioned documentation of all available bundles can be found [here](https://oskari.org/documentation/api/bundles/latest/)
 
