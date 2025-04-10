@@ -58,21 +58,4 @@ This enables scoping the bundle interactions that could be used for having two i
 
 Note that some bundles might use the `Oskari` global to get a sandbox reference (effectively defeating the purpose), but this is not intended use.
 
-```mermaid
-sequenceDiagram
-    participant mapmodule as mapmodule<br/>bundle
-    participant layerlist as layerlist<br/>bundle
-
-    mapmodule->>Sandbox: Register as started
-    mapmodule->>Sandbox: Add handler for AddMapLayerRequest
-    layerlist->>Sandbox: Register as started
-    layerlist->>Sandbox: Add listener for AfterMapLayerAddEvent
-    Note over layerlist: User adds a layer to map using<br/> UI provided by layerlist
-    layerlist->>layerlist: Click toggle
-    layerlist->>Sandbox: Send AddMapLayerRequest
-    Sandbox->>mapmodule: handle AddMapLayerRequest
-    mapmodule->>mapmodule: Download layer metadata<br/>and add to map
-    mapmodule->>Sandbox: Trigger AfterMapLayerAddEvent
-    Sandbox->>layerlist: call listener for AfterMapLayerAddEvent
-    layerlist->>layerlist: update state/UI to show layer on map
-```
+See [Bundle API](00040-BundleAPI.md) for details about messaging between bundles.
