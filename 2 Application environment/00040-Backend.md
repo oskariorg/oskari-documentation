@@ -18,9 +18,9 @@ The webapp is extensible and you can add more modules from oskari-server or remo
 
 The server application template has Maven modules for an example setup with:
 
-- app-resources (has initial database data and migrations for the application)
-- app-specific-code (has a "Hello World" request/action handler as an example of app specific code)
-- webapp-map (uses the other two modules and packages everything up in a Java war-file)
+- `app-resources` (has initial database data and migrations for the application)
+- `app-specific-code` (has a "Hello World" request/action handler as an example of app specific code)
+- `webapp-map` (uses the other two modules and packages everything up in a Java war-file)
 
 The backend architecture in oskari-server Maven-modules can be divided into three layers: service layer, control layer and interface layer:
 1) The interface layer is very light with Spring framework Controllers for handling requests and can be easily substituted to run as portlets or similar.
