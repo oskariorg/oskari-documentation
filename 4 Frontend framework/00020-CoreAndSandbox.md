@@ -43,6 +43,7 @@ Sandbox is:
     - `sandbox.registerForEventByName('AfterMapLayerAddEvent')`
 - registry for modules `sandbox.register(this)` (required for listening to events)
     - `sandbox.findRegisteredModuleInstance()`
+- stateful bundle registry `registerAsStateful(bundleId, bundleInstance)`
 - registry for services `sandbox.registerService(someService)` and `sandbox.getService(serviceName)`
 - conveniency getters for map state:
     - `sandbox.getMap()`

@@ -63,8 +63,10 @@ Applications usually have an `index.js` file that fetches the `GetAppSetup` resp
 ### Bundle lifecycle
 
 When a bundle is started by the framework:
-1\) the factory function is called to create an `instance` for the bundle.
-2\) after creating an instance, variables are injected into the instance object:
+
+**1\)** the factory function is called to create an `instance` for the bundle.
+
+**2\)** after creating an instance, variables are injected into the instance object:
 
 ```javascript
 instance.mediator = {
@@ -85,11 +87,11 @@ Where:
  The values under `state` have settings that can change at runtime (for map this could be the center coordinate and layers that are on the map).
  Bundles that use these have code that refer to `this.conf` or `this.state` for handling these and they are also documented in the [bundle documentation](https://oskari.org/documentation/api/bundles/latest/).
 
-3\) The `start()` function is called by the framework when the bundle is started as a part of an application.
+**3\)** The `start()` function is called by the framework when the bundle is started as a part of an application.
 
 The start-function receives a reference to the Oskari sandbox as parameter and if you pass that to `BasicBundleInstance` base class with `super.start(sandbox)` it is accessible with `this.getSandbox()` in the other functions you might want to implement on your bundle.
 
-4\) The `stop()` function can be called by for example the publisher functionality
+**4\)** The `stop()` function can be called by for example the publisher functionality
 
 The bundle should do any cleanup in the stop-function like stop listening to events, unregister itself and any request handlers it has added etc.
  
@@ -100,18 +102,23 @@ There's a couple pf concepts that are used with bundles implemented in `oskari-f
 ![bundle.png](../resources/images/bundle.png)
 
 **Handler**
-It's the Handler's responsibility keep the state related to the bundle business logic consistent and updated. Possibly saving this state to the backend via action routes when needed. The Handler exposes public methods as Controllers to mutate the state and allows other components within the bundle to register for notifications about state changes.
+
+"Service" in the image above. It's the Handler's responsibility keep the state related to the bundle business logic consistent and updated. Possibly saving this state to the backend via action routes when needed. The Handler exposes public methods as Controllers to mutate the state and allows other components within the bundle to register for notifications about state changes.
 
 **Controller**
+
 Controller is created as a subset of functions from Handler and only has implicitly exposed functions from Handler that allows manipulate the state with new values.
 
 **View**
+
 It's the View's responsibility to update the user-interface DOM accordingly when it receives notification from the Handler that state has changed. View is passed the current state with a Controller and it's the View's responsibility to use the Controller to mutate state as a reaction to user input. Flyouts, Tiles, Popups etc. are parts of the View.
 
 **Map Plugin**
+
 It's the Map Plugin's responsibility to update the map related presentation when it receives notification from the Handler that state has changed. If the bundle does not have map related functionality, it doesn't need to implement a Map Plugin. Map layers, map controls, map interactions are implemented by Map Plugins.
 
 **Data flow**
+
 User input -> View/Plugin mutates state by calling Controller functions -> Controller as part of Handler updates internal state (possibly saving to backend) -> Handler notifies all interested components by triggering an event -> Listening components (Views & Map Plugins) update their presentation.
 
 ```mermaid
