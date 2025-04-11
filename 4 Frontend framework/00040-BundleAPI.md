@@ -200,3 +200,31 @@ Most communication between bundles should happen through the `request`/`event` A
  Services should have similar API documentation as `requests` and `events`. Unforturnately they don't at the moment, but services is the one API we could document and try to have backwards-compatible through versions and/or document any changes to the API changelog. Doing the same for any internals of all the bundles is basically impossible as it would grind every update to a halt.
 
  So whenever you would want to call a function in a bundle directly, you should seriously consider making a pull request instead to add/modify a service to expose that function instead. Otherwise direct function calls (or even worse, referencing an internal variable from another bundle) are very fragile and fiddly to work with in regards of _maintaining_ an application. It probably works now, but is very easily broken in a version update and the bug could be hard to find at that time.
+
+#### Providing a service API
+
+Providing a service through sandbox for other bundles to use is a simple registration of the service to sandbox like this:
+
+```javascript
+const myService = {
+    functionForOtherBundle: () => /* do stuff */,
+    getQName: () => '{service name}'
+};
+sandbox.registerService(myService);
+```
+Usually the service is some kind of class instance instead of a simple object, but the only real requirement that it has to implement a `getQName()` function that returns a string as an identifier for the service.
+
+As with other things, bundles should clean up on `stop()` and that can be done with:
+
+```javascript
+sandbox.unregisterService('{service name}');
+```
+
+#### Using service API
+
+Using a service provided by a bundle is done by fetching a reference to the service through sandbox and calling functions provided by the service:
+
+```javascript
+const serviceRef = sandbox.getService('{service name}');
+serviceRef.functionForOtherBundle();
+```
