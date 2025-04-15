@@ -81,7 +81,7 @@ The `org.oskari.spring.SpringConfig` file defines the locations of the JSP files
 
 Handles the requests made by the frontend application.
 
-### Other Contollers
+### Other Controllers
 
 #### StatusController
 
