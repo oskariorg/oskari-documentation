@@ -1,8 +1,4 @@
-# Application environment
-
-This section dives into the basic framework of Oskari and further into the technical perspectives of Oskari's frontend and backend.
-
-## Framework
+## Application environment
 
 An Oskari-based web application consists of frontend code for browser-based user interface and backend functionalities that are run on the server. The user interface is implemented in JavaScript and the server functionality in Java. Both, the frontend and the backend, are built with extensibility in mind.
 

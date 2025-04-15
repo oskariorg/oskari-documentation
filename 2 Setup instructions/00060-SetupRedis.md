@@ -1,4 +1,4 @@
-### Setup Redis for Oskari (Optional)
+## Setup Redis for Oskari (Optional)
 
 Redis is used for caching data for example from statistical datasources to provide a cleaner user experience for statistical map functionalities (optional part of `oskari-map` webapp). It is also used in clustered environment (when you have multiple instances running an Oskari-based server) for session management (servers see sessions initiated by the other nodes) and cluster messaging like flushing caches from all nodes when something is updated on one node.
 
