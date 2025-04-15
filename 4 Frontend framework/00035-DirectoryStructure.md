@@ -1,4 +1,4 @@
-## Frontend bundle implementation convention
+## Bundle implementation conventions
 
 **The folder structure** follows a pattern where the first folder under the base `bundles` folder is a `namespace` folder. Application specific bundles can choose to skip the namespace especially if all bundles of the application would be under the same namespace. Oskari uses `framework`, `mapping` and `admin` namespace for most bundles. The next folder is named after the `<bundle-identifier>`.
 

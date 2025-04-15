@@ -2,41 +2,9 @@
 
 The user interface for Oskari-based services usually is a Javascript-based single-page app. The UI is built by selecting a series of bundles that provide functionalities/capabilities for an application. You can mix and match the bundles or create new ones to customize the application for your needs.
 
-Bundles are used as uniform containers to ship and share new functionality to the application setups. Additions to an existing functionality are implemented as plugins shipped within the bundles.
+Bundles are used as uniform containers to ship and share new functionality to the application setups. Additions to an existing functionality can be implemented as plugins shipped within the bundles.
 
 A bundle can work "as is" for providing its functionality with its own user interface and/or it can provide a documented API that can be used to interact with the functionality programmatically. One example of a bundle that doesn't have an UI itself would be a bundle called `drawtools` that only provides an API that is used by measurement tools, my places functionality and others that has the user "draw" something on the map. The API also helps implementing a customized drop-in replacements for functionalities when required.
-
-### Frontend architecture
-
-An Oskari-based frontend application includes the Oskari framework code and a selection of bundles that implement functionalities for the application. Bundles have a lifecycle and are started in sequence. Bundles can communicate with each other using events, requests and services. The framework code of Oskari provides the messaging system for events, requests and service registry but also an API which bundles need to implement so they can be included in an Oskari based application like having lifecycle functions/a starting point that can be called when the functionality is started.
-
-The sequence diagram below explains what happens in the frontend initialization process (try reloading the page if the diagram is not rendered properly).
-
-```mermaid
-sequenceDiagram
-  box rgb(245, 242, 222) Oskari-frontend
-  participant Oskari as Oskari
-  participant Bundle as Bundle
-  end
-  box rgb(163, 196, 188) Oskari-server
-  participant Server as Server
-  end
-
-  Oskari ->> Oskari: Oskari.app.startApplication()
-  Oskari ->> Server: GetAppSetup (UUID)
-  Server -->> Oskari: app definition
-  loop For each bundle
-    Oskari ->> Bundle: inject configuration
-    Oskari ->> Bundle: start
-    Bundle -> Bundle: init functionality
-    Bundle ->> Oskari: bundle.started
-  end
-  Oskari ->> Oskari: app.started
-```
-
-The frontend in started by the application code calling `Oskari.app.startApplication()` (in applications index.js for example) which triggers a call for the server action route called `GetAppSetup`. The `GetAppSetup` response lists all the bundles that should be started for that specific application and includes the configuration and state of those bundles (like which layers are on the map and what are the coordinates for the center of the map etc). The application to start is noted by an UUID when the page is opened (usually a parameter on the page URL) but the server has several options to default an appsetup based on user role etc. The frontend then proceeds with starting the requested bundles with the included configuration in sequence until the whole application has been started. An event is triggered after each started bundle and another once the whole application has been started that enables programmatically react to such lifecycle events.
-
-The bundle called `mapfull` is usually a starting point for the bundle sequence as it creates the map implementation that most functionalities expect to be present when started.
 
 **Bundle functionality**
 
@@ -45,28 +13,6 @@ The bundle called `mapfull` is usually a starting point for the bundle sequence 
 * Another bundle can then send the request which will be processed by the other bundle.
 * Another way to communicate with other bundles is to send out an event through Oskari framework.
 * Any bundle registered as an eventlistener for the given event is then notified about the event.
-
-### Frontend libraries and technologies
-
-Oskari frontend uses the following libraries and technologies (for details see `package.json` on the [oskari-frontend](https://github.com/oskariorg/oskari-frontend) repository):
-
-* OpenLayers (map implementation)
-* jQuery (older UI implementations, migrating towards React)
-* React (current UI implementations)
-* Ant Design (UI components and icons)
-* CesiumJS (3d map implementation)
-* Lo-Dash
-* geostats.js
-* D3.js
-
-You can get a list of licenses for all the libraries with npm, for example by running: 
-
-    npx license-checker
-    
-Just to get summary of licenses you can add --summary after the command:
-
-    npx license-checker --summary
-
 
 ### Frontend source code and folder structure
 
