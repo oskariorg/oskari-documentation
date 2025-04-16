@@ -1,4 +1,4 @@
-# Developing instructions
+## Developing Oskari
 
 This section contains information on how to develop Oskari. 
 

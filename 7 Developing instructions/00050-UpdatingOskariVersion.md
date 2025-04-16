@@ -1,3 +1,5 @@
+# Developing instructions
+
 ## Updating Oskari version
 
 This section guides you through updating your Oskari instance.

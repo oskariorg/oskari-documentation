@@ -5,24 +5,24 @@ See [requirements](00111-ThematicMapsRequirements.md) for enabling the code that
 #### Adding regionsets as maplayers
 
 Regionsets used for thematic maps are configured in pretty much the same way you might register a WFS-layer for Oskari database:
-
-    INSERT INTO oskari_maplayer(type, url,
-                        name, dataprovider_id,
-                        locale,
-                        attributes, internal, srs_name)
-    VALUES(
-        'statslayer', 'http://mydomain.com/geoserver/wfs',
-        'mylayer', (SELECT MAX(id) FROM oskari_dataprovider),
-        '{ "en" : {
-            "name":"Municipalities"
-        }}',
-        '{
-            "statistics" : {
-                "regionIdTag":"id",
-                "nameIdTag":"name"
-            }
-        }', true, 'EPSG:4326');
-
+```sql
+INSERT INTO oskari_maplayer(type, url,
+                    name, dataprovider_id,
+                    locale,
+                    attributes, internal, srs_name)
+VALUES(
+    'statslayer', 'http://mydomain.com/geoserver/wfs',
+    'mylayer', (SELECT MAX(id) FROM oskari_dataprovider),
+    '{ "en" : {
+        "name":"Municipalities"
+    }}',
+    '{
+        "statistics" : {
+            "regionIdTag":"id",
+            "nameIdTag":"name"
+        }
+    }', true, 'EPSG:4326');
+```
 Where
 - type of the layer is 'statslayer'
 - the url and name should match a layer in a WFS-service
@@ -63,22 +63,23 @@ Where ${path} is relative to the root resource directory in your web application
 
 A datasource can be registered with a simple SQL:
 
-    INSERT INTO oskari_statistical_datasource(locale, config, plugin)
-    VALUES('{
-        "en" : {
-            "name":"Health and Welfare"
-        }}',
-        '{
-            "url" : "http://www.sotkanet.fi/rest"
-        }', 'SotkaNET');
-
+```sql
+INSERT INTO oskari_statistical_datasource(locale, config, plugin)
+VALUES('{
+    "en" : {
+        "name":"Health and Welfare"
+    }}',
+    '{
+        "url" : "http://www.sotkanet.fi/rest"
+    }', 'SotkaNET');
+```
 Where:
 - locale is a JSON with language code at the first level and UI-name of the datasource as the name value. It supports multiple languages like maplayers in Oskari.
 - config is an adapter specific configuration that is used to give the adapter code hints how to process the datasource
 - plugin is the ID for the adapter code to use for this datasource
 
 Config can also include additional info about datasource and hints for sorting indicator data dimension values to be shown to user:
-
+```json
     {
       "info" : {
         "url" : "https://moreinfo.here"
@@ -93,6 +94,7 @@ Config can also include additional info about datasource and hints for sorting i
         }]
       }
     }
+```
 
 Where id value will match the id of a data dimension item in indicator datamodel. Other keys affect the order of allowed values for that dimension. Sort (if present) will be done first with either DESC or ASC value. If default is present the matching allowed value will be moved as the first value in allowed values. You can use both, one or none.
 
@@ -110,9 +112,11 @@ Code: https://github.com/oskariorg/oskari-server/blob/develop/service-statistics
 
 Datasource config:
 
-    {
-        "url" : "http://ec.europa.eu/eurostat"
-    }
+```json
+{
+    "url" : "http://ec.europa.eu/eurostat"
+}
+```
 
 ###### PxWeb
 
@@ -122,36 +126,40 @@ Code: https://github.com/oskariorg/oskari-server/blob/develop/service-statistics
 
 Datasource config:
 
-    {
-        "url" : "http://some.pxweb.com/statdb",
-        "regionKey" : "name of the attribute for the region id in stats data",
-        "ignoredVariables": ["optional config", "any", "attributes", "that", "should", "be", "ignored"],
-        "timeVariable": "Optional config for id of the variable that describes time like 'year'. This is used for time-series functionality.",
-        "metadataFile": "/file/in/classpath.json (optional)"
-    }
+```json
+{
+    "url" : "http://some.pxweb.com/statdb",
+    "regionKey" : "name of the attribute for the region id in stats data",
+    "ignoredVariables": ["optional config", "any", "attributes", "that", "should", "be", "ignored"],
+    "timeVariable": "Optional config for id of the variable that describes time like 'year'. This is used for time-series functionality.",
+    "metadataFile": "/file/in/classpath.json (optional)"
+}
+```
 
 The metadataFile configuration allows linking more metadata for indicators in the datasource like source for data, name/descriptions overrides for values from the API and configuring the type of data for selecting if it will be visualized as choropleth or point symbols by default etc. The value should point to a file in the server classpath. The format of the JSON is an array with objects like:
 
-    [{
-        "code": "M408",
-        "desc": {
-            "fi": "Taajama-aste tarkoittaa taajamissa asuvien osuutta väestöstä, jonka sijainti tunnetaan. Taajamaksi määritellään kaikki vähintään 200 asukkaan rakennusryhmät, joissa rakennusten välinen etäisyys ei yleensä ole 200 metriä suurempi"
-        },
-        "source": {
-            "fi": "Väestörakenne"
-        },
-        "isRatio": true,
-        "base": 100,
-        "min": -100,
-        "max": 500,
-        "decimalCount": 1,
-        "timerange": {
-            "start": "1987",
-            "end": "2015"
-        },
-        "updated": "1.4.2016",
-        "nextUpdate": "29.3.2017"
-    }, ...]
+```json
+[{
+    "code": "M408",
+    "desc": {
+        "fi": "Taajama-aste tarkoittaa taajamissa asuvien osuutta väestöstä, jonka sijainti tunnetaan. Taajamaksi määritellään kaikki vähintään 200 asukkaan rakennusryhmät, joissa rakennusten välinen etäisyys ei yleensä ole 200 metriä suurempi"
+    },
+    "source": {
+        "fi": "Väestörakenne"
+    },
+    "isRatio": true,
+    "base": 100,
+    "min": -100,
+    "max": 500,
+    "decimalCount": 1,
+    "timerange": {
+        "start": "1987",
+        "end": "2015"
+    },
+    "updated": "1.4.2016",
+    "nextUpdate": "29.3.2017"
+}, ...]
+```
 
 - `code` value is used to map the indicator between the metadata JSON and data from the PxWeb API and id should match the indicator id. This is used to map the metadata to the indicator. Everything else is optional.
 - `timerange` can be used to configure indicator specific timeranges if they are all in the same .px file.
@@ -168,23 +176,26 @@ Code: https://github.com/oskariorg/oskari-server/blob/develop/service-statistics
 
 Datasource config:
 
-    {
-        "url" : "http://www.sotkanet.fi/rest",
-        "timeVariable": "Optional config for id of the variable that describes time like 'year'. This is used for time-series functionality. Defaults to 'year' for SotkaNET if not configured."
-    }
+```json
+{
+    "url" : "http://www.sotkanet.fi/rest",
+    "timeVariable": "Optional config for id of the variable that describes time like 'year'. This is used for time-series functionality. Defaults to 'year' for SotkaNET if not configured."
+}
+```
 
 #### Linking datasources and regionsets
 
 Not all datasources have data for all of the regionsets so as the last step you need to link layers/regionsets that can be used with a given datasource.
 
-
-    INSERT INTO
-        oskari_statistical_datasource_regionsets(datasource_id, layer_id, config)
-    VALUES(
-        (SELECT id FROM oskari_statistical_datasource
-            WHERE locale like '%Health and Welfare%'),
-        (SELECT id FROM oskari_maplayer WHERE type='statslayer' AND name = 'mylayer'),
-        '{}');
+```sql
+INSERT INTO
+    oskari_statistical_datasource_regionsets(datasource_id, layer_id, config)
+VALUES(
+    (SELECT id FROM oskari_statistical_datasource
+        WHERE locale like '%Health and Welfare%'),
+    (SELECT id FROM oskari_maplayer WHERE type='statslayer' AND name = 'mylayer'),
+    '{}');
+```
 
 The config is an adapter specific configuration that can be used to pass information datasource specific information for the layer.
 
@@ -202,9 +213,11 @@ Doesn't use layer config, but could be used to detect which layer is used for wh
 
 Uses config:
 
-    {
-        "regionType" : "kunta"
-    }
+```json
+{
+    "regionType" : "kunta"
+}
+```
 
 The value of "regionType" should match the "category" value  (like "kunta") in Sotkanet regions response (https://sotkanet.fi/rest/1.1/regions). The regionType value is case-insensitive. It's used to filter out indicators that the service has, but which don't have a regionset in the Oskari instance and as such can't be visualized in Oskari. Sotkanet data responses include data for all the regionsets and the same config is used to filter the data before it's passed to the frontend in Oskari.
 
