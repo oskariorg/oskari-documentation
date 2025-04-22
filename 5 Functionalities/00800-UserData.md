@@ -15,3 +15,11 @@ Users can import their own datasets to Oskari as zipped files. Supported formats
 - Mapinfo MID/MIF
 - GPX trace
 - KMX (zipped KML)
+
+### User removal
+
+User content (myplaces, saved views, embedded maps, userlayers, indicators) is removed from the database with the user.
+ The content removal is done programmatically by searching for instances of [UserContentServices](https://github.com/oskariorg/oskari-server/blob/master/service-base/src/main/java/fi/nls/oskari/service/db/UserContentService.java)
+ with `@Oskari` annotation. You can search the `oskari-server` codebase for examples of this if you need to add additional cleanup for user removal.
+
+**Note!** Removing a user from the database directly will not remove all content related to the user!

@@ -1,118 +1,161 @@
 ## Creating releases
 
-For creating a branch for version x.y.z
+Assumes:
+```sh
+git remote add origin https://github.com/someuser/oskari-frontend.git
+git remote add upstream https://github.com/oskariorg/oskari-frontend.git
+```
+You can check your repository names and URLs with `git remote -v`.
 
-    git checkout develop
-    git pull
-    git checkout -b release/x.y.z
-    ## TODO: Bump version at this point on the *release* branch (see below for instructions)
+### creating a branch for version `x.y.z`
 
-    ## Get the version commit to develop
-    git checkout develop
-    git merge --no-ff release/x.y.z
-    ## TODO: Bump next development version on the *develop* branch (see below for instructions)
-    ## Checkout to the release branch
-    git checkout release/x.y.z
+```sh
+git checkout develop
+git pull upstream develop
+git checkout -b release/x.y.z
+```
 
-Merging pull requests to release
+Bump version on the `release` branch at this point (see below for instructions) and push it to GitHub:
 
-    git pull https://github.com/zakarfin/oskari-frontend.git some-bugfix
-    ## git cherry-pick from develop etc
-    git push origin release/x.y.z
+```sh
+git push upstream release/x.y.z
+```
 
-Merging changes back to master
+Get the version commit to develop
+```sh
+git checkout develop
+git merge --no-ff release/x.y.z
+```
+Bump next development version on the `develop` branch (see below for instructions).
 
-    git pull
-    git checkout master
-    git pull
-    git merge --no-ff release/x.y.z
-    git tag -a x.y.z -m "Release x.y.z"
-    git push origin master
-    git push origin --tags
+#### Merging pull requests to release branch
 
-Merging changes back to develop
+```sh
+git checkout release/x.y.z
+git pull https://github.com/someuser/oskari-frontend.git some-bugfix-branch
+## git cherry-pick from develop etc
+git push upstream release/x.y.z
+```
 
-    git checkout develop
-    git pull
-    git merge --no-ff release/x.y.z
-    ## possible merging of conflicts
-    git push origin develop
+#### Merging release to `master` branch
 
-Cleanup
+Ensure you have the latest codes for the `release` and `master` branches, then merge the release to master and tag it with the version.
 
-    ## remove local branch
-    git branch -D release/x.y.z
-    ## remove remote branch
-    git push origin :release/x.y.z
+```sh
+git checkout release/x.y.z
+git pull upstream release/x.y.z
+git checkout master
+git pull upstream master
+git merge --no-ff release/x.y.z
+# Tagging and pushing to remote
+git tag -a x.y.z -m "Release x.y.z"
+git push upstream master
+git push upstream --tags
+```
+
+#### Merging changes back to `develop` branch from `master` branch
+
+```sh
+git checkout develop
+git pull upstream develop
+git merge --no-ff master
+## possible merging of conflicts
+git push upstream develop
+```
+
+#### Cleanup
+
+```sh
+## remove local branch
+git branch -D release/x.y.z
+## remove remote branch
+git push upstream :release/x.y.z
+```
 
 ### Versioning the code
+
 - Releases should move the minor version 1.0.0 -> 1.1.0
 - Hotfixes should move the patch version so 1.0.0 -> 1.0.1
 
 #### Server
-    ## Checkout to branch that should have the version updated
-    git checkout {branch}
 
-    ## Run the maven versions plugin to update version
-    mvn -N versions:set -DnewVersion=x.y.z
+```sh
+## Checkout to branch that should have the version updated
+git checkout {branch}
 
-    ## Commit the changes to Git
-    git add .
-    git commit -m 'Bump version'
-    git push
+## Run the maven versions plugin to update version
+mvn -N versions:set -DnewVersion=x.y.z
 
-Develop branch version should always be the next version + "-SNAPSHOT". For an example if the version in master is "1.0.0", develop should be "1.1.0-SNAPSHOT".
+## Commit the changes to Git
+git add .
+git commit -m 'Bump version'
+git push
+```
+Develop branch version should always be the **next version + "-SNAPSHOT"**. For an example if the version in master is `1.0.0`, develop should be `1.1.0-SNAPSHOT`.
 
 #### Frontend
 
-    ## checkout to branch that should have the version updated
-    git checkout {branch}
+```sh
+## checkout to branch that should have the version updated
+git checkout {branch}
 
-    ## Edit the version number on package.json
-    nano package.json
+## Edit the version number on package.json
+nano package.json
 
-    ## Commit the changes to Git
-    git add .
-    git commit -m 'Bump version'
-    git push
+## Commit the changes to Git
+git add .
+git commit -m 'Bump version'
+git push
+```
 
 #### Creating hotfixes
+
 Much like creating releases except hotfixes are based on the master version (releases are based on develop).
 
 For creating a branch for version x.y.z
 
-    git checkout master
-    git pull
-    git checkout -b hotfix/x.y.z
+```sh
+git checkout master
+git pull upstream master
+git checkout -b hotfix/x.y.z
+```
 
 Merging pull requests to hotfix
 
-    ## TODO: Bump version at this point (see below for instructions)
-    git pull https://github.com/zakarfin/oskari-frontend.git hotfix/my-urgent-fix
-    ## git cherry-pick from develop etc
-    git push origin hotfix/x.y.z
+```sh
+## TODO: Bump version at this point (see below for instructions)
+git pull https://github.com/someuser/oskari-frontend.git hotfix/my-urgent-fix
+## git cherry-pick from develop etc
+git push upstream hotfix/x.y.z
+```
 
 Merging changes back to master
 
-    git pull
-    git checkout master
-    git pull
-    git merge --no-ff hotfix/x.y.z
-    git tag -a x.y.z -m "Hotfix x.y.z"
-    git push origin master
-    git push origin --tags
+```sh
+git pull upstream hotfix/x.y.z
+git checkout master
+git pull upstream master
+git merge --no-ff hotfix/x.y.z
+# Tagging and pushing to remote
+git tag -a x.y.z -m "Hotfix x.y.z"
+git push upstream master
+git push upstream --tags
+```
 
 Merging changes back to develop
 
-    git checkout develop
-    git pull
-    git merge --no-ff hotfix/x.y.z
-    ## possible merging of conflicts
-    git push origin develop
-
+```sh
+git checkout develop
+git pull upstream develop
+git merge --no-ff hotfix/x.y.z
+## possible merging of conflicts
+git push upstream develop
+```
 Cleanup
 
-    ## remove local branch
-    git branch -D hotfix/x.y.z
-    ## remove remote branch
-    git push origin :hotfix/x.y.z
+```sh
+## remove local branch
+git branch -D hotfix/x.y.z
+## remove remote branch
+git push upstream :hotfix/x.y.z
+```

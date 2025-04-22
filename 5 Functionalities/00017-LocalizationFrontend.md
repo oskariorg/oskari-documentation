@@ -2,7 +2,9 @@
 
 Localization files are provided by bundles in `resources/locale` folder under the bundle implementation (relative to the bundles `index.js` file). Using this convention allows the `oskari-bundle` and `oskari-lazy-bundle` Webpack loaders to optimize packaging the translations for a specific application to a single localization file per language and the files don't need to be referenced manually since the loaders search that folder automatically.
 
-Older `bundle.js` based bundles can reference the localization files in bundle definitions (`bundle.js` - locales array). Each languages localization is in its own file with structure like this:
+Note that older `bundle.js` based bundles can reference the localization files in bundle definitions (`bundle.js` - locales array).
+
+Each languages localization is in its own file with structure like this:
 
 ```javascript
 Oskari.registerLocalization({
