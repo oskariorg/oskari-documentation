@@ -5,26 +5,6 @@ The backend architecture in oskari-server Maven-modules can be divided into thre
 2) The controllers pass concrete HTTP-requests on to Oskari control-modules that can further process the requests and write responses.
 3) Services are used by the control-modules to handle business-logic. The service-modules could (in theory) be used in any Java-based software as libraries.
 
-Oskari uses a concept of "action route" for processing requests made by the frontend application. Requests for action routes are processed like this:
-
-```mermaid
-flowchart TD
-    A>User] -->|Opens page| S
-    X>User] -->|Makes a search| S
-    PU>User] -->|Publishes a map| S
-    S[ActionRouteController] --> C{ActionRoute}
-    C -->|Load page| D[GetAppSetupHandler]
-    C -->|Publish a map| P[AppSetupHandler]
-    C -->|Search results| E[SearchHandler]
-    C -->|Application specific action| F[Your code]
-    D -->|Load appsetup| AppSetupService(AppSetupService)
-    P -->|Create appsetup| AppSetupService(AppSetupService)
-    E -->|Search| SS(SearchService)
-    SS --> |Search|OpenStreetMap>OpenStreetMap]
-    SS --> |Search|WFS-service>WFS-service]
-    AppSetupService --> dbId[("oskaridb")]
-```
-
 **Service layer**
 
 Service modules should be common libraries usable in any application. The actual business logic for Oskari operations should be in these modules.

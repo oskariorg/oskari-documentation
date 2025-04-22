@@ -48,8 +48,7 @@ Note that the order in which migrations are run is determined by the version num
 
 Open the folder `sample-server-extension/app-resources/src/main/java/flyway/app`. Inside, you will find various files that can be used as templates for your flyway migration.
 
-The code in each file begins with 
-    package flyway.app;
+The code in each file begins with `package flyway.app;`
 
 The `app` on our sample-server-extension can and should be changed to something that describes your app (`custom_flyway_module`). Note that you can also have multiple Flyway-modules on your app. The modules that are used when the server runs are set on `oskari-ext.properties` in oskari-server as `db.additional.modules`.
 

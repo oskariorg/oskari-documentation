@@ -2,12 +2,6 @@
 
 This section dives into the server functionalities.
 
-- authentication
-- maven modules from section 2?
-- configurations in oskari-ext.properties?
-- database overview?
-- flyway migrations
-
 ## Using oskari-server in applications
 
 Applications can use oskari-server as dependencies with this on their `pom.xml` file:
@@ -62,16 +56,14 @@ After this, you can use any Maven modules under oskari-server or any of its mana
 
 ## Spring Controllers
 
-Oskari-server uses Spring framework as a wrapper for handling HTTP-requests and security. There are two main Controllers handling most of the requests:
-- `MapController.java`
-- `ActionRouteController.java`
+Oskari-server uses Spring framework as a wrapper for handling HTTP-requests and security. There are two main Controllers handling most of the requests: `MapController.java`and `ActionRouteController.java`.
 
 Under `servlet-map` [module](https://github.com/oskariorg/oskari-server/tree/master/servlet-map/src/main/java/org/oskari/spring/controllers)
 
 ### MapController
 
-Handles which JSP file should be used for the application and sets up some information for the JSP to use for rendering the base HTML for the frontend.
-There are two main ways that both have defaults under [servlet-map](https://github.com/oskariorg/oskari-server/tree/master/servlet-map/src/main/resources/META-INF/resources/spring-map-jsp): `index.jsp` for geoportal app and `published.jsp` for embedded maps.
+Handles which JSP file should be used for the application the end-user requests and sets up some information for the JSP to use for rendering the base HTML for the frontend.
+There are two main JSP-files that both have defaults under [servlet-map](https://github.com/oskariorg/oskari-server/tree/master/servlet-map/src/main/resources/META-INF/resources/spring-map-jsp): `index.jsp` for geoportal app and `published.jsp` for embedded maps.
 
 You can override the default JSP-files with your own or add your own like shown on the [sample-server-extension](https://github.com/oskariorg/sample-server-extension/tree/master/webapp-map/src/main/webapp/WEB-INF/jsp).
 
@@ -79,7 +71,25 @@ The `org.oskari.spring.SpringConfig` file defines the locations of the JSP files
 
 ### ActionRouteController
 
-Handles the requests made by the frontend application.
+Handles the requests made by the frontend application. Oskari uses a concept of "action route" for processing requests made by the frontend application. Requests for action routes are processed like this:
+
+```mermaid
+flowchart TD
+    A>User] -->|Opens page| S
+    X>User] -->|Makes a search| S
+    PU>User] -->|Publishes a map| S
+    S[ActionRouteController] --> C{ActionRoute}
+    C -->|Load page| D[GetAppSetupHandler]
+    C -->|Publish a map| P[AppSetupHandler]
+    C -->|Search results| E[SearchHandler]
+    C -->|Application specific action| F[Your code]
+    D -->|Load appsetup| AppSetupService(AppSetupService)
+    P -->|Create appsetup| AppSetupService(AppSetupService)
+    E -->|Search| SS(SearchService)
+    SS --> |Search|OpenStreetMap>OpenStreetMap]
+    SS --> |Search|WFS-service>WFS-service]
+    AppSetupService --> dbId[("oskaridb")]
+```
 
 ### Other Controllers
 

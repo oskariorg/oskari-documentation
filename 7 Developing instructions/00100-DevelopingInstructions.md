@@ -1,4 +1,4 @@
-# Developing instructions
+## Developing Oskari
 
 This section contains information on how to develop Oskari. 
 
@@ -11,8 +11,14 @@ This section begins with the general guidelines and best practices, then moves i
 Before you begin to develop new functionalities, see if it is already done: [the unofficial Oskari bundles created by the Oskari community](https://github.com/oskariorg/oskari-frontend-contrib).
 
 When you're ready to start developing Oskari: 
-1. Download sources [here]() 
-2. Extract the files from the downloaded archive.
+1. Git clone the sources:
+- https://github.com/oskariorg/oskari-frontend
+- https://github.com/oskariorg/oskari-server
+2. Create a branch for your changes
+3. Submit a pull request (usually targetting the develop branch)
 
+### Editors
 
-
+* [VS Code](https://code.visualstudio.com/) is the Oskari team's editor of choice for JavaScript development
+* [IntelliJ IDEA](https://www.jetbrains.com/idea/) has been found useful IDE for Oskari Java development.
+* If you're developing on a Windows machine, we recommend using WSL or [cmder](https://cmder.app/)
