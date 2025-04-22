@@ -1,110 +1,103 @@
-### How to use a bundle
+### How to add a bundle
 
-A bundle is a pluggable module in an Oskari application. A bundle is a selection of implementing JavaScript files that can include for example [Oskari classes](00100-HowToUseClasses.md) that as a whole form a module that offers additional functionality for an application. A bundle can offer multiple implementations for a functionality which can then be divided into smaller packages for different application setups. Packages can be used to offer a multiple views for the same functionality - for example search functionality as a small on-map textfield or a window-like UI (see Tile/Flyout) for the same functionality. For a short introduction see [create your own bundle](../8%20Developing%20instructions/00120-HowToCreateABundle.md).
+Bundles can be considered as building blocks in an Oskari application. A bundle is a selection of JavaScript files that provide some functionality to be used as part of an application.
+ A bundle can offer multiple implementations for a functionality which can then be divided into smaller packages for different application setups. 
+ For more about bundles see the documentation under [Frontend framework](../3%20Frontend%20framework/00030-Bundles.md).
 
-#### Directory structure
+In order to get bundle up and running in your Oskari-based application, the bundle needs to be registered to the database and added to an appsetup you want to show it on. There are two tables where it shoud be added:
 
-See [here](../2%20Application%20environment/00040-DirectoryStructure.md) for information about directory structure and conventions.
+- oskari_bundle
+- oskari_appsetup_bundles
 
-#### Implementation
+`oskari_bundle` includes rows for all available bundles in the Oskari instance. Any new bundles should be added/registered here so they can be used in an appsetup. It is recommended to use Flyway-scripts when making changes to database.
+ Documentation about migrations can be found [here](../4%20Server%20application/00040-DatabaseMigrations.md).
 
-In oskari-frontend the implementations for bundles are be located under the `/bundles` folder. It's followed by a namespacing folder and a folder (usually) matching the bundle id. If the bundle has a BundleInstance (ie. something that is started/instantiated when the bundle is "played"/started) it is usually defined in a file called `instance.js`, but this is not enforced and any file referenced in bundle definition (`bundle.js`) can be used. 
+#### Registering a new bundle
 
-A Bundle instance is an Oskari class which implements `Oskari.bundle.BundleInstance` protocol. Usually you want to implement a BundleInstance since you can think of it as a starting point for your functionality which is triggered by just adding your bundle in an applications startup sequence. A Bundle instance is created as a result from a Bundle definitions (see above) create method. Bundle instance state and lifecycle is managed by Bundle Manager. However, the bundle doesn't need to have an instance and can be just used to import dependency files that can be instantiated elsewhere. 
+If you are adding a new bundle for your application or to the built-in ones under `oskari-frontend`, you should add a migration script to register the bundle on the database so the server recognizes it and allows using it on appsetups.
+ The `oskari-server` provides `org.oskari.helpers.BundleHelper` helper class for doing this and a bundle can be registered with a migration like this (Replace `<bundle-identifier>` with the bundle id and fix the migration version in the class name):
 
-**Bundle lifecycle methods:**
+```java
+package flyway.app;
 
-* `start` - called by application to start any functionality that this bundle instance might have
-* `update` - called by Bundle Manager when Bundle Manager state is changed (to inform any changes in current 'bundlage')
-* `stop` - called by application to stop any functionality this bundle instance has
-Bundle instance is injected with a mediator object on startup with provides the bundle with its bundleid:
+import org.flywaydb.core.api.migration.BaseJavaMigration;
+import org.flywaydb.core.api.migration.Context;
+import org.oskari.helpers.BundleHelper;
 
-```javascript
-instance.mediator = {
-    bundleId : bundleId
+public class VX_Y_Z__register_bundle extends BaseJavaMigration {
+
+    @Override
+	public void migrate(Context context) throws Exception {
+        BundleHelper.registerBundle(context.getConnection(), "<bundle-identifier>");
+	}
 }
 ```
+The Flyway migration checks that a bundle with the same id hasn't been registered before registering it.
+Note that the package of the migration (`app` here) dictates the Flyway module it is included in.
+ In `oskari-server` most migrations are done on the `oskari` module, but if you have an application specific bundle you should add it in your applications migration module.
+ As an SQL the same can be accomplished like this, but you would need to be sure you are not adding duplicates to the table:
 
-#### Definition
+```sql
+-- Register bundle to oskari_bundle table
+INSERT
+INTO oskari_bundle
+(
+	name,
+	config,
+	state
+)
+VALUES
+(
+	'<bundle-identifier>',
+	'{}',
+	'{}'
+);
+```
+If you want the bundle to have a default configuration or state anytime it's added to an appsetup, you can define them when registering the bundle in `oskari_bundle` table. You can also do this with the `BundleHelper` class.
 
-The bundle package definition should not implement any actual functionality. It should only declare the JavaScript, CSS and localization resources (= files) and metadata (if any). If the bundle package can be instantiated, the package's `create` method should create the bundle's instance. 
+#### Adding bundle to an appsetup
 
-Usually the bundle definition (or package) is located in `bundle.js` file under the `/packages` folder. 
+After bundle has been registered to `oskari_bundle` table, it can be added to `oskari_appsetup_bundles` table to be used in appsetups.
+The `oskari-server` provides `org.oskari.helpers.AppSetupHelper` helper class for doing this easily:
 
-As of 2024, the `bundle.js` file is used for
-1. picking what files need to be imported when a bundle with certain id is being used in the app
-2. define the way to include and split localization files when the application is built
+```java
+package flyway.app;
 
-In this case, any CSS and most of Javascript can be imported on, from example, `instance.js`.
+import org.flywaydb.core.api.migration.BaseJavaMigration;
+import org.flywaydb.core.api.migration.Context;
+import org.oskari.helpers.AppSetupHelper;
 
-If the bundle doesn't have an instance and is used to import dependency files that are instantiated elsewhere, the create method should return the bundle class itself (`return this;`). A sample bundle definition can be found as a file named `bundle.js` under `/packages/<mynamespace>/<bundle-identifier>/`.
+public class VX_Y_Z__add_bundle_to_apps extends BaseJavaMigration {
 
-Bundle should install itself to Oskari framework by calling `installBundleClass` at the end of `bundle.js`
-
-```javascript
-Oskari.bundle_manager.installBundleClass("<bundle-identifier>", "Oskari.<mynamespace>.<bundle-identifier>.MyBundle");
+    public void migrate(Context context) throws Exception {
+        AppSetupHelper.addBundleToApps(context.getConnection(), "<bundle-identifier>");
+    }
+}
+```
+By default this adds the bundle to all appsetups of type `DEFAULT` (default geoportal apps) and `USER` (geoportal based appsetups saved by users).
+ There are also other useful methods on `AppSetupHelper` from checking if a bundle exists on an appsetup to updating a bundles state or config on an existing appsetup.
+ 
+Below is an example SQL for adding a bundle to `oskari_appsetup_bundles` table manually:
+```sql
+-- Add bundle to default geoportal appsetup
+INSERT
+INTO oskari_appsetup_bundles
+(
+	appsetup_id,
+	bundle_id,
+	seqno,
+	config,
+	state,
+	bundleinstance
+)
+VALUES (
+	(SELECT id FROM oskari_appsetup WHERE application='geoportal' AND type='DEFAULT'),
+	(SELECT id FROM oskari_bundle WHERE name='<bundle-identifier>'),
+	(SELECT max(seqno)+1 FROM oskari_appsetup_bundles WHERE appsetup_id=(SELECT id FROM oskari_appsetup WHERE application='geoportal' AND type='DEFAULT')),
+	(SELECT config FROM oskari_bundle WHERE name='<bundle-identifier>'),
+	(SELECT state FROM oskari_bundle WHERE name='<bundle-identifier>'),
+	'<bundle-identifier>'
+);
 ```
 
-#### Adding new bundle to view
-
-In order to get bundle up and running in your map application, the bundle needs to be added to the database. There are two tables where it shoud be added:
-
-- portti_bundle
-- portti_view_bundle_seq
-
-`portti_bundle` includes definitions of all available bundles. Definition of the new bundle should be added here to be able to use it in a view. It is recommended to use `flyway-scripts` when making changes to database. Documentation can be found [here](/documentation/backend/upgrading) and [here](/documentation/backend/upgrade_scripts).
-
-Below is an example of an flyway-script (which is actually `SQL`) adding new bundle to `portti_bundle` table (Replace <bundle-identifier> with the bundleid).
-
-	--insert to portti_bundle table
-	-- Add login bundle to portti_bundle table
-	INSERT
-	INTO portti_bundle
-	(
-		name,
-		startup
-	)
-	VALUES
-	(
-		'login',
-		'{
-	            "bundlename":"login",
-	            "metadata": {
-	                "Import-Bundle": {
-	                    "<bundle-identifier>": {
-	                        "bundlePath":"/Oskari/packages/bundle/"
-	                    }
-	                }
-	            }
-	    }'
-	);
-
-When bundle is added to `portti_bundle` table, it can be added to `portti_view_bundle_seq` table to be used in a view. Below is an example of an flyway-script adding new bundle to `portti_view_bundle_seq` table.
-
-	-- Add login bundle to default view
-	INSERT
-	INTO portti_view_bundle_seq
-	(
-		view_id,
-		bundle_id,
-		seqno,
-		config,
-		state,
-		startup,
-		bundleinstance
-	)
-	VALUES (
-		(SELECT id FROM portti_view WHERE application='servlet' AND type='DEFAULT'),
-		(SELECT id FROM portti_bundle WHERE name='login'),
-		(SELECT max(seqno)+1 FROM portti_view_bundle_seq WHERE view_id=(SELECT id FROM portti_view WHERE application='servlet' AND type='DEFAULT')),
-		(SELECT config FROM portti_bundle WHERE name='login'),
-		(SELECT state FROM portti_bundle WHERE name='login'),
-		(SELECT startup FROM portti_bundle WHERE name='login'),
-		'login'
-	);
-
-After these steps, and when bundle is defined correctly in front-end code, the bundle should be loaded when starting your map application. Great way to check if the bundle is loaded at start is to look at startupSequence in GetAppSetup in developer console.
-
-#### Resources
-
-Any additional CSS definitions or images the bundle needs are located under the bundle implementation `resources` folder. Any image links should be relative paths.
+After these steps, and when bundle is defined correctly in front-end code, the bundle should be loaded when starting your map application. Great way to check if the bundle is loaded at start is to look at startupSequence in GetAppSetup in developer console. The developer console will also warn if the server response references a bundle to be started as part of the application, but the javascript files for that bundle has not been included in the frontend application.

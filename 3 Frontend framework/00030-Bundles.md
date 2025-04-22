@@ -60,6 +60,23 @@ To actually start an included bundle, there are two choices:
 
 Applications usually have an `index.js` file that fetches the `GetAppSetup` response from the server with `Oskari.app.loadAppSetup()`.
 
+If you need to give the bundle a config and know when it has been started you can give the config as second parameter and a callback function as third:
+
+```javascript
+Oskari.app.playBundle({
+    "bundlename": "coordinatetool"
+}, {
+    conf: {
+        someVariable: 'some value'
+    }
+},
+() => {
+    console.log('Bundle started');
+});
+```
+
+You can also give the callback function as the second parameter to `playBundle()` function.
+
 ### Bundle lifecycle
 
 When a bundle is started by the framework:
@@ -129,6 +146,10 @@ stateDiagram-v2
     Controller --> Handler: Manipulate state
     Handler --> View: State changed
 ```
+
+**Resources**
+
+Any additional CSS definitions or images the bundle needs are located under the bundle implementation `resources` folder. Any image links should be relative paths.
 
 **External dependencies**
 

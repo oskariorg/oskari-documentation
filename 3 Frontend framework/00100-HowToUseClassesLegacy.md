@@ -1,6 +1,7 @@
-### How to use Oskari classes
+### How to use Oskari classes (deprecated)
 
-Most code in Oskari is defined as classes. Defining a class is a simple call to `Oskari.clazz.define()` method:
+A lot of older code in Oskari is still defined as custom classes. Newer code uses ES classes instead.
+ Defining a class is a simple call to `Oskari.clazz.define()` method:
 
 ```javascript
 Oskari.clazz.define('Oskari.mynamespace.MyClass',
