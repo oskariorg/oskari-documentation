@@ -17,5 +17,8 @@ When you're ready to start developing Oskari:
 2. Create a branch for your changes
 3. Submit a pull request (usually targetting the develop branch)
 
+### Editors
 
-
+* [VS Code](https://code.visualstudio.com/) is the Oskari team's editor of choice for JavaScript development
+* [IntelliJ IDEA](https://www.jetbrains.com/idea/) has been found useful IDE for Oskari Java development.
+* If you're developing on a Windows machine, we recommend using WSL or [cmder](https://cmder.app/)
