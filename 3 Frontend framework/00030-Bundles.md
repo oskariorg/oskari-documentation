@@ -154,3 +154,48 @@ Any additional CSS definitions or images the bundle needs are located under the 
 **External dependencies**
 
 If your bundle depends on external library code, the libary must be imported to be included into the build as usual. You can use NPM modules with `npm install --save` and import as usual. But before adding dependencies, check that the library isn't already imported through `oskari-frontend` like OpenLayers, React, etc. to avoid duplication of library code and/or having multiple versions of the same library.
+
+### Bundle configuration
+
+When bundles are started the configuration variables are injected on them if available before starting (see Bundle lifecycle above). Configurations are matched using the `<bundle-identifier>` and any properties defined are set as properties on the instances. Like the example below, `mapfull` instance will have `conf` and `state` properties available when it fires up:
+
+```json
+{
+   "mapfull": {
+      "state": {
+         "selectedLayers": [{
+            "id": "base_35"
+         }],
+         "zoom": 1,
+         "north": "6874042",
+         "east": "517620"
+      },
+      "conf": {
+         "globalMapAjaxUrl": "/ajax?",
+         "plugins": [
+            {
+               "id": "Oskari.mapframework.bundle.mapmodule.plugin.LayersPlugin"
+            },
+            {
+               "id": "Oskari.mapframework.mapmodule.WmsLayerPlugin"
+            },
+            {
+               "id": "Oskari.mapframework.mapmodule.ControlsPlugin"
+            },
+            {
+               "id": "Oskari.mapframework.bundle.mapmodule.plugin.ScaleBarPlugin"
+            },
+            {
+               "id": "Oskari.mapframework.bundle.mapmodule.plugin.Portti2Zoombar"
+            }
+         ],
+         "layers": [
+            "...layers as JSON objects..."
+         ],
+         "imageLocation": "/Oskari/resources"
+      }
+   }
+}
+```
+
+The `conf` and `state` properties are used throughout Oskari bundles to configuring and initializing the application to a specific. Their contents can be anything that the bundle requires. The conf property should be used to relay information about the runtime environment and state is used to set the bundles initial values for things that are likely to change at runtime.
