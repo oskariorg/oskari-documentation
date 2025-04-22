@@ -1,12 +1,20 @@
 ## Development Guidelines
 
+### How to contribute to Oskari project
+
+You can submit pull requests through GitHub as usual. Target the `develop` branch for next release and only use other branches if you are submitting an urgent fix for an upcoming release.
+
+New contributors are usually required to fill in the CLA contributor license agreement. Trivial changes are allowed even without the CLA.
+
+TODO: add information about CLA here.
+
 ### General
 
 - There's a difference for developing generic Oskari functionality and application specific functionality.
 - Oskari repositories should not contain application specific functionalities (the community-repository can contain application specific code as examples).
 - In general smaller pull requests will be reviewed and merged faster as they usually are easier to review and test than large ones.
-- In most cases you want to use develop-branch as baseline. Only use master as base if you need something urgently fixed (included in a hotfix for latest version).
-- If you are uncertain, ask for help. You can reach other Oskari developers at Rocket.chat, Gitter and Oskari-userlist
+- In most cases you want to use `develop` branch as baseline. Only use `master` as base if you need something urgently fixed (included in a hotfix for latest version).
+- If you are uncertain, ask for help. You can reach other Oskari developers at Gitter and Oskari-users mailing list
 
 ### Code
 
@@ -16,7 +24,7 @@
 - Don't make long or overly complex methods - keep it simple
 - Try to create generic functionalities that can be used by others. The application specific UI can be separated in most cases from the generic functionality.
 - Try to keep functions self-contained with clear input and output and no side-effects when possible.
-- Use existing features like PropertyUtil for oskari-server or the localization support from Oskari in the frontend instead of reinventing the wheel.
+- Use existing features like `PropertyUtil` in `oskari-server` or the localization support from Oskari in the frontend instead of reinventing the wheel.
 - Try to use existing libraries when creating new features. For each new framework added to the client side code the more end-users need to download to get the application.
 
 ### Commits
@@ -32,7 +40,7 @@
 - See [GitHub's guide on how to write the perfect pull request](https://github.com/blog/1943-how-to-write-the-perfect-pull-request)
 - Be very careful when making changes to existing sources (maven modules or frontend bundles) since it's easy to break another part of an app calling the changed function.
 - Create separate pull request for changes to existing source with documentation what the change enables you to do.
-- Entirely new features/functionalities should be created as new maven modules on oskari-server and bundles on frontend. Oskari-server uses layered naming for modules:
+- Entirely new features/functionalities should be created as new _Maven modules_ on `oskari-server` and _bundles_ on `oskari-frontend`. Oskari-server uses layered naming for modules:
     - service-[functionality] as a library for the generic functionality
     - service-[functionality]-[plugin name] as a plugin part to service-[functionality] with non-generic functionality
     - control-[functionality] as a wrapper for action routes/http-layer where you parse params and format a JSON response for the result of the operation.
@@ -88,7 +96,7 @@ Bundles are independent components:
 - A bundle should not poke other bundles' internal structures
 
 Bundles should not have hard coded references to any backend etc. outside source
-- Any such references should be given to the bundle via [configuration](LINK_Oskari_bundle_configuration)
+- Any such references should be given to the bundle via configuration
 - Use jQuery with `jQuery()`, not `$()`
 - Attach event handling functions to DOM with JavaScript assignments rather than HTML markup:
 
@@ -120,12 +128,12 @@ You should comment your Oskari classes in a format recognized by the API generat
 
 ```javascript
 /*
-    * Returns a 'foobared' string.
-    *
-    * @method fooBar
-    * @param {String} arg
-    * @return {String} returns the argument prefixed with 'foo' and postfixed with 'bar'
-    */
+ * Returns a 'foobared' string.
+ *
+ * @method fooBar
+ * @param {String} arg
+ * @return {String} returns the argument prefixed with 'foo' and postfixed with 'bar'
+ */
 function fooBar(arg) {
     return 'foo ' + arg + ' bar';
 }

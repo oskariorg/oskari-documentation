@@ -5,38 +5,39 @@ file `service-search/src/main/java/fi/nls/oskari/search/channel/SearchableChanne
 custom search channel is to extend the class `service-search/src/main/java/fi/nls/oskari/search/channel/SearchChannel.java`
 and annotate the class with `@Oskari("channelID")`. This example offers a basic textual search implementation:
 
-    package fi.nls.oskari.search;
+```java
+package fi.nls.oskari.search;
 
-    import fi.mml.portti.service.search.ChannelSearchResult;
-    import fi.mml.portti.service.search.SearchCriteria;
-    import fi.mml.portti.service.search.SearchResultItem;
-    import fi.nls.oskari.annotation.Oskari;
-    import fi.nls.oskari.search.channel.SearchChannel;
-    import fi.nls.oskari.util.IOHelper;
+import fi.mml.portti.service.search.ChannelSearchResult;
+import fi.mml.portti.service.search.SearchCriteria;
+import fi.mml.portti.service.search.SearchResultItem;
+import fi.nls.oskari.annotation.Oskari;
+import fi.nls.oskari.search.channel.SearchChannel;
+import fi.nls.oskari.util.IOHelper;
 
-    import java.io.IOException;
+import java.io.IOException;
 
-    @Oskari("MyChannel")
-    public class CustomChannel extends SearchChannel {
+@Oskari("MyChannel")
+public class CustomChannel extends SearchChannel {
 
-        public ChannelSearchResult doSearch(SearchCriteria criteria) {
-            ChannelSearchResult result = new ChannelSearchResult();
-            try {
-                // TODO: do the actual search
-                final String responseData = IOHelper.getURL("https://www.google.fi/?q="
-                        + criteria.getSearchString());
-                // parse responseData and populate result with SearchResultItems
-                SearchResultItem item = new SearchResultItem();
-                item.setTitle("MySearchResult");
-                result.addItem(item);
-            }
-            catch (IOException ex) {
-                throw new RuntimeException("Error searching", ex);
-            }
-            return result;
+    public ChannelSearchResult doSearch(SearchCriteria criteria) {
+        ChannelSearchResult result = new ChannelSearchResult();
+        try {
+            // TODO: do the actual search
+            final String responseData = IOHelper.getURL("https://www.google.fi/?q="
+                    + criteria.getSearchString());
+            // parse responseData and populate result with SearchResultItems
+            SearchResultItem item = new SearchResultItem();
+            item.setTitle("MySearchResult");
+            result.addItem(item);
         }
+        catch (IOException ex) {
+            throw new RuntimeException("Error searching", ex);
+        }
+        return result;
     }
-
+}
+```
 Once the class is in the servers classpath the search channel is available in searches as channel with id `MyChannel`.
 *Note!* The results location (coordinates) should be in the same projection as specified in the criteria!
 
@@ -79,4 +80,3 @@ You will also need to override getCapabilities to return COORD or BOTH.
 
 There is an example search channel for OpenStreetMap available in the
 file `service-search-opendata/src/main/java/fi/nls/oskari/search/OpenStreetMapSearchService.java` and several more in service-search-nls.
-
