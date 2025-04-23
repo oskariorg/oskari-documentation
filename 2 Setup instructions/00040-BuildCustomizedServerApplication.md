@@ -14,7 +14,7 @@ The following items are required for the development process:
 
 You will need an environment to run the code in as described on [Setup application server](00030-SetupApplicationServer.md)
 
-Feel free to use the [git conventions](../8 Developing instructions/00115-GitGuidelines.md) used in Oskari development with your own customizations, but it's your app so you can make your own choices.
+Feel free to use the [git conventions](../7 Developing instructions/00035-GitProcess.md) used in Oskari development with your own customizations, but it's your app so you can make your own choices.
 
 ### Create your server application repository
 
