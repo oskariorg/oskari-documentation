@@ -109,11 +109,13 @@ You can also configure the filter with language specific handling:
 Recognized types include:
 - `link` renders an a-tag using the value as href-attribute
 - `image` renders an img-tags using the value for src-attribute. The image can also be wrapped to a link-tag so it can be opened in another tab using the params option seen above.
-- html-tags like h1-h5, p, i, b, em
+- html-tags like `h1`-`h5`, `p`, `i`, `b`, `em`
 
 An application based on Oskari can also add handling for additional types in their code base with [ValueFormatters](https://github.com/oskariorg/oskari-frontend/blob/2.5.1/bundles/mapping/mapmodule/plugin/getinfo/ValueFormatters.js):
-```
+
+```javascript
 import { setFormatter } from './path/to/ValueFormatters';
 setFormatter('title', (value) => `<h1>${value}</h1>`);
 ```
-The above would add a formatter for type `title` that wraps the value to an h1-tag.
+
+The above would add a formatter for type `title` that wraps the value to an `h1`-tag.
