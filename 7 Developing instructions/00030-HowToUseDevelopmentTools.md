@@ -1,4 +1,6 @@
-### How to use development tools
+# Developing instructions
+
+## How to use development tools
 
 #### GitHub, the collaboration platform
 
