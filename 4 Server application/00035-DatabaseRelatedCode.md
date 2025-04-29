@@ -2,7 +2,7 @@
 
 The database library [MyBatis](https://mybatis.org/mybatis-3/) is used in `oskari-server` for usual database operations and [FlywayDB](https://flywaydb.org/) for migrations.
 
-The `service-mybatis` module offers helpers for handling 
+The `service-mybatis` module offers helpers for using MyBatis:
 ```xml
 <dependency>
     <groupId>org.oskari</groupId>
@@ -10,9 +10,9 @@ The `service-mybatis` module offers helpers for handling
 </dependency>
 ```
 
-By convention a service interface/abstract class is made and a concrete `...Impl` class that extends/implements the server service API.
-
 #### Service class
+
+By convention a service interface/abstract class is created as an API for accessing data and a concrete `...Impl` class that extends/implements the server service API for accessing the data specifically on the database using MyBatis:
 
 ```java
 import fi.nls.oskari.service.OskariComponent;
@@ -21,6 +21,9 @@ public abstract class MyService extends OskariComponent {
     public abstract MyStuff find(int id);
 }
 ```
+
+Here the service extends `OskariComponent` so the implementation can be annotated with `@Oskari` so it easily be found and injected at runtime. See more about [annotations](00015-OskariAnnotations.md).
+
 ##### An example value object for the service
 
 ```java
@@ -47,6 +50,8 @@ public class MyStuff  {
 ```
 
 #### Implementation class for service
+
+Here annotated with `@Oskari` so it can be found at runtime in the code that wants to use it:
 
 ```java
 import fi.nls.oskari.annotation.Oskari;
