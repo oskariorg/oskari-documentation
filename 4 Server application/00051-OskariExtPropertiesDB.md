@@ -35,3 +35,19 @@ db.mymodule.username = oskari
 db.mymodule.password = oskari
 ```
 If you don't override a value for module, one from the non-module-prefixed property key is used (`db.url` is used if `db.[module].url` is not defined etc).
+
+There are a couple of additional flags that can help if you are struggling with migrations:
+```properties
+# Use autorepair to fix an issue with SQL-script checksums.
+# Checksums fail if an updated war-file includes different line-endings than the original one.
+# Note! This disable the guard against user-modified scripts so use with caution.
+#db.flyway.autorepair=true
+
+# Uncomment to allow application start even if there are migration problems
+#db.ignoreMigrationFailures = true
+
+# Validate migration file naming
+# false value will skip migrations with invalid naming
+# When set to true, flyway will fail the migration, and log the invalid filenames (like having lowercase v as the first character of filename)
+#db.flyway.validateMigrationNaming = true
+```
