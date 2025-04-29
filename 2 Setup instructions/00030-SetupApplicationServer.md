@@ -34,10 +34,12 @@ The zip includes:
 3\) Configure the database properties (host/credentials) by editing `{tomcat.base}/lib/oskari-ext.properties`
 
 ```properties
-db.url=jdbc:postgresql://[host]:[port]/[dbname]
-db.username=[user]
-db.password=[passwd]
+db.url = jdbc:postgresql://localhost:5432/oskaridb
+db.username = oskari
+db.password = oskari
 ```
+
+This assumes you have a PostgreSQL database running on `localhost` (WSL users might need to use `127.0.0.1` instead) on the default port (`5432`) and you have setup a database named `oskaridb` and a user that can access it with credentials `oskari/oskari`. For more configuration options [see oskari-ext.properties](../4%20Server%20application/00051-OskariExtPropertiesDB.md).
 
 4\) Startup the Tomcat
 
@@ -61,8 +63,8 @@ The scripts are for convenience only, you could download Tomcat from their [site
     http://localhost:8080
 
 You can login as:
-- user with username "user" and password "user"
-- admin with username "admin" and password "oskari"
+- user with username `user` and password `user`
+- admin with username `admin` and password `oskari`
 
 Note! These default users are introduced in the database migration module for the example application (sample-server-extension) and publicly advertized on the sample-info bundle in the sample-application (frontend repository). You should change/remove these for any applications you create based on the example setup.
 
