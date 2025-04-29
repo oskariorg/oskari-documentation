@@ -36,8 +36,8 @@ Functions:
 
 The interface-modules build on top of the control-modules. Basically an HTTP interface with reference implementations for:
 
-* HTTP Servlet: oskari-server/servlet-map
-* Webapp: sample-server-extension/webapp-map
+* HTTP Servlet: `oskari-server/servlet-map`
+* Webapp: `sample-server-extension/webapp-map`
 
 Responsible for:
 
