@@ -12,22 +12,10 @@ And startup `redis-server`. The default port Redis listens to is `6379`.
 
 3\) Configure Oskari (Optional)
 
-Oskari expects Redis to be found in the default port (6379) on the same server as Oskari ("localhost"). If you have it running on another host/port you need to change the `oskari-ext.properties`:
+Oskari expects Redis to be found in the default port (`6379`) on the same server as Oskari (`localhost`). If you have it running on another host/port you need to change the `oskari-ext.properties`:
 
 ```properties
 redis.hostname = localhost
 redis.port = 6379
-
-# # Credentials
-# redis.user = (optional)
-# redis.password = (optional)
-
-# # Timeout configuration is milliseconds
-# redis.timeout.connect = 2000
-# redis.ssl = false
-# redis.pool.size = 30
-
-# # BlockWhenExhausted setting
-# redis.blockExhausted = false
 ```
-The commented ones are optional and depend on your environment. The values are the defaults (user/pass defaults are not defined).
+See more configuration options in [oskari-ext.properties](../8%20Configuration%20instructions/00058-OskariExtPropertiesRedis.md).
