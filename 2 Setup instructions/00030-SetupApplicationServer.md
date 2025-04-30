@@ -39,7 +39,7 @@ db.username = oskari
 db.password = oskari
 ```
 
-This assumes you have a PostgreSQL database running on `localhost` (WSL users might need to use `127.0.0.1` instead) on the default port (`5432`) and you have setup a database named `oskaridb` and a user that can access it with credentials `oskari/oskari`. For more configuration options [see oskari-ext.properties](../4%20Server%20application/00051-OskariExtPropertiesDB.md).
+This assumes you have a PostgreSQL database running on `localhost` (WSL users might need to use `127.0.0.1` instead) on the default port (`5432`) and you have setup a database named `oskaridb` and a user that can access it with credentials `oskari/oskari`. For more configuration options [see oskari-ext.properties](../8%20Configuration%20instructions/00051-OskariExtPropertiesDB.md).
 
 4\) Startup the Tomcat
 
