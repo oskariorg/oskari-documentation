@@ -107,7 +107,7 @@ Modifies config for "myBundle" adding the property "hello" with value "world" an
 	    public boolean modifyBundle(final ModifierParams params) throws ModifierException {
 	        final JSONObject bundleConfig = getBundleConfig(params.getConfig());
 	        JSONHelper.putValue(bundleConfig, "hello", "world");
-	        if(params.getUser().isGuest()) {
+	        if (params.getUser().isGuest()) {
 	            final JSONObject bundleState = getBundleState(params.getConfig());
 	            JSONHelper.putValue(bundleState, "hello", "stranger");
 	        }
