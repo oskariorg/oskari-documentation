@@ -1,6 +1,6 @@
 ## Writing migration scripts
 
-## DONT's
+### DONT's
 
 - Don't modify an existing script once it's committed, flyway calculates checksum for scripts so any change in existing
  script will result in a migration error.
@@ -10,13 +10,13 @@
  any content-related updated should be done in an application module. F.ex. adding bundles to views etc are application
  specific updates.
 
-## DO's
+### DO's
 
 - Make sure the upgrade scripts have proper error handling. Database environments may vary as the content in the database.
  It's always better to check things instead of assuming.
 - Keep upgrade scripts small. The smaller they are the less can go wrong.
 
-## Script naming
+### Script naming
 
 File naming is important since migration scripts are located and versioned by naming conventions:
 

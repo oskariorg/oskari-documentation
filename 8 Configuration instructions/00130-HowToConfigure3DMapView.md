@@ -16,7 +16,7 @@ The changes from a usual 2D geoportal are listed below:
 
 Mandatory requirements is to add Ol-Cesium based mapmodule and layerplugin for 3D Tiles.
 
-```
+```javascript
 // Remove the default mapmodule import if you have one ('oskari-loader!oskari-frontend/packages/mapping/ol/mapmodule/bundle.js')
 
 import 'oskari-loader!oskari-frontend/packages/mapping/olcs/mapmodule/bundle.js';
@@ -25,7 +25,7 @@ import 'oskari-loader!oskari-frontend/packages/mapping/olcs/map3dtiles/bundle.j
 ```
 
 Oskari frontend contains additional bundles for controlling camera and displayed time.
-```
+```javascript
 import 'oskari-loader!oskari-frontend/packages/mapping/time-control-3d/bundle.js';
 import 'oskari-loader!oskari-frontend/packages/mapping/camera-controls-3d/bundle.js';
 ```
@@ -73,14 +73,15 @@ Optional terrain configuration can be given in `mapfull's` bundle configura
 
 Configuration can be set also in oskari-ext.properties which overrides `mapfull`'s terrain configuration:
 
-    oskari.map.terrain.url=<url>
-    oskari.map.terrain.token=<your-ion-access-token>
-    oskari.map.terrain.asset=<asset-id>
+```properties
+oskari.map.terrain.url=<url>
+oskari.map.terrain.token=<your-ion-access-token>
+oskari.map.terrain.asset=<asset-id>
+```
 
 #### Configuring dimension change
 
-Dimension change bundle loads page with different appsetup. Changing between 2D and 3D appsetups bundle should have wanted view's uuid in the configuration.
-`{"uuid": uuidToLoad}`
+Dimension change bundle loads page with different appsetup. Changing between 2D and 3D appsetups bundle should have wanted view's uuid in the configuration: `{"uuid": uuidToLoad}`
 
 #### Enable 3D map publishing
 
@@ -95,7 +96,7 @@ Embedded 3D maps needs own template which have to be set to 3D view. The uuid of
 The 3D-tiles maplayers are saved in the database with all other datasets/services used for map layers in Oskari.
 The default fill color for 3D objects like buildings is a brownish tint/color in Oskari. This might make a textured surface look "dirty" by default but you can configure this. Also a tileset including a mesh-type scanned 3D environment has pretty low resolution with default settings in Cesium JS. Both of these can be tuned with database configuration in oskari_maplayer table by configuring the options column:
 
-```
+```SQL
 UPDATE oskari_maplayer
 SET options='{
     "maximumScreenSpaceError": 0,
@@ -129,7 +130,7 @@ The released version of 3D map is the initial version which can be developed fur
 [Cesium ion](https://cesium.com/cesium-ion/) is a platform for 3D geospatial data tiling, hosting and streaming. It converts different types of data (e.g. point clouds, 3D buildings, photogrammetry) to 3D Tiles format. A free Community account can be used for non-commercial personal projects, exploratory development, or unfunded educational activities within the defined usage limits. See the pricing page for more information.
 
 Run in console
-```
+```javascript
 var mapmodule = Oskari.getSandbox().getStatefulComponents().mapfull.mapmodule;
 mapmodule.getCesiumScene().primitives.add(
     new Cesium.Cesium3DTileset({
