@@ -1,7 +1,7 @@
 
-### Server configuration
+## Server configuration
 
-#### Default configuration
+### Default configuration
 
 The preconfigured Tomcat uses these defaults. These can be changed by modifying `{tomcat.base}/lib/oskari-ext.properties`.
 
@@ -17,7 +17,7 @@ Database (Postgres with PostGIS extension):
 Oskari (provided in [download example](/download)):
 - url: http://localhost:8080/
 
-#### Custom configurations
+### Custom configurations
 
 1\) Removing the unnecessary parts
 

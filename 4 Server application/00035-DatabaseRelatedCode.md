@@ -22,7 +22,7 @@ public abstract class MyService extends OskariComponent {
 }
 ```
 
-Here the service extends `OskariComponent` so the implementation can be annotated with `@Oskari` so it easily be found and injected at runtime. See more about [annotations](00015-OskariAnnotations.md).
+Here the service extends `OskariComponent` so the implementation can be annotated with `@Oskari` so it easily be found and injected at runtime. See more about [annotations](00025-OskariAnnotations.md).
 
 ##### An example value object for the service
 
