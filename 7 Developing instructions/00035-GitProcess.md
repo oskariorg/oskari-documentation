@@ -38,3 +38,12 @@ Read Atlassian's awesome [Git Flow documentation](https://www.atlassian.com/git/
 **External branches**
 
 The branching model utilized by an external team is generally irrelevant to the process of handling external contributions. It is, however, assumed for the purposes of this document that there exists a continuous sequence of commits from the latest merge from Oskari branches on GitHub to the commit(s) presented for consideration for inclusion in Oskari proper. This is required in order to be able to rebase such commits on **the develop branch**.
+
+### Setup Git configuration
+
+Configure line endings: [https://help.github.com/articles/dealing-with-line-endings/](https://help.github.com/articles/dealing-with-line-endings/)
+
+Ignore file permissions:
+```sh
+git config --global core.fileMode false
+```
