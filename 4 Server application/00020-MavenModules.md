@@ -21,7 +21,7 @@ Service modules should be common libraries usable in any application. The actual
 Control modules build on top of the service layer.
 
 * control-base is the basis for all control-modules and has most of the basic request handlers needed by the Oskari frontend.
-	* NOTE! control-base contains some very specific functionalities that should be separated into separate control-extensions (for example thematic maps support)
+	* NOTE! control-base contains some very specific functionalities that should be separated into separate control-extensions
 * control-myplaces provides funtionality related to myplaces functionality.
 * control-example provides example implementations for functionalities required by Oskari but usually overridden by platform specific functionalities such content management for user guide etc.
 * content-resources has tools, templates and scripts for populating and migrating the database
