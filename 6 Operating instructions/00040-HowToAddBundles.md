@@ -44,21 +44,16 @@ Note that the package of the migration (`app` here) dictates the Flyway module i
 
 ```sql
 -- Register bundle to oskari_bundle table
-INSERT
-INTO oskari_bundle
-(
-	name,
-	config,
-	state
-)
-VALUES
-(
-	'<bundle-identifier>',
-	'{}',
-	'{}'
-);
+INSERT INTO oskari_bundle (name) VALUES ('<bundle-identifier>');
 ```
-If you want the bundle to have a default configuration or state anytime it's added to an appsetup, you can define them when registering the bundle in `oskari_bundle` table. You can also do this with the `BundleHelper` class.
+
+If you want the bundle to have a default configuration or state anytime it's added to an appsetup, you can define them when registering the bundle in `oskari_bundle` table:
+```sql
+-- Register bundle to oskari_bundle table
+INSERT INTO oskari_bundle (name, config, state)
+VALUES ('<bundle-identifier>', '{}', '{}');
+```
+Note that this is also possible when using the `BundleHelper` class. The `BundleHelper` also checks if the bundle is already registered and doesn't overwrite an existing registration nor add duplicates. This could be the case if you have developed it as a application specific bundle and later decide to contribute it to `oskari-frontend`.
 
 ### Adding bundle to an appsetup
 

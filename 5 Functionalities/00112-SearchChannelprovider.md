@@ -6,22 +6,24 @@ Search channels can sometimes be generated based on some configuration and need 
 
 Creating a channel provider needs to extend `fi.nls.oskari.search.channel.ChannelProvider` and implement the `getChannels()` method. The method should return a set of `SearchChannel` objects.
 
-	package fi.nls.oskari.search.channel;
+```java
+package fi.nls.oskari.search.channel;
 
-	import fi.nls.oskari.annotation.Oskari;
+import fi.nls.oskari.annotation.Oskari;
 
-	import java.util.HashSet;
-	import java.util.Set;
+import java.util.HashSet;
+import java.util.Set;
 
-	@Oskari
-	public class WFSChannelProvider extends ChannelProvider {
+@Oskari
+public class WFSChannelProvider extends ChannelProvider {
 
-	    public Set<SearchChannel> getChannels() {
-	        Set<SearchChannel> channels = new HashSet<>();
-	        // TODO: populate set with SearchChannels
-	        return channels;
-	    }
+	public Set<SearchChannel> getChannels() {
+		Set<SearchChannel> channels = new HashSet<>();
+		// TODO: populate set with SearchChannels
+		return channels;
 	}
+}
+```
 
 
 The provider also implements a simple listener interface for observing channel changes. The search service registers as a listener to adjust usable search channels based on currently available ones as they can change at runtime. The provider class needs to be annoted with `@Oskari` for search service to find it in the classpath.
