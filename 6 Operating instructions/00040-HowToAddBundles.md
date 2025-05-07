@@ -1,7 +1,7 @@
 ## How to add a bundle
 
-Bundles can be considered as building blocks in an Oskari application. A bundle is a selection of JavaScript files that provide some functionality to be used as part of an application.
- A bundle can offer multiple implementations for a functionality which can then be divided into smaller packages for different application setups. 
+Bundles can be considered as building blocks in an Oskari application. A bundle is a selection of JavaScript files that provide some functionality that can be used as part of an application.
+ There can be multiple implementations of a bundle for different use cases, but implementations sharing the same id _should_ be drop-in replacements with identical API.
  For more about bundles see the documentation under [Frontend framework](../3%20Frontend%20framework/00030-Bundles.md).
 
 In order to get a bundle up and running in your Oskari-based application, the bundle needs to be:
