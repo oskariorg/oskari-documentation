@@ -1,5 +1,5 @@
 
-## WFS layers and attribute data table functionalities (requires backend)
+## WFS layers and attribute data table functionalities
 
 - Complex schema WFS layers can be displayed
 - Attribute data from WFS layers can be displayed in an attribute table

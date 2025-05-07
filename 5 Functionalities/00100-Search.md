@@ -6,7 +6,7 @@ Oskari has search functionality that can be configured to use custom search serv
 
 ### Search channel
 
-Describe the search channel concept.
+The adapters for different search backends are implemented as search channels in Oskari-based services. You can create your own adapters for your application needs or use an existing one. Search channels can be implemented to support free text input from user as search query or coordinates for reverse geocoding searches.
 
 ### WFS Search channels
 
