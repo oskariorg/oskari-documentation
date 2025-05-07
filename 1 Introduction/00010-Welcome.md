@@ -28,7 +28,7 @@ If you have further questions or need help with your Oskari instance, see our [C
 
 ### Technical overview
 
-Here is a brief technical overview of Oskari. More information about frontend and backend can be found in section [2 Application environment](../2 Application environment/00010-ApplicationEnvironment.md).
+Here is a brief technical overview of Oskari. More information about frontend and backend can be found in sections [3 Frontend framwork](../3%20Frontend%20framework/00010-ApplicationFunctionality.md) and [4 Server application](../4%20Server%20application/00010-ServerApplication.md).
 
 Oskari has a separate browser-based frontend and a server-side backend that combine into an Oskari-based service.
 

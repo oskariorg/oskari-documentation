@@ -1,10 +1,15 @@
-### How to add a bundle
+## How to add a bundle
 
 Bundles can be considered as building blocks in an Oskari application. A bundle is a selection of JavaScript files that provide some functionality to be used as part of an application.
  A bundle can offer multiple implementations for a functionality which can then be divided into smaller packages for different application setups. 
  For more about bundles see the documentation under [Frontend framework](../3%20Frontend%20framework/00030-Bundles.md).
 
-In order to get bundle up and running in your Oskari-based application, the bundle needs to be registered to the database and added to an appsetup you want to show it on. There are two tables where it shoud be added:
+In order to get a bundle up and running in your Oskari-based application, the bundle needs to be:
+- imported as part of the frontend application as described under [Frontend framework](../3%20Frontend%20framework/00030-Bundles.md)
+- registered to the database (built-in ones already are, but custom bundles require you to do this)
+- added to an appsetup you want to show it on
+
+These are two database tables where bundles are referenced in:
 
 - oskari_bundle
 - oskari_appsetup_bundles
@@ -12,7 +17,7 @@ In order to get bundle up and running in your Oskari-based application, the bund
 `oskari_bundle` includes rows for all available bundles in the Oskari instance. Any new bundles should be added/registered here so they can be used in an appsetup. It is recommended to use Flyway-scripts when making changes to database.
  Documentation about migrations can be found [here](../4%20Server%20application/00040-DatabaseMigrations.md).
 
-#### Registering a new bundle
+### Registering a new bundle
 
 If you are adding a new bundle for your application or to the built-in ones under `oskari-frontend`, you should add a migration script to register the bundle on the database so the server recognizes it and allows using it on appsetups.
  The `oskari-server` provides `org.oskari.helpers.BundleHelper` helper class for doing this and a bundle can be registered with a migration like this (Replace `<bundle-identifier>` with the bundle id and fix the migration version in the class name):
@@ -55,7 +60,7 @@ VALUES
 ```
 If you want the bundle to have a default configuration or state anytime it's added to an appsetup, you can define them when registering the bundle in `oskari_bundle` table. You can also do this with the `BundleHelper` class.
 
-#### Adding bundle to an appsetup
+### Adding bundle to an appsetup
 
 After bundle has been registered to `oskari_bundle` table, it can be added to `oskari_appsetup_bundles` table to be used in appsetups.
 The `oskari-server` provides `org.oskari.helpers.AppSetupHelper` helper class for doing this easily:

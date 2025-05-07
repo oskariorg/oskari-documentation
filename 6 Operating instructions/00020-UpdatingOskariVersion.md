@@ -49,7 +49,7 @@ To the new version:
 </properties>
 ```
 
-After this run `mvn clean install` to generate a new `oskari-map.war` under `{your.server.repository.root}/webapp-map/target`. Replace the `oskari-map.war` with the new one as described on [Build customized server-side application](00040-BuildCustomizedServerApplication.md).
+After this run `mvn clean install` to generate a new `oskari-map.war` under `{your.server.repository.root}/webapp-map/target`. Replace the `oskari-map.war` with the new one as described on [Build customized server-side application](../2%20Setup%20instructions/00040-BuildCustomizedServerApplication.md).
 
 ### Updating the frontend
 
@@ -71,7 +71,7 @@ To the new version:
 
 When updating Oskari version, feel free to change the application version as well in [package.json](https://github.com/oskariorg/sample-application/blob/2.0.0/package.json#L3) of your application to signal that the application has been updated.
 
-After this you need to run `npm install` to install any new/changed libraries and `npm run build` to generate a new build under `{your.server.repository.root}/dist/[version on package.json]` as described on [Build customized frontend application](00045-BuildCustomizedFrontendApplication.md).
+After this you need to run `npm install` to install any new/changed libraries and `npm run build` to generate a new build under `{your.server.repository.root}/dist/[version on package.json]` as described on [Build customized frontend application](../2%20Setup%20instructions/00050-BuildCustomizedFrontendApplication.md).
 
 Finally, remember to update the newly built frontend version to `oskari-ext.properties` under `oskari-server/lib`:
 
