@@ -5,9 +5,9 @@ Bundles in Oskari can provide a tool object(/Oskari clazz) that the `publisher` 
 The tools are discovered by querying Oskari for classes with protocol `Oskari.mapframework.publisher.Tool`
  (See example tool class below with `'protocol': ['Oskari.mapframework.publisher.Tool']`).
 
-Starting with Oskari 3.0 all tool panels and publisher tools provided by Oskari are written in es / react. Using jQuery for creating custom publisher tools (even though old jquery-implementations might still work) is highly discouraged.
+Starting with Oskari 3.0 all tool panels and publisher tools provided by Oskari are written in es / react. Previous versions allowed using jQuery for creating custom publisher tools and these need to be migrated to React. Though if you have a simple tool with on/off, you don't need to create any UI for it. Just declaring the tool is enough in this case.
 
-With ES class syntax:
+Defining a publisher tool with ES class syntax:
 
 ```javascript
 const AbstractPublisherTool = Oskari.clazz.get('Oskari.publisher.AbstractPublisherTool');
