@@ -1,4 +1,4 @@
-### How to use publisher tools
+## How to use publisher tools
 
 Bundles in Oskari can provide a tool object(/Oskari clazz) that the `publisher` bundle/functionality discovers at runtime. This allows bundles to extend the publisher user-interface by adding new options for the user to see when that particular bundle is part of an application.
 
@@ -65,7 +65,7 @@ When the user exits the publisher:
 2) calls `tool.stop()` - this is where the tool should clean up anything that it has started when the publisher functionality was running
 3) Starts all plugins that were stopped on the step 3 of startup to restore normal geoportal functionality.
 
-#### Publisher tool API
+### Publisher tool API
 
 Many of these are handled by the `publisher/tools/AbstractPublisherTool` base class. Take a look at it before overriding the functions:
 
@@ -89,11 +89,11 @@ Many of these are handled by the `publisher/tools/AbstractPublisherTool` base cl
     - statistical data tools return false if there are no statistical data on the map
 - `isDisabled()` related to isDisplayed(). This allows the selection to be shown even if user can't select it. A tooltip can be included to show the user why the tool is disabled. An example is that map legends selection is shown but is disabled if layers on the map don't have legends available.
 
-#### Tool, component and handler
+### Tool, component and handler
 
 When a tool has more options than just enabling or disabling a plugin on map we need to provide a component for rendering extra options in publisher as well as a handler to maintain the component's state and possibly handle more complex logic. Here's an example how one would go forth to add a new react tool to map tools panel.
 
-##### The tool
+#### The tool
 
 First we would need to create the actual tool class. To keep things simple this will just control an existing plugin (index map) on the map and have some bogus extra options. The tool class needs to implement the `Oskari.mapframework.publisher.Tool` - protocol to be discoverable by the publisher. Also the code of the tool class needs to be imported somehow. For tools that handle mapmodule's plugins there is the file `bundles/mapping/mapmodule/publisher/tools.js` which imports / exports all those tools.
 
@@ -172,7 +172,7 @@ Oskari.clazz.defineES('Oskari.publisher.IndexMapTool2',
 export { IndexMapTool2 };
 ```
 
-##### The component
+#### The component
 
 The component is basically any react-component containing the extraoptions (if any) shown when the tool is enabled. In this case it's just a checkbox that is either on or off.
 
@@ -191,7 +191,7 @@ export const IndexMapToolComponent = ({ state, controller }) => {
 };
 ```
 
-##### The handler
+#### The handler
 
 The handler handles the tool's and component's state and could be used to handle more complex logic as well. Often the state can be used as-is when saving and restoring the published map.
 
