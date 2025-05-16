@@ -67,5 +67,5 @@ Adding layers is currently a generic permission (not mapped to data producer or 
 
 #### Admin user interface for layer permissions
 
-There is an `admin-permissions` bundle with which admins can set layers' permissions. Check [adding bundles](/documentation/backend/adding-bundles) for how to add the bundle.
+There is an `admin-permissions` bundle with which admins can set layers' permissions. Check [adding bundles](../6%20Operating%20instructions/00040-HowToAddBundles.md) for how to add the bundle.
 With that bundle, admin users can set permissions based on user roles for any layers through the user interface.

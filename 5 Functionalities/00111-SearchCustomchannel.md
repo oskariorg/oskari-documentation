@@ -55,9 +55,11 @@ Default implementation returns true for all users. Override if the datasource sh
 
 Default channels are used for searching when no channel has been specified for the search. Search channels can specify if they should be included to be used in such queries. This can be done by returning a boolean value from the `SearchChannel.isDefaultChannel()` method. The default is true and can be configured with channel specific properties:
 
-    public boolean isDefaultChannel() {
-        return PropertyUtil.getOptional("search.channel." + getName() + ".isDefault", true);
-    }
+```java
+public boolean isDefaultChannel() {
+    return PropertyUtil.getOptional("search.channel." + getName() + ".isDefault", true);
+}
+```
 
 #### SearchableChannel.Capabilities getCapabilities();
 

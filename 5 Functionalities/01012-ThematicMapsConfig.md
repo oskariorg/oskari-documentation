@@ -1,6 +1,6 @@
 ### Configuring thematic maps functionality
 
-See [requirements](00111-ThematicMapsRequirements.md) for enabling the code that powers the thematic maps functionality.
+See [requirements](01011-ThematicMapsRequirements.md) for enabling the code that powers the thematic maps functionality.
 
 #### Adding regionsets as maplayers
 
@@ -34,23 +34,25 @@ Where
     - nameIdTag: feature attribute that has the name for the region (this is shown to the end-user as the region name)
     - featuresUrl: (*deprecated*) URL for corresponding WFS-service. It's used to read all the features to create a list of regions in the region set (this URL can be used to override the actual url-field. It was useful when we used both wms and wfs layers, but now it's considered deprecated and only the main url should be used.)
 
-*Note! Add the [view permissions](/documentation/backend/permissions) for the layer so users can see it.*
+*Note! Add the [view permissions](02010-Authorization.md) for the layer so users can see it.*
 
 ##### Regionset as JSON resource
 
-As of 1.46.0 Oskari version regionsets don't need to come from a WFS-service and having them as resource files under the webserver works as well:
+The region sets used as statistical data layers can be provided as resource files under the webserver:
 
 **1. Make your GeoJSON resource file available for the webapp container.**
 
-Store the file to the root resource directory for your web application (for example $JETTY_HOME/resources).
-When adding a resource file as a regionset layer configure featuresUrl in layer attributes as follows:
+Store the file to the root resource directory for your web application (for example `${tomcat.base}/lib`).
+When adding a resource file as a regionset layer configure the layers `url` as follows:
+```
+resources://${path}
+```
+Where ${path} is relative to the root resource directory in your web application. For example having the file in`${tomcat.base}/lib/regionsets/myfile.json` would mean the layer url should be:
+```
+resources://regionsets/myfile.json
+```
 
-    "resources://${path}"
-
-Where ${path} is relative to the root resource directory in your web application. For example having the file
- in $JETTY_HOME/resources/regionsets/myfile.json would mean featuresUrl value of "resources://regionsets/myfile.json"
-
-*Note! The featuresUrl must start with "resources://" for the system to recognize that this layer is resource based and the file-extension MUST be '.json'.*
+*Note! The url must start with `resources://` for the system to recognize that this layer is resource based and the file-extension MUST be `.json`.*
 
 **2. The features describing the Regions in your GeoJSON resource need to have atleast two properties.**
 
