@@ -4,10 +4,34 @@ Some Oskari modules utilize role-based user management, allowing users with diff
 
 ### How to use user authentication
 
-Users in Oskari are described with a few attributes listed below:
+Users in Oskari are described with these tables in the database:
 
-![User table](../resources/images/backend/userUML.png)
-![Role table](../resources/images/backend/roleUML.png)
+```mermaid
+erDiagram
+    oskari_users ||--|{ oskari_users_roles : user_id
+    oskari_users {
+        integer id
+        varchar(128) user_name
+        varchar(128) first_name
+        varchar(128) last_name
+        varchar(256) email
+        varchar(64) uuid
+        text(json) attributes
+        timestamp created
+        timestamp last_login
+    }
+    oskari_users_roles }o--|| oskari_roles : role_id
+    oskari_users_roles {
+        int id
+        int user_id
+        int role_id
+    }
+    oskari_roles {
+        int id
+        text name
+        boolean is_guest
+    }
+```
 
 The datasource for users can be configured to read and manage users using JSON, SAML etc, but default to the core database for Oskari. The Java-interface for managing users is `fi.nls.oskari.service.UserService` under the service-base Maven module with `fi.nls.oskari.user.DatabaseUserService` under service-users Maven module as the reference implementation.
 

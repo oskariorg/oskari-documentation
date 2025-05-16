@@ -28,4 +28,4 @@ The embedded map parameters are name, website and language. The status of an emb
 - Customizable size (preset size, fill space available)
 - Find my location
 - RPC API for interaction with the web site where the map is embedded
-- RPC API features are listed separately here: http://oskari.org/examples/rpc-api/
+- RPC API features are listed separately here: https://oskari.org/examples/rpc-api/

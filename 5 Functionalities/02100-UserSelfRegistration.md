@@ -84,10 +84,10 @@ oskari.email.link.expirytime=2
 You will also need to include the `control-users` Maven module as a dependency on your application:
 
 ```xml
-    <dependency>
-        <groupId>org.oskari</groupId>
-        <artifactId>control-users</artifactId>
-    </dependency>
+<dependency>
+    <groupId>org.oskari</groupId>
+    <artifactId>control-users</artifactId>
+</dependency>
 ```
 
 The functionality is mostly contained under [oskari-server/control-users](https://github.com/oskariorg/oskari-server/tree/develop/control-users) with JSPs that can be overridden
@@ -156,5 +156,4 @@ If everything is good to go with the mail server and you still have problems sen
 you should check the Oskari logs for more information about the issue.
 
 On one instance adding a javax.mail implementation manually was required,
-but it should be included in the [Oskari download](/download) packaging. If this is the case you can add the
- jar-file to `{tomcat.base}/lib/` folder (http://mvnrepository.com/artifact/com.sun.mail/javax.mail/1.5.4).
+but it should be included in the [Oskari download](/download) packaging. If this is the case you can add the jar-file to `{tomcat.base}/lib/` folder (http://mvnrepository.com/artifact/com.sun.mail/javax.mail/1.5.4).

@@ -34,32 +34,36 @@ The search functionality should be notified of any runtime changes to channels t
 
 There is an admin bundle available (`tampere/admin-wfs-search-channel`) providing user interface for selecting a registered wfs-service and attribute(s) in that service to query against for results. The backend that is managing the WFS channels is implemented as a ChannelProvider. Check `fi.nls.oskari.search.channel.WFSChannelProvider` in `oskari-server/service-search-wfs` for the implementation. This reads the database for configurations based on registered WFS-services and creates a set of `WFSSearchChannel` objects to be used as datasources. These can be further customized by creating `WFSChannelHandlers`. WFSChannelHandler can be selected with database table `oskari_wfs_search_channels` column `config` with JSON value like this:
 
-	{
-		"handler" : "ExampleHandlerID"
-	}
+```json
+{
+	"handler" : "ExampleHandlerID"
+}
+```
 
 ##### WFSChannelHandler
 
 The WFSChannelHandlers can be used to modify the WFS-filter that is used when calling the service by overriding the `createFilter()` method.
 
-	package fi.nls.oskari.search.channel;
+```java
+package fi.nls.oskari.search.channel;
 
-	import fi.mml.portti.service.search.SearchCriteria;
-	import fi.nls.oskari.annotation.Oskari;
-	import fi.nls.oskari.wfs.WFSSearchChannelsConfiguration;
+import fi.mml.portti.service.search.SearchCriteria;
+import fi.nls.oskari.annotation.Oskari;
+import fi.nls.oskari.wfs.WFSSearchChannelsConfiguration;
 
-	import java.util.List;
+import java.util.List;
 
-	@Oskari("ExampleHandlerID")
-	public class ExampleHandler extends WFSChannelHandler {
-	    private Logger log = LogFactory.getLogger(this.getClass());
+@Oskari("ExampleHandlerID")
+public class ExampleHandler extends WFSChannelHandler {
+	private Logger log = LogFactory.getLogger(this.getClass());
 
-	    public String createFilter(SearchCriteria sc, WFSSearchChannelsConfiguration config) {
-	        // custom filter handling
-	        String searchStr = sc.getSearchString();
-	        StringBuffer filter = new StringBuffer("<Filter>");
-	        // TODO: create filter contents
-	        filter.append("</Filter>");
-	        return filter.toString().trim();
-	    }
+	public String createFilter(SearchCriteria sc, WFSSearchChannelsConfiguration config) {
+		// custom filter handling
+		String searchStr = sc.getSearchString();
+		StringBuffer filter = new StringBuffer("<Filter>");
+		// TODO: create filter contents
+		filter.append("</Filter>");
+		return filter.toString().trim();
 	}
+}
+```
