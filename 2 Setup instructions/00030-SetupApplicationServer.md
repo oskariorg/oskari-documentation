@@ -70,4 +70,4 @@ Note! These default users are introduced in the database migration module for th
 
 #### Advanced configuration
 
-For further configuration check out [Server configuration](00070-ServerConfiguration.md)
+For further configuration check out [Server configuration](../8%20Configuration%20instructions/00040-ServerConfiguration.md)
