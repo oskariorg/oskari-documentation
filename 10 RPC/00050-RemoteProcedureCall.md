@@ -22,6 +22,6 @@ A demo app with a bunch of examples on how to use Oskari over RPC api is [here](
 
 - [Introduction to RPC](https://oskari.org/examples/rpc-api/)
 - Tutorials how to work with RPC:
-    - [2025 RPC Workshop at Oskari developers day](https://github.com/oskariorg/sample-configs/blob/master/workshops/RPC_workshop_2025/index.md) with the sources available in [GitHub](https://github.com/oskariorg/sample-configs/blob/master/workshops/RPC_workshop_2025/)
-    - [FOSS4G 2022 Firenze workshop](https://github.com/oskariorg/sample-configs/blob/master/workshops/FOSS4G_2022/index.md) with the sources available in [GitHub](https://github.com/oskariorg/sample-configs/blob/master/workshops/FOSS4G_2022/)
-    - [FOSS4G 2019 Bucharest workshop](https://github.com/oskariorg/sample-configs/blob/master/workshops/FOSS4G_2019/index.md) with the sources available in [GitHub](https://github.com/oskariorg/sample-configs/blob/master/workshops/FOSS4G_2019)
+    - [2025 RPC Workshop at Oskari developers day](https://github.com/oskariorg/oskari-documentation-site/tree/develop/public/workshops/RPC_workshop_2025/index.md) with the sources available in [GitHub](https://github.com/oskariorg/oskari-documentation-site/tree/develop/public/workshops/RPC_workshop_2025/)
+    - [FOSS4G 2022 Firenze workshop](https://github.com/oskariorg/oskari-documentation-site/tree/develop/public/workshops/FOSS4G_2022/index.md) with the sources available in [GitHub](https://github.com/oskariorg/oskari-documentation-site/tree/develop/public/workshops/FOSS4G_2022/)
+    - [FOSS4G 2019 Bucharest workshop](https://github.com/oskariorg/oskari-documentation-site/tree/develop/public/workshops/FOSS4G_2019/index.md) with the sources available in [GitHub](https://github.com/oskariorg/oskari-documentation-site/tree/develop/public/workshops/FOSS4G_2019)
