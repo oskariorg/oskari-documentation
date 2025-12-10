@@ -1,6 +1,6 @@
 ## Setup application server
 
-This section contains instructions on setting up a Java application server for Oskari using the [download](/download) package with Tomcat and pre-installed/configured Oskari
+This section contains instructions on setting up a Java application server for Oskari using the [download](/download) package with Tomcat and pre-installed/configured Oskari.
 
 After completing this section you will have the Oskari-based example application running, including:
 
@@ -9,7 +9,7 @@ After completing this section you will have the Oskari-based example application
 
 #### Requirements
 
-The following are required for setting up Jetty.
+The following are required for setting up Tomcat.
 
 - JDK 17 (Java Development Kit)
 - Database available: [Instructions for setting up database](00020-SetupDatabase.md)
@@ -18,17 +18,17 @@ The following are required for setting up Jetty.
 
 Follow the steps below to get Tomcat properly set up.
 
-1\) Download the [Oskari example application](/download)
+1\) Download the [Latest version of the Tomcat package of Oskari](/download)
 
 2\) Unpack the zip file to selected location
 
 The zip includes:
 
-* Readme.md
-* licence folder
+* README.md
+* license folder
 * oskari-map.war as prebuilt server application
 * sample-application folder with the prebuilt frontend application code
-* apache-tomcat-10.1.39 (referred as `{tomcat.home}`)
+* apache-tomcat-10.1.x (referred as `{tomcat.home}`)
 * oskari-server folder (referred as `{tomcat.base}`) 
 
 3\) Configure the database properties (host/credentials) by editing `{tomcat.base}/lib/oskari-ext.properties`
@@ -45,7 +45,7 @@ This assumes you have a PostgreSQL database running on `localhost` (WSL users mi
 
 By running the command (in `{tomcat.base}`):
 - `server.bat start` for Windows OR
-- `server.sh start` for *nix-based OS (Ubuntu, MacOS, Windows WSL etc)
+- `./server.sh start` for *nix-based OS (Ubuntu, MacOS, Windows WSL etc)
 
 Note that it's important where you run the command/what is the working directory so run the command in the `oskari-server` folder. Otherwise folder references in those scripts might not work as expected.
 The scripts are for convenience only, you could download Tomcat from their [site](https://tomcat.apache.org/) and use that to run Oskari. Separating `{tomcat.base}` and `{tomcat.home}` is useful if you want to use Tomcat binaries as shared library
