@@ -1,6 +1,6 @@
 ## Backend
 
-Backend functionality of the platform is implemented with Controllers from Spring framework and can be easily extended to handle new functionality. Also the Spring-layer is very light on top and could be substituted with another if needed.
+Backend functionality of the platform is implemented with Controllers from Spring Framework and can be easily extended to handle new functionality. Also the Spring-layer is very light on top and could be substituted with another if needed.
 
 The server-side codebase can be divided into two parts:
 - the application that can be customized for a specific need
