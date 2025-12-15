@@ -56,7 +56,7 @@ After this, you can use any Maven modules under oskari-server or any of its mana
 
 ## Spring Controllers
 
-Oskari-server uses Spring framework as a wrapper for handling HTTP-requests and security. There are two main Controllers handling most of the requests: `MapController.java`and `ActionRouteController.java`.
+Oskari-server uses Spring Framework as a wrapper for handling HTTP-requests and security. There are two main Controllers handling most of the requests: `MapController.java`and `ActionRouteController.java`.
 
 Under `servlet-map` [module](https://github.com/oskariorg/oskari-server/tree/master/servlet-map/src/main/java/org/oskari/spring/controllers)
 

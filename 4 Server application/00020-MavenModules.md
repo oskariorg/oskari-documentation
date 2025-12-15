@@ -1,7 +1,7 @@
 ## Maven modules
 
 The backend architecture in oskari-server Maven-modules can be divided into three layers: service layer, control layer and interface layer:
-1) The interface layer is very light with Spring framework Controllers for handling requests and can be easily substituted to run as portlets or similar.
+1) The interface layer is very light with Spring Framework Controllers for handling requests and can be easily substituted to run as portlets or similar.
 2) The controllers pass concrete HTTP-requests on to Oskari control-modules that can further process the requests and write responses.
 3) Services are used by the control-modules to handle business-logic. The service-modules could (in theory) be used in any Java-based software as libraries.
 
