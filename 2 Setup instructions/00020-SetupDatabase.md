@@ -69,4 +69,4 @@ The example configuration includes a migration module named `app` (in `oskari-ex
 Note that migrations are run only once so making changes to existing migration files and restarting the application server requires an empty database for migrations to be run again (or removing related rows on the migration status database tables). However the migrations follow versioning through naming so you can add migrations to modify an existing database by naming the migrations in a certain way.
 
 The next step after having the database ready is installing the application that runs these migrations. If you want to skip way ahead and learn how to customize Oskari including populating the database with your own content instead of example content see:
-* [Create a custom Oskari-server extension](../8 Developing instructions/00150-HowToCreateACustomOskariServerExtension.md)
+* [Create a custom Oskari-server extension](../7%20Developing%20instructions/00150-HowToCreateACustomOskariServerExtension.md)
