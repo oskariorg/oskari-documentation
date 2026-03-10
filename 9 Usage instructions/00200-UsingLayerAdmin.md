@@ -120,6 +120,16 @@ In the `JSON` tab, you can further customize the map layer in more detail and ch
 
 ![Layer form tab JSON](../resources/images/admin/layereditor-json.png)
 
+There are some special configurations that can be enabled through the JSON-tab:
+
+| Attribute | Type | Default |
+| --------- | ---- | ------------- |
+| `forceProxy` | boolean | false |
+| `ignoreCoverage` | boolean | false |
+
+- `forceProxy` can be used to force requests to the layer service to be proxied through the Oskari-server. This can be used to hide API keys on URLs etc.
+- `ignoreCoverage` removes the coverage information gathered from metadata service or service capabilities. Useful if the service or metadata provides erronous coverage geometry as layer is not shown if user tries to view it outside the coverage geometry
+
 #### Permissions tab
 
 In the `Permissions`, you can define who can use the map layer and how they can use it.
