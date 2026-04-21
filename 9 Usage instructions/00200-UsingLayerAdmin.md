@@ -130,6 +130,14 @@ There are some special configurations that can be enabled through the JSON-tab:
 - `forceProxy` can be used to force requests to the layer service to be proxied through the Oskari-server. This can be used to hide API keys on URLs etc.
 - `ignoreCoverage` removes the coverage information gathered from metadata service or service capabilities. Useful if the service or metadata provides erronous coverage geometry as layer is not shown if user tries to view it outside the coverage geometry
 
+**OCG API Features** layers also support additional configurations that can be enabled through the JSON-tab:
+
+| Attribute | Type | Default |
+| --------- | ---- | ------------- |
+| `pageSize` | integer | 10000 |
+
+- `pageSize` specifies a limit-parameter for the request to prevent paging of results
+
 #### Permissions tab
 
 In the `Permissions`, you can define who can use the map layer and how they can use it.
