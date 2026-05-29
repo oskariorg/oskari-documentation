@@ -138,6 +138,14 @@ There are some special configurations that can be enabled through the JSON-tab:
 
 - `pageSize` specifies a limit-parameter for the request to prevent paging of results
 
+For **WFS** layers, you can use the following JSON setting to control response size:
+
+| Attribute | Type | Default |
+| --------- | ---- | ------------- |
+| `maxFeatures` | integer | 10000 |
+
+- `maxFeatures` sets an upper limit for how many features can be returned in a single request
+
 #### Permissions tab
 
 In the `Permissions`, you can define who can use the map layer and how they can use it.
